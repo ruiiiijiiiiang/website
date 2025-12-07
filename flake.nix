@@ -26,7 +26,7 @@
         };
 
         # version lockdown required to ensure build consistency; used with dioxus 0.7.1
-        wasm-bindgen-cli = pkgs.rustPlatform.buildRustPackage rec {
+        wasm-bindgen-cli = pkgs.buildPackages.rustPlatform.buildRustPackage rec {
           pname = "wasm-bindgen-cli";
           version = "0.2.106";
           src = pkgs.fetchCrate {
