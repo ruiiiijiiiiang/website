@@ -12,7 +12,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       flake-utils,
       rust-overlay,
@@ -26,6 +25,18 @@
           inherit system overlays;
         };
 
+        # version lockdown required to ensure build consistency; used with dioxus 0.7.1
+        wasm-bindgen-cli = pkgs.rustPlatform.buildRustPackage rec {
+          pname = "wasm-bindgen-cli";
+          version = "0.2.106";
+          src = pkgs.fetchCrate {
+            inherit pname version;
+            sha256 = "sha256-M6WuGl7EruNopHZbqBpucu4RWz44/MSdv6f0zkYw+44=";
+          };
+          cargoHash = "sha256-ElDatyOwdKwHg3bNH/1pcxKI7LXkhsotlDPQjiLHBwA=";
+          doCheck = false;
+        };
+
         rustToolchain = pkgs.rust-bin.stable.latest.default.override {
           extensions = [ "rust-src" ];
           targets = [ "wasm32-unknown-unknown" ];
@@ -36,6 +47,8 @@
           openssl
           dioxus-cli
           rustToolchain
+          wasm-bindgen-cli
+          binaryen
         ];
 
         buildInputs = with pkgs; [
@@ -60,13 +73,13 @@
             dx build --release --features web --platform web
 
             echo "Building Backend..."
-            cargo build --release --features server
+            cargo build --release --no-default-features --features server
           '';
 
           installPhase = ''
             mkdir -p $out/bin $out/share/website
             cp target/release/website $out/bin/server
-            cp -r dist $out/share/website/dist
+            cp -r target/dx/website/release/web $out/share/website/dist
           '';
 
           doCheck = false;
