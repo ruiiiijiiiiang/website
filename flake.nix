@@ -26,7 +26,7 @@
         };
 
         buildPkgs = import nixpkgs {
-          system = "x86_64-linx";
+          system = "x86_64-linux";
           overlays = [ (import rust-overlay) ];
         };
 
@@ -75,7 +75,6 @@
 
           buildPhase = ''
             echo "Debug:"
-            which wasm-bindgen
             wasm-bindgen --version || echo "CRITICAL: wasm-bindgen failed to build!"
 
             echo "Building Frontend..."
