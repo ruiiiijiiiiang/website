@@ -25,8 +25,13 @@
           inherit system overlays;
         };
 
+        buildPkgs = import nixpkgs {
+          system = "x86_64-linx";
+          overlays = [ (import rust-overlay) ];
+        };
+
         # version lockdown required to ensure build consistency; used with dioxus 0.7.1
-        wasm-bindgen-cli = pkgs.buildPackages.rustPlatform.buildRustPackage rec {
+        wasm-bindgen-cli = buildPkgs.rustPlatform.buildRustPackage rec {
           pname = "wasm-bindgen-cli";
           version = "0.2.106";
           src = pkgs.fetchCrate {
@@ -69,6 +74,10 @@
           inherit nativeBuildInputs buildInputs;
 
           buildPhase = ''
+            echo "Debug:"
+            which wasm-bindgen
+            wasm-bindgen --version || echo "CRITICAL: wasm-bindgen failed to build!"
+
             echo "Building Frontend..."
             dx build --release --features web --platform web
 
