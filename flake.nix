@@ -79,7 +79,7 @@
           installPhase = ''
             mkdir -p $out/bin $out/share/website
             cp target/release/website $out/bin/server
-            cp -r target/dx/website/release/web $out/share/website/dist
+            cp -r target/dx/website/release/web/public $out/share/website/public
           '';
 
           doCheck = false;
