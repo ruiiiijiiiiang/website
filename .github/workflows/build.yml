@@ -1,4 +1,4 @@
-name: Build Website
+name: Build Image
 on:
   workflow_dispatch:
 
