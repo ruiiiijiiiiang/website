@@ -35,7 +35,6 @@
           pkg-config
           openssl
           dioxus-cli
-          wasm-bindgen-cli_0_2_104
           rustToolchain
         ];
 
