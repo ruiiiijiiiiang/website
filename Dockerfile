@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install -y \
   libssl-dev \
   gcc-aarch64-linux-gnu \
   libc6-dev-arm64-cross \
+  perl \
   && rm -rf /var/lib/apt/lists/*
 RUN cargo install dioxus-cli --version 0.7.1
 RUN rustup target add wasm32-unknown-unknown aarch64-unknown-linux-gnu
