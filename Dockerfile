@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
   make \
   gcc \
   && rm -rf /var/lib/apt/lists/*
-RUN cargo install dioxus-cli --version 0.7.1
+RUN cargo install dioxus-cli
 RUN rustup target add wasm32-unknown-unknown aarch64-unknown-linux-gnu
 
 ENV CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
@@ -31,7 +31,7 @@ RUN apt-get update && apt-get install -y libssl3 ca-certificates && rm -rf /var/
 
 WORKDIR /app
 
-COPY --from=builder /app/target/release/website /app/server
+COPY --from=builder /app/target/dx/website/release/web/public /app/public
 COPY --from=builder /app/target/aarch64-unknown-linux-gnu/release/website /app/server
 
 ENV PORT=8964
