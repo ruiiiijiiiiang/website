@@ -5,9 +5,10 @@ authors = ["Rui Jiang <me@ruijiang.me>"]
 edition = "2024"
 
 [dependencies]
-dioxus = { version = "0.7", features = ["router", "fullstack"] }
+dioxus = { version = "=0.7.1", features = ["router", "fullstack"] }
 pulldown-cmark = "0.13"
 openssl = { version = "0.10", features = ["vendored"] }
+wasm-bindgen-cli = "=0.2.104"
 
 [features]
 default = ["web"]

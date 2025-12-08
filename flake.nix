@@ -31,11 +31,12 @@
         };
 
         nativeBuildInputs = with pkgs; [
-          binaryen
           pkg-config
           openssl
           dioxus-cli
           rustToolchain
+          binaryen
+          wasm-bindgen-cli_0_2_104
         ];
 
       in
