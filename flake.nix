@@ -20,26 +20,9 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        overlays = [ (import rust-overlay) ];
         pkgs = import nixpkgs {
-          inherit system overlays;
-        };
-
-        buildPkgs = import nixpkgs {
-          system = "x86_64-linux";
+          inherit system;
           overlays = [ (import rust-overlay) ];
-        };
-
-        # version lockdown required to ensure build consistency; used with dioxus 0.7.1
-        wasm-bindgen-cli = buildPkgs.rustPlatform.buildRustPackage rec {
-          pname = "wasm-bindgen-cli";
-          version = "0.2.106";
-          src = pkgs.fetchCrate {
-            inherit pname version;
-            sha256 = "sha256-M6WuGl7EruNopHZbqBpucu4RWz44/MSdv6f0zkYw+44=";
-          };
-          cargoHash = "sha256-ElDatyOwdKwHg3bNH/1pcxKI7LXkhsotlDPQjiLHBwA=";
-          doCheck = false;
         };
 
         rustToolchain = pkgs.rust-bin.stable.latest.default.override {
@@ -48,16 +31,12 @@
         };
 
         nativeBuildInputs = with pkgs; [
+          binaryen
           pkg-config
           openssl
           dioxus-cli
+          wasm-bindgen-cli_0_2_104
           rustToolchain
-          wasm-bindgen-cli
-          binaryen
-        ];
-
-        buildInputs = with pkgs; [
-          openssl
         ];
 
       in
@@ -71,17 +50,14 @@
             lockFile = ./Cargo.lock;
           };
 
-          inherit nativeBuildInputs buildInputs;
+          inherit nativeBuildInputs;
 
           buildPhase = ''
-            echo "Debug:"
-            wasm-bindgen --version || echo "CRITICAL: wasm-bindgen failed to build!"
-
             echo "Building Frontend..."
             dx build --release --features web --platform web
 
             echo "Building Backend..."
-            cargo build --release --no-default-features --features server
+            cargo build --release --features server
           '';
 
           installPhase = ''
@@ -94,7 +70,7 @@
         };
 
         devShells.default = pkgs.mkShell {
-          inherit nativeBuildInputs buildInputs;
+          inherit nativeBuildInputs;
         };
       }
     );

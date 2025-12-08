@@ -15,10 +15,7 @@ pub fn Blog(id: i32) -> Element {
         let post = get_blog(id).await;
         match post {
             Ok(content) => parse_basic_markdown(&content),
-            Err(e) => {
-                tracing::debug!("{:?}", e);
-                String::from("Error loading content.")
-            }
+            Err(_) => String::from("Error loading content."),
         }
     });
 
