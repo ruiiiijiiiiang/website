@@ -23,7 +23,7 @@ WORKDIR /app
 COPY . .
 
 RUN dx build --release --features web --platform web
-RUN cargo build --release --target aarch64-unknown-linux-gnu --features server
+RUN cargo build --release --target aarch64-unknown-linux-gnu --features server --no-default-features
 
 FROM debian:bookworm-slim
 
