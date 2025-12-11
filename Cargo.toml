@@ -7,9 +7,13 @@ edition = "2024"
 [dependencies]
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
 pulldown-cmark = "0.13"
+dioxus-free-icons = { version = "0.10", features = [
+  "font-awesome-brands",
+  "font-awesome-solid",
+] }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
-openssl = { version = "0.10", features = ["vendored"] }
+openssl = { version = "*", features = ["vendored"] }
 
 [features]
 default = ["web"]

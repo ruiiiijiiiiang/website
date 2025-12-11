@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 
-use views::{Blog, Home, Navbar};
+use components::Navbar;
+use views::{Blog, Home};
 
 mod components;
 mod views;
@@ -17,7 +18,7 @@ enum Route {
         Blog { id: i32 },
 }
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
+const FAVICON: Asset = asset!("../assets/favicon.ico");
 
 fn main() {
     dioxus::launch(App);

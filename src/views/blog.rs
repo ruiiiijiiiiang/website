@@ -1,6 +1,8 @@
-use crate::backend::get_blog;
 use dioxus::prelude::*;
 use pulldown_cmark::{Parser, html};
+
+use crate::backend::get_blog;
+use crate::components::Footer;
 
 pub fn parse_basic_markdown(markdown_input: &str) -> String {
     let parser = Parser::new(markdown_input);
@@ -11,16 +13,16 @@ pub fn parse_basic_markdown(markdown_input: &str) -> String {
 
 #[component]
 pub fn Blog(id: i32) -> Element {
-    let content = use_resource(move || async move {
-        let post = get_blog(id).await;
-        match post {
+    let blog_content = use_resource(move || async move {
+        let blog_res = get_blog(id).await;
+        match blog_res {
             Ok(content) => parse_basic_markdown(&content),
             Err(_) => String::from("Error loading content."),
         }
     });
 
     use_effect(move || {
-        let _ = &content;
+        let _ = &blog_content;
         let _ = document::eval(
             r#"
             setTimeout(() => {
@@ -33,12 +35,14 @@ pub fn Blog(id: i32) -> Element {
     });
 
     rsx! {
-        match &*content.read_unchecked() {
+        match &*blog_content.read_unchecked() {
             Some(html_string) => rsx! {
                 div {
                     id: "blog",
                     dangerous_inner_html: "{html_string}"
                 }
+                hr {}
+                Footer {}
             },
             None => rsx! {
                 div {
