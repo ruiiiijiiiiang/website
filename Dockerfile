@@ -23,7 +23,8 @@ ENV CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
 WORKDIR /app
 COPY . .
 
-RUN dx build --release @server --target aarch64-unknown-linux-gnu
+RUN dx build --release --features web
+RUN dx build --release @server --no-default-features --features server --target aarch64-unknown-linux-gnu
 
 FROM debian:bookworm-slim
 
