@@ -41,4 +41,4 @@ ENV RUST_LOG=info
 
 EXPOSE 8964
 
-CMD ["/app/server"]
+CMD ["/app/website"]
