@@ -22,8 +22,7 @@ ENV CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
 WORKDIR /app
 COPY . .
 
-RUN dx build --release --features web --platform web
-RUN cargo build --release --target aarch64-unknown-linux-gnu --features server --no-default-features
+RUN dx build --release --target aarch64-unknown-linux-gnu
 
 FROM debian:bookworm-slim
 
@@ -31,8 +30,7 @@ RUN apt-get update && apt-get install -y libssl3 ca-certificates && rm -rf /var/
 
 WORKDIR /app
 
-COPY --from=builder /app/target/dx/website/release/web/public /app/public
-COPY --from=builder /app/target/aarch64-unknown-linux-gnu/release/website /app/server
+COPY --from=builder /app/target/dx/website/release/web /app
 
 ENV PORT=8964
 ENV IP=0.0.0.0
