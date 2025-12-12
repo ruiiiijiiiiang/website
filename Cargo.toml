@@ -16,7 +16,3 @@ dioxus-free-icons = { version = "0.10", features = [
 default = ["web"]
 web = ["dioxus/web"]
 server = ["dioxus/server"]
-
-[profile.release]
-debug = false
-strip = "debuginfo"

@@ -14,7 +14,6 @@ RUN apt-get update &&\
 WORKDIR /app
 COPY . .
 
-RUN echo '#!/bin/sh\nexit 0' > /usr/local/bin/strip && chmod +x /usr/local/bin/strip
 RUN dx build --release
 
 FROM debian:bookworm-slim
