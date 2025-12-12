@@ -1,30 +1,18 @@
-FROM --platform=$BUILDPLATFORM rust:1.91-slim-bookworm as builder
+FROM rust:1.91-slim-bookworm as builder
 
-ARG TARGETPLATFORM
-ARG BUILDPLATFORM
-
-RUN apt-get update && \
+RUN apt-get update &&\
   apt-get install -y \
   pkg-config \
   libssl-dev \
-  gcc-aarch64-linux-gnu \
-  libc6-dev-arm64-cross \
-  perl \
-  make \
-  gcc && \
-  rm -rf /var/lib/apt/lists/* && \
-  cargo install dioxus-cli && \
-  rustup target add wasm32-unknown-unknown aarch64-unknown-linux-gnu
-
-ENV CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
-ENV CC_aarch64_unknown_linux_gnu=aarch64-linux-gnu-gcc
-ENV CXX_aarch64_unknown_linux_gnu=aarch64-linux-gnu-g++
+  binaryen &&\
+  rm -rf /var/lib/apt/lists/* &&\
+  cargo install dioxus-cli &&\
+  rustup target add wasm32-unknown-unknown
 
 WORKDIR /app
 COPY . .
 
-RUN dx build --release --features web
-RUN dx build --release @server --no-default-features --features server --target aarch64-unknown-linux-gnu
+RUN dx build --release
 
 FROM debian:bookworm-slim
 

@@ -1,5 +1,9 @@
-**/target
-**/dist
-.git/
-.env
 Dockerfile
+.dockerignore
+.git/
+.gitignore
+.github/
+target/
+dist/
+README.md
+LICENSE
