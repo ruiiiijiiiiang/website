@@ -2,8 +2,10 @@ FROM rust:1.91-slim-bookworm as builder
 
 RUN apt-get update &&\
   apt-get install -y \
+  make \
   pkg-config \
   libssl-dev \
+  perl \
   binaryen &&\
   rm -rf /var/lib/apt/lists/* &&\
   cargo install dioxus-cli &&\
