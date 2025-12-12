@@ -1,12 +1,7 @@
 FROM rust:1.91-bookworm AS builder
 
 RUN apt-get update &&\
-  apt-get install -y \
-  binaryen \
-  libssl-dev \
-  make \
-  perl \
-  pkg-config && \
+  apt-get install -y binaryen libssl-dev &&\
   rm -rf /var/lib/apt/lists/* &&\
   cargo install dioxus-cli &&\
   rustup target add wasm32-unknown-unknown

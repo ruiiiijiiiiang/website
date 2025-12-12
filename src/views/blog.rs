@@ -16,33 +16,39 @@ pub fn Blog(id: i32) -> Element {
     let blog_content = use_resource(move || async move {
         let blog_res = get_blog(id).await;
         match blog_res {
-            Ok(content) => parse_basic_markdown(&content),
-            Err(_) => String::from("Error loading content."),
+            Ok(content) => Ok(parse_basic_markdown(&content)),
+            Err(_) => Err("Error loading content."),
         }
     });
 
     use_effect(move || {
-        let _ = &blog_content;
-        let _ = document::eval(
-            r#"
-            setTimeout(() => {
-                if (window.Prism) {
-                    window.Prism.highlightAll();
-                }
-            }, 50);
-        "#,
-        );
+        let content_state = blog_content.read();
+        if let Some(Ok(_)) = &*content_state {
+            let _ = document::eval(
+                r#"
+                    requestAnimationFrame(() => {
+                        if (window.Prism) {
+                            window.Prism.highlightAll();
+                        }
+                    });
+                "#,
+            );
+        }
     });
 
     rsx! {
         match &*blog_content.read_unchecked() {
-            Some(html_string) => rsx! {
+            Some(Ok(html_string)) => rsx! {
                 div {
                     id: "blog",
                     dangerous_inner_html: "{html_string}"
                 }
                 hr {}
-                Footer {}
+            },
+            Some(Err(err)) => rsx! {
+                div {
+                    "{err}"
+                }
             },
             None => rsx! {
                 div {
@@ -51,5 +57,6 @@ pub fn Blog(id: i32) -> Element {
                 }
             }
         }
+        Footer {}
     }
 }
