@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-24.04-arm
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,5 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/arm64
           tags: ghcr.io/${{ github.repository }}:latest
