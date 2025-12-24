@@ -15,7 +15,7 @@ enum Route {
         #[route("/")]
         Home {},
         #[route("/blog/:id")]
-        Blog { id: i32 },
+        Blog { id: usize },
 }
 
 const FAVICON: Asset = asset!("../assets/favicon.ico");

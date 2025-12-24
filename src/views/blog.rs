@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use pulldown_cmark::{Parser, html};
 
-use crate::backend::get_blog;
+use crate::backend::{get_blog, get_blog_count};
 use crate::components::Footer;
 
 pub fn parse_basic_markdown(markdown_input: &str) -> String {
@@ -12,9 +12,12 @@ pub fn parse_basic_markdown(markdown_input: &str) -> String {
 }
 
 #[component]
-pub fn Blog(id: i32) -> Element {
+pub fn Blog(id: ReadSignal<usize>) -> Element {
+    let blog_count = use_resource(move || async move { get_blog_count().await });
+
     let blog_content = use_resource(move || async move {
-        let blog_res = get_blog(id).await;
+        let current_id = id();
+        let blog_res = get_blog(current_id).await;
         match blog_res {
             Ok(content) => Ok(parse_basic_markdown(&content)),
             Err(_) => Err("Error loading content."),
@@ -57,6 +60,12 @@ pub fn Blog(id: i32) -> Element {
                 }
             }
         }
-        Footer {}
+        Footer {
+            current: id(),
+            count: match &*blog_count.read_unchecked() {
+                Some(Ok(count)) => *count,
+                _ => 0,
+            }
+        }
     }
 }
