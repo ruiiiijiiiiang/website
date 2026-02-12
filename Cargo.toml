@@ -6,13 +6,18 @@ edition = "2024"
 
 [dependencies]
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
-pulldown-cmark = "0.13"
 dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-brands",
   "font-awesome-solid",
 ] }
+pulldown-cmark = { version = "0.13", optional = true }
+tokio = { version = "1", features = [
+  "fs",
+  "rt-multi-thread",
+  "macros",
+], optional = true }
 
 [features]
 default = ["web"]
 web = ["dioxus/web"]
-server = ["dioxus/server"]
+server = ["dioxus/server", "dep:pulldown-cmark", "dep:tokio"]

@@ -11,22 +11,24 @@ pub fn Footer(current: usize, count: usize) -> Element {
             nav {
                 ul {
                     li {
-                        Link {
-                            "aria-disabled": count == 0 || current == 0,
-                            to: Route::Blog { id: if current > 0 { current - 1 } else { 0 } },
-                            Icon {
-                                icon: FaArrowLeft
+                        if count != 0 && current != 0 {
+                            Link {
+                                to: Route::Blog { id: if current > 0 { current - 1 } else { 0 } },
+                                Icon {
+                                    icon: FaArrowLeft
+                                }
                             }
                         }
                     }
                 }
                 ul {
                     li {
-                        Link {
-                            "aria-disabled": count == 0 || current == count - 1,
-                            to: Route::Blog { id: current + 1 },
-                            Icon {
-                                icon: FaArrowRight
+                        if count != 0 && current != count - 1 {
+                            Link {
+                                to: Route::Blog { id: current + 1 },
+                                Icon {
+                                    icon: FaArrowRight
+                                }
                             }
                         }
                     }

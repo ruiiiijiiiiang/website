@@ -3564,6 +3564,7 @@ dependencies = [
  "dioxus",
  "dioxus-free-icons",
  "pulldown-cmark",
+ "tokio",
 ]
 
 [[package]]
