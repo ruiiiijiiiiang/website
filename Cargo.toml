@@ -11,6 +11,7 @@ dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-solid",
 ] }
 pulldown-cmark = { version = "0.13", optional = true }
+scraper = { version = "0.25" }
 tokio = { version = "1", features = [
   "fs",
   "rt-multi-thread",

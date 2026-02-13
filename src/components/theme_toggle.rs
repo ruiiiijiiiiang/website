@@ -1,13 +1,13 @@
 use dioxus::prelude::*;
 
-const THEME_CSS: Asset = asset!("../../assets/theme_toggle.css");
+const THEME_TOGGLE_CSS: Asset = asset!("../../assets/theme_toggle.css");
 const DEFAULT_THEME: &str = "dark";
 
 #[component]
 pub fn ThemeToggle() -> Element {
     let mut theme = use_signal(|| DEFAULT_THEME.to_string());
     rsx! {
-        link { rel: "stylesheet", href: THEME_CSS }
+        link { rel: "stylesheet", href: THEME_TOGGLE_CSS }
         button {
             class: "outline",
             style: "border: none",

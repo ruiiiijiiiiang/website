@@ -7,7 +7,7 @@ const BLOG_DIR: &str = "./blog";
 pub async fn get_blog_content(id: usize) -> Result<String, ServerFnError> {
     #[cfg(feature = "server")]
     {
-        use pulldown_cmark::{Parser, html};
+        use pulldown_cmark::{Options, Parser, html};
         use tokio::fs;
 
         let file_path = format!("{}/{}.md", BLOG_DIR, id);
@@ -15,7 +15,9 @@ pub async fn get_blog_content(id: usize) -> Result<String, ServerFnError> {
             .await
             .map_err(|e| ServerFnError::new(format!("Failed to read post: {}", e)))?;
 
-        let parser = Parser::new(&content);
+        let mut options = Options::empty();
+        options.insert(Options::ENABLE_HEADING_ATTRIBUTES);
+        let parser = Parser::new_ext(&content, options);
         let mut html_output = String::new();
         html::push_html(&mut html_output, parser);
 
