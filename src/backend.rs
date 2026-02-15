@@ -1,5 +1,4 @@
 use dioxus::prelude::*;
-use std::{ffi::OsStr, fs, path::Path};
 
 const BLOG_DIR: &str = "./blog";
 
@@ -31,6 +30,8 @@ pub async fn get_blog_content(id: usize) -> Result<String, ServerFnError> {
 pub async fn get_blog_count() -> Result<usize> {
     #[cfg(feature = "server")]
     {
+        use std::{ffi::OsStr, fs, path::Path};
+
         let mut count = 0;
         for entry in fs::read_dir(BLOG_DIR)? {
             let entry = entry?;
