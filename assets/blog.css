@@ -5,9 +5,9 @@ div.blog {
 
 aside.table-of-contents {
   position: sticky;
-  top: 15rem;
+  top: 5rem;
   left: 0;
-  width: 10rem;
+  width: 15%;
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
@@ -17,10 +17,8 @@ div.blog-content {
   max-width: 85%;
 }
 
-h2,
-h3,
-h4,
-h5 {
+h2 a[id],
+h3 a[id] {
   scroll-margin-top: 2rem;
 }
 
@@ -28,10 +26,9 @@ button.back-to-top {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   border: none;
-  font-weight: bold;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

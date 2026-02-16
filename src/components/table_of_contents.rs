@@ -1,21 +1,14 @@
 use dioxus::prelude::*;
-use scraper::{Html, Selector};
 
-#[derive(PartialEq, Clone, Debug)]
-struct HeaderLink {
-    id: String,
-    title: String,
-}
+use crate::models::HeaderLink;
 
 #[component]
-pub fn TableOfContents(content: String) -> Element {
-    let headers = use_memo(use_reactive(&content, |content| extract_headers(&content)));
-
+pub fn TableOfContents(headers: Vec<HeaderLink>) -> Element {
     rsx! {
         aside { class: "table-of-contents",
             nav {
                 ul {
-                    for header in headers.read().iter() {
+                    for header in headers {
                         li {
                             Link {
                                 to: "#{header.id}",
@@ -27,18 +20,4 @@ pub fn TableOfContents(content: String) -> Element {
             }
         }
     }
-}
-
-fn extract_headers(html_content: &str) -> Vec<HeaderLink> {
-    let document = Html::parse_fragment(html_content);
-    let selector = Selector::parse("h3[id]").unwrap();
-
-    document
-        .select(&selector)
-        .map(|element| {
-            let id = element.value().attr("id").unwrap_or_default().to_string();
-            let title = element.text().collect::<Vec<_>>().join("");
-            HeaderLink { id, title }
-        })
-        .collect()
 }

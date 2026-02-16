@@ -1,0 +1,66 @@
+%YAML 1.2
+---
+name: Nix
+file_extensions: [nix]
+scope: source.nix
+contexts:
+  main:
+    - include: strings
+    - include: comments
+    - include: keywords
+    - include: builtins
+    - include: operators
+
+  interpolation:
+    - match: \}
+      scope: punctuation.section.interpolation.end.nix
+      pop: true
+    - include: main
+
+  comments:
+    - match: "#"
+      scope: comment.line.number-sign.nix
+      push:
+        - meta_scope: comment.line.number-sign.nix
+        - match: \n
+          pop: true
+    - match: /\*
+      scope: comment.block.nix
+      push:
+        - meta_scope: comment.block.nix
+        - match: \*/
+          pop: true
+
+  strings:
+    - match: "''"
+      scope: string.quoted.other.nix
+      push:
+        - meta_scope: string.quoted.other.nix
+        - match: "''"
+          pop: true
+        - match: \$\{
+          push: interpolation
+    - match: '"'
+      scope: string.quoted.double.nix
+      push:
+        - meta_scope: string.quoted.double.nix
+        - match: '"'
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.nix
+        - match: \$\{
+          push: interpolation
+
+  keywords:
+    - match: \b(if|then|else|let|in|with|inherit|rec)\b
+      scope: keyword.control.nix
+    - match: \b(true|false|null)\b
+      scope: constant.language.nix
+
+  builtins:
+    - match: \b(builtins|import|derivation|baseNameOf|dirOf|isNull|map|toString)\b
+      scope: support.function.nix
+
+  operators:
+    - match: (!|==|!=|&&|\|\||->|//|\?|\+\+|\+)
+      scope: keyword.operator.nix
