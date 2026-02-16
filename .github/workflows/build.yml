@@ -1,4 +1,4 @@
-name: Build Image
+name: Build Image and Push to Registry
 on:
   # push:
   #   branches:
