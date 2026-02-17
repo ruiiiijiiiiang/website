@@ -5,15 +5,15 @@ authors = ["Rui Jiang <me@ruijiang.me>"]
 edition = "2024"
 
 [dependencies]
-comrak = { version = "0.50", features = ["syntect"] }
+comrak = { version = "0.50", features = ["syntect"], optional = true }
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
 dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-brands",
   "font-awesome-solid",
 ] }
-scraper = { version = "0.25" }
+scraper = { version = "0.25", optional = true }
 serde = { version = "*" }
-syntect = { version = "5.3" }
+syntect = { version = "5.3", optional = true }
 tokio = { version = "1", features = [
   "fs",
   "rt-multi-thread",
@@ -23,4 +23,10 @@ tokio = { version = "1", features = [
 [features]
 default = ["web"]
 web = ["dioxus/web"]
-server = ["dioxus/server", "dep:tokio"]
+server = [
+  "dioxus/server",
+  "dep:comrak",
+  "dep:scraper",
+  "dep:syntect",
+  "dep:tokio",
+]
