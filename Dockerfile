@@ -8,9 +8,8 @@ RUN cargo chef prepare --recipe-path recipe.json
 
 FROM chef AS builder
 RUN apt-get update && apt-get install -y binaryen libssl-dev && rm -rf /var/lib/apt/lists/*
-RUN curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash && \
-  cargo binstall -y dioxus-cli && \
-  rustup target add wasm32-unknown-unknown
+RUN rustup target add wasm32-unknown-unknown && \
+  cargo install dioxus-cli
 
 WORKDIR /app
 COPY --from=planner /app/recipe.json recipe.json
