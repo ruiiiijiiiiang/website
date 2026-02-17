@@ -29,5 +29,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: git.ruijiang.me/ruijiang/website:latest
+          tags: git.ruijiang.me/rui/website:latest
           provenance: false
