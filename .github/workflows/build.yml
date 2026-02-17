@@ -1,11 +1,5 @@
-name: Build Image
+name: Build and Push to Registry
 on:
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
-  #   branches:
-  #     - main
   workflow_dispatch:
 
 permissions:

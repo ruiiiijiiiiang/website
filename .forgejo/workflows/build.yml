@@ -6,8 +6,12 @@ env:
   REGISTRY_HOST: git.ruijiang.me
   IMAGE_NAME: ${{ github.repository }}
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
-  push-to-registry:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,7 +31,7 @@ jobs:
           images: ${{ env.REGISTRY_HOST }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           push: true
