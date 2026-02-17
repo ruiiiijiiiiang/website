@@ -25,11 +25,9 @@ RUN apt-get update && \
   apt-get install -y libssl3 ca-certificates && \
   rm -rf /var/lib/apt/lists/*
 
-RUN useradd -m -u 65534 -U appuser
-USER appuser
 WORKDIR /app
 
-COPY --from=builder --chown=appuser:appuser /app/target/dx/website/release/web /app
+COPY --from=builder /app/target/dx/website/release/web /app
 
 ENV PORT=8964
 ENV IP=0.0.0.0
