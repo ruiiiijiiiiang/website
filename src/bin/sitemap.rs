@@ -37,7 +37,7 @@ struct BlogMeta {
 
 const BLOG_DIR: &str = "./blog";
 const DOMAIN: &str = "https://public.ruijiang.me";
-const PUBLIC_DIR: &str = "target/dx/website/debug/web/public";
+const PUBLIC_DIR: &str = "target/dx/website/release/web/public";
 
 fn main() {
     let mut xml = String::from(
