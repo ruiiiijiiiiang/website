@@ -33,9 +33,6 @@ WORKDIR /app
 COPY --from=builder /app/target/dx/website/release/web /app
 COPY --from=builder /app/target/release/sitemap /app
 
-RUN chown -R 1000:1000 /app/public
-USER 1000
-
 ENV PORT=6969
 ENV IP=0.0.0.0
 ENV RUST_LOG=info
@@ -44,5 +41,8 @@ EXPOSE 6969
 
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
+
+RUN chown -R 1000:1000 /app/public
+USER 1000
 
 CMD ["/app/start.sh"]
