@@ -20,7 +20,7 @@ RUN cargo chef cook --release --recipe-path recipe.json
 
 COPY . .
 RUN dx build --ssg --release && \
-  cargo run --release --bin sitemap
+  cargo build --release --bin sitemap
 
 FROM debian:bookworm-slim
 
@@ -31,6 +31,7 @@ RUN apt-get update && \
 WORKDIR /app
 
 COPY --from=builder /app/target/dx/website/release/web /app
+COPY --from=builder /app/target/release/sitemap /app
 
 ENV PORT=8964
 ENV IP=0.0.0.0
