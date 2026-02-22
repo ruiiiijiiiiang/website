@@ -2,10 +2,6 @@ name: Build and Push to Registry
 on:
   workflow_dispatch:
 
-env:
-  REGISTRY_HOST: git.ruijiang.me
-  IMAGE_NAME: ${{ github.repository }}
-
 permissions:
   contents: read
   packages: write
@@ -20,7 +16,7 @@ jobs:
       - name: Log in to the Container registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ env.REGISTRY_HOST }}
+          registry: git.ruijiang.me
           username: ${{ github.actor }}
           password: ${{ secrets.CR_PAT }}
 
@@ -30,4 +26,3 @@ jobs:
           context: .
           push: true
           tags: git.ruijiang.me/rui/website:latest
-          provenance: false

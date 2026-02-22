@@ -23,12 +23,15 @@ h3 a[id] {
 }
 
 button.back-to-top {
+  display: flex;
   position: fixed;
   bottom: 2rem;
   right: 2rem;
+  width: 2rem;
+  height: 2rem;
   padding: 0.5rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 50%;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

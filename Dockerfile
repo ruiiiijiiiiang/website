@@ -8,7 +8,7 @@ RUN cargo chef prepare --recipe-path recipe.json
 
 FROM chef AS builder
 RUN apt-get update && \
-  apt-get install -y binaryen libssl-dev clang pkg-config && \
+  apt-get install -y --no-install-recommends binaryen libssl-dev clang pkg-config && \
   rm -rf /var/lib/apt/lists/*
 
 RUN rustup target add wasm32-unknown-unknown && \
@@ -19,12 +19,13 @@ COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
 COPY . .
-RUN dx build --release
+RUN dx build --ssg --release && \
+  cargo run --release --bin sitemap
 
 FROM debian:bookworm-slim
 
 RUN apt-get update && \
-  apt-get install -y libssl3 ca-certificates && \
+  apt-get install -y --no-install-recommends libssl3 ca-certificates && \
   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

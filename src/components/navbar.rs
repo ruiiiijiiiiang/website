@@ -1,19 +1,37 @@
 use dioxus::prelude::*;
 
 use crate::Route;
-use crate::components::{GithubLink, ThemeToggle};
+use crate::backend::get_latest_post_slug;
+use crate::components::{GithubLink, LinkedinLink, ThemeToggle};
 
 #[component]
 pub fn Navbar() -> Element {
+    let latest_slug = use_resource(get_latest_post_slug);
     rsx! {
         nav {
             ul {
                 li { Link { to: Route::Home {}, "Home" } }
-                li { Link { to: Route::Blog { id: 0 }, "Blog" } }
+                match latest_slug.read().as_ref() {
+                    Some(Ok(slug)) => rsx! {
+                        li {
+                            Link {
+                                to: Route::Blog { slug: slug.clone() },
+                                "Blog"
+                            }
+                        }
+                    },
+                    Some(Err(_)) => rsx! {
+                        li { span { "Blog" } }
+                    },
+                    None => rsx! {
+                        li { span { "Loading..." } }
+                    }
+                }
             }
             ul {
-                li { ThemeToggle {} }
+                li { LinkedinLink {} }
                 li { GithubLink {} }
+                li { ThemeToggle {} }
             }
         }
 

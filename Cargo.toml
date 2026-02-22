@@ -5,12 +5,14 @@ authors = ["Rui Jiang <me@ruijiang.me>"]
 edition = "2024"
 
 [dependencies]
+chrono = { version = "0.4", features = ["serde"] }
 comrak = { version = "0.50", features = ["syntect"], optional = true }
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
 dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-brands",
   "font-awesome-solid",
 ] }
+gray_matter = { version = "0.3" }
 scraper = { version = "0.25", optional = true }
 serde = { version = "*" }
 syntect = { version = "5.3", optional = true }

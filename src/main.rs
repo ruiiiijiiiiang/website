@@ -9,21 +9,37 @@ mod views;
 use components::Navbar;
 use views::{Blog, Home};
 
-#[derive(Debug, Clone, Routable, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Routable)]
 #[rustfmt::skip]
 enum Route {
     #[layout(Navbar)]
         #[route("/")]
         Home {},
-        #[route("/blog/:id")]
-        Blog { id: usize },
+        #[route("/blog/:slug")]
+        Blog { slug: String },
 }
 
 const FAVICON: Asset = asset!("../assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("../assets/main.css");
 
 fn main() {
-    dioxus::launch(App);
+    dioxus::LaunchBuilder::new()
+        .with_cfg(server_only! {
+            ServeConfig::builder()
+                .incremental(
+                    dioxus::server::IncrementalRendererConfig::new()
+                        .static_dir(
+                            std::env::current_exe()
+                                .unwrap()
+                                .parent()
+                                .unwrap()
+                                .join("public")
+                        )
+                        .clear_cache(false)
+                )
+                .enable_out_of_order_streaming()
+        })
+        .launch(App);
 }
 
 #[component]
@@ -38,4 +54,12 @@ fn App() -> Element {
             Router::<Route> {}
         }
     }
+}
+
+#[server(endpoint = "static_routes", output = server_fn::codec::Json)]
+async fn static_routes() -> Result<Vec<String>, ServerFnError> {
+    Ok(Route::static_routes()
+        .iter()
+        .map(ToString::to_string)
+        .collect())
 }
