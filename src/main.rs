@@ -7,7 +7,7 @@ mod utils;
 mod views;
 
 use components::Navbar;
-use views::{Blog, Home};
+use views::{Blog, BlogPost, Home};
 
 #[derive(Clone, Debug, PartialEq, Routable)]
 #[rustfmt::skip]
@@ -15,8 +15,10 @@ enum Route {
     #[layout(Navbar)]
         #[route("/")]
         Home {},
+        #[route("/blog/")]
+        Blog {},
         #[route("/blog/:slug")]
-        Blog { slug: String },
+        BlogPost { slug: String },
 }
 
 const FAVICON: Asset = asset!("../assets/favicon.ico");

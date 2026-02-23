@@ -10,6 +10,10 @@ pub fn Home() -> Element {
             "Build. Secure. Automate. Scale."
         }
         p {
+            "Linux-focused engineer passionate about designing systems that are minimal, correct, and resilient."
+        }
+        hr { }
+        p {
             "I'm a software engineer with a strong bias toward systems that are coherent, minimal, and internally correct. I care about structure: in code, in architecture, and in security boundaries. If something works but feels inconsistent, I'll refactor it until it makes sense."
         }
         p {

@@ -106,12 +106,16 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
 }
 
 #[server]
-pub async fn get_latest_post_slug() -> Result<String, ServerFnError> {
+pub async fn get_blog_posts() -> Result<Vec<BlogLink>, ServerFnError> {
     let posts = get_cached_posts().await?;
-    posts
-        .first()
-        .map(|(slug, _)| slug.clone())
-        .ok_or_else(|| ServerFnError::new("No posts found"))
+    Ok(posts
+        .iter()
+        .rev()
+        .map(|(slug, meta)| BlogLink {
+            slug: slug.clone(),
+            title: meta.title.clone(),
+        })
+        .collect())
 }
 
 #[cfg(feature = "server")]

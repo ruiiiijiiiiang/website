@@ -1,39 +1,25 @@
 use dioxus::prelude::*;
 
-use crate::backend::get_blog_data;
-use crate::components::{BackToTop, Footer, TableOfContents};
-
-const BLOG_CSS: Asset = asset!("../../assets/blog.css");
+use crate::Route;
+use crate::backend::get_blog_posts;
 
 #[component]
-pub fn Blog(slug: ReadSignal<String>) -> Element {
-    let blog_data = use_loader(move || get_blog_data(slug()))?();
+pub fn Blog() -> Element {
+    let posts = use_loader(get_blog_posts)?();
 
     rsx! {
-        link { rel: "stylesheet", href: BLOG_CSS }
-        div {
-            class: "blog",
-            TableOfContents {
-                headers: blog_data.headers
-            }
-            div {
-                class: "blog-content",
-                h1 {
-                    "{blog_data.meta.title}"
-                }
-                h4 {
-                    "{blog_data.meta.date.format(\"%B %d, %Y\").to_string()}"
-                }
-                hr { }
-                div {
-                    dangerous_inner_html: "{blog_data.content}"
-                }
-            }
-            BackToTop {}
+        h2 {
+            "Blog Posts"
         }
-        Footer {
-            prev_post: blog_data.prev_post,
-            next_post: blog_data.next_post,
+        ul {
+            for post in posts {
+                li {
+                    Link {
+                        to: Route::BlogPost { slug: post.slug },
+                        "{post.title}"
+                    }
+                }
+            }
         }
     }
 }
