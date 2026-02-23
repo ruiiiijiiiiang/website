@@ -12,6 +12,7 @@ pub fn TableOfContents(headers: Vec<HeaderLink>) -> Element {
                         li {
                             Link {
                                 to: "#{header.id}",
+                                "aria-label": "{header.title}",
                                 "{header.title}"
                             }
                         }

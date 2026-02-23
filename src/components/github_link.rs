@@ -8,14 +8,12 @@ pub fn GithubLink() -> Element {
         a {
             href: "https://github.com/ruiiiijiiiiang",
             target: "_blank",
-            button {
-                class: "outline",
-                style: "border: none",
-                "data-tooltip": "Github",
-                "data-placement": "bottom",
-                Icon {
-                    icon: FaGithub
-                }
+            class: "outline",
+            "aria-label": "link to github account",
+            "data-tooltip": "Github",
+            "data-placement": "bottom",
+            Icon {
+                icon: FaGithub
             }
         }
     }

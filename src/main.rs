@@ -48,6 +48,7 @@ fn App() -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.slate.min.css" }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Meta { name: "description", content: "Rui is a software engineer writing about Linux, NixOS, security, and systems design." }
 
         main {
             class: "container",

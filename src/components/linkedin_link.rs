@@ -8,14 +8,12 @@ pub fn LinkedinLink() -> Element {
         a {
             href: "https://www.linkedin.com/in/ruij/",
             target: "_blank",
-            button {
-                class: "outline",
-                style: "border: none",
-                "data-tooltip": "LinkedIn",
-                "data-placement": "bottom",
-                Icon {
-                    icon: FaLinkedin
-                }
+            class: "outline",
+            "aria-label": "link to linkedin account",
+            "data-tooltip": "LinkedIn",
+            "data-placement": "bottom",
+            Icon {
+                icon: FaLinkedin
             }
         }
     }

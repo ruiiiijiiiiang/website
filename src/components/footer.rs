@@ -15,6 +15,7 @@ pub fn Footer(prev_post: Option<BlogLink>, next_post: Option<BlogLink>) -> Eleme
                         if let Some(prev) = prev_post {
                             Link {
                                 to: Route::Blog { slug: prev.slug },
+                                "aria-label": "previous post",
                                 Icon {
                                     icon: FaArrowLeft
                                 }
@@ -27,6 +28,7 @@ pub fn Footer(prev_post: Option<BlogLink>, next_post: Option<BlogLink>) -> Eleme
                         if let Some(next) = next_post {
                             Link {
                                 to: Route::Blog { slug: next.slug },
+                                "aria-label": "next post",
                                 Icon {
                                     icon: FaArrowRight
                                 }

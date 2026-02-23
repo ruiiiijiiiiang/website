@@ -7,6 +7,7 @@ pub fn BackToTop() -> Element {
     rsx! {
         button {
             class: "back-to-top",
+            "aria-label": "back to top",
             onclick: move |_| {
                 spawn(async move {
                     let _ = document::eval("window.scrollTo({ top: 0 })").await;

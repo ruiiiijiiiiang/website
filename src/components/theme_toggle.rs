@@ -10,7 +10,7 @@ pub fn ThemeToggle() -> Element {
         link { rel: "stylesheet", href: THEME_TOGGLE_CSS }
         button {
             class: "outline",
-            style: "border: none; padding: 0;",
+            "aria-label": "toggle theme",
             "data-tooltip": "Toggle theme",
             "data-placement": "bottom",
             onclick: move |_| {
