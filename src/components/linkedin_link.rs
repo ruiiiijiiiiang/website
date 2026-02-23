@@ -11,7 +11,7 @@ pub fn LinkedinLink() -> Element {
             button {
                 class: "outline",
                 style: "border: none",
-                "data-tooltip": "Linkedin",
+                "data-tooltip": "LinkedIn",
                 "data-placement": "bottom",
                 Icon {
                     icon: FaLinkedin
