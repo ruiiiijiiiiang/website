@@ -33,6 +33,7 @@ WORKDIR /app
 COPY --from=builder /app/target/dx/website/release/web/website /app/website
 COPY --from=builder /app/target/dx/website/release/web/public /app/public
 COPY --from=builder /app/target/release/sitemap /app/sitemap
+RUN rm -f /app/public/index.html
 
 ENV PORT=6969
 ENV IP=0.0.0.0
