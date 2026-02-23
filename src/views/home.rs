@@ -3,6 +3,8 @@ use dioxus::prelude::*;
 #[component]
 pub fn Home() -> Element {
     rsx! {
+        document::Title { "Rui's Personal Website" }
+
         h1 {
             "Hi, I'm Rui."
         }

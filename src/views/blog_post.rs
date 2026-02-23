@@ -8,6 +8,8 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
     let blog_data = use_loader(move || get_blog_data(slug()))?();
 
     rsx! {
+        document::Title { "Rui's Blog: {blog_data.meta.title}" }
+
         div {
             class: "blog",
             TableOfContents {

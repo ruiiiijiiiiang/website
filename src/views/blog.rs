@@ -8,6 +8,8 @@ pub fn Blog() -> Element {
     let posts = use_loader(get_blog_posts)?();
 
     rsx! {
+        document::Title { "Rui's Blog Posts" }
+
         h2 {
             "Blog Posts"
         }

@@ -3,7 +3,8 @@ Dockerfile
 .git/
 .gitignore
 .github/
-target/
-dist/
+.forgejo/
+**/target
+**/dist/
 README.md
 LICENSE

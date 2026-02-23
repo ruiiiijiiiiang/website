@@ -1,5 +1,7 @@
 [application]
-default_platform = "fullstack"
+name = "website"
+default_platform = "web"
+public_dir = "public"
 
 [web.app]
 title = "Rui's Website"
