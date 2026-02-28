@@ -15,16 +15,23 @@ dioxus-free-icons = { version = "0.10", features = [
 gray_matter = { version = "0.3" }
 scraper = { version = "0.25", optional = true }
 serde = { version = "*" }
+strum = { version = "0.28" }
+strum_macros = { version = "0.28" }
 syntect = { version = "5.3", optional = true }
 tokio = { version = "1", features = [
   "fs",
   "rt-multi-thread",
   "macros",
 ], optional = true }
+web-sys = { version = "0.3", features = [
+  "Window",
+  "Document",
+  "Element",
+], optional = true }
 
 [features]
 default = ["web"]
-web = ["dioxus/web"]
+web = ["dioxus/web", "dep:web-sys"]
 server = [
   "dioxus/server",
   "dep:comrak",

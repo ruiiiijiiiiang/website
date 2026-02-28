@@ -1,32 +1,47 @@
 use dioxus::prelude::*;
+use strum_macros::Display;
 
 const THEME_TOGGLE_CSS: Asset = asset!("../../assets/theme_toggle.css");
-const DEFAULT_THEME: &str = "dark";
+
+#[derive(Clone, Copy, PartialEq, Debug, Display)]
+#[strum(serialize_all = "lowercase")]
+pub enum Theme {
+    Light,
+    Dark,
+}
+
+impl Theme {
+    pub fn toggle(&self) -> Self {
+        match self {
+            Theme::Light => Theme::Dark,
+            Theme::Dark => Theme::Light,
+        }
+    }
+}
 
 #[component]
 pub fn ThemeToggle() -> Element {
-    let mut theme = use_signal(|| DEFAULT_THEME.to_string());
+    let mut theme = use_signal(|| Theme::Dark);
     rsx! {
         link { rel: "stylesheet", href: THEME_TOGGLE_CSS }
         button {
             class: "outline",
             "aria-label": "toggle theme",
-            "data-tooltip": "Toggle theme",
+            "data-tooltip": "toggle theme",
             "data-placement": "bottom",
             onclick: move |_| {
-                spawn(async move {
-                    let js_code = format!(r#"
-                        const html = document.documentElement;
-                        const current = html.getAttribute("data-theme") ?? "{}";
-                        const next = current === "dark" ? "light" : "dark";
-                        html.setAttribute("data-theme", next);
-                        return next;
-                    "#, DEFAULT_THEME);
-                    let next_theme = document::eval(&js_code).await.unwrap().as_str().unwrap_or(DEFAULT_THEME).to_string();
-                    theme.set(next_theme);
-                });
+                let next_theme = theme().toggle();
+                theme.set(next_theme);
+                #[cfg(target_arch = "wasm32")]
+                {
+                    if let Some(window) = web_sys::window()
+                    && let Some(document) = window.document()
+                    && let Some(html) = document.document_element() {
+                        let _ = html.set_attribute("data-theme", &next_theme.to_string());
+                    }
+                }
             },
-            ThemeIcon { moon: theme() == "dark" }
+            ThemeIcon { moon: theme() == Theme::Dark }
         }
     }
 }
