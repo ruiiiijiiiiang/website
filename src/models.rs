@@ -16,6 +16,8 @@ pub struct BlogData {
 pub struct BlogLink {
     pub slug: String,
     pub title: String,
+    #[serde(with = "date")]
+    pub date: NaiveDate,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -31,4 +33,12 @@ pub struct BlogMeta {
 pub struct HeaderLink {
     pub id: String,
     pub title: String,
+}
+
+#[derive(Clone, Debug, PartialEq)]
+pub struct Project {
+    pub name: &'static str,
+    pub language: &'static str,
+    pub description: &'static str,
+    pub link: &'static str,
 }

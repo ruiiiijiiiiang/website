@@ -21,6 +21,15 @@ div.blog-content {
   max-width: 85%;
 }
 
+@media (max-width: 1024px) {
+  aside.table-of-contents {
+    display: none;
+  }
+  div.blog-content {
+    max-width: 100%;
+  }
+}
+
 h2 a[id],
 h3 a[id] {
   scroll-margin-top: 2rem;
@@ -32,7 +41,7 @@ h3 a[id] {
   margin: 0;
 }
 
-.back-to-top {
+button.back-to-top {
   display: flex;
   position: fixed;
   bottom: 2rem;
@@ -44,4 +53,11 @@ h3 a[id] {
   border-radius: 50%;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+span.repo-language-color {
+  border-radius: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  display: inline-block;
 }

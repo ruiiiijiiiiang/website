@@ -6,3 +6,6 @@ pub use blog::Blog;
 
 mod blog_post;
 pub use blog_post::BlogPost;
+
+mod projects;
+pub use projects::Projects;

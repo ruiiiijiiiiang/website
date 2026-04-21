@@ -10,6 +10,9 @@ pub use footer::Footer;
 mod linkedin_link;
 pub use linkedin_link::LinkedinLink;
 
+mod project_card;
+pub use project_card::ProjectCard;
+
 mod table_of_contents;
 pub use table_of_contents::TableOfContents;
 

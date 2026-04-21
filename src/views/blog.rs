@@ -20,6 +20,7 @@ pub fn Blog() -> Element {
                         to: Route::BlogPost { slug: post.slug },
                         "{post.title}"
                     }
+                    span { " - {post.date.format(\"%B %d, %Y\").to_string()}" }
                 }
             }
         }

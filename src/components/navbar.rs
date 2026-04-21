@@ -10,6 +10,7 @@ pub fn Navbar() -> Element {
             ul {
                 li { Link { to: Route::Home {}, "Home" } }
                 li { Link { to: Route::Blog {}, "Blog" } }
+                li { Link { to: Route::Projects {}, "Projects" } }
             }
             ul {
                 li { LinkedinLink {} }

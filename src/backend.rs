@@ -37,6 +37,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
         Some(BlogLink {
             slug: n_slug.clone(),
             title: n_meta.title.clone(),
+            date: n_meta.date,
         })
     } else {
         None
@@ -47,6 +48,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
         Some(BlogLink {
             slug: p_slug.clone(),
             title: p_meta.title.clone(),
+            date: p_meta.date,
         })
     } else {
         None
@@ -64,6 +66,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
     options.extension.tagfilter = true;
     options.extension.table = true;
     options.extension.autolink = true;
+    options.extension.header_id_prefix = Some("".to_string());
     options.extension.front_matter_delimiter = Some("---".to_string());
 
     let mut plugins = Plugins::default();
@@ -113,6 +116,7 @@ pub async fn get_blog_posts() -> Result<Vec<BlogLink>, ServerFnError> {
         .map(|(slug, meta)| BlogLink {
             slug: slug.clone(),
             title: meta.title.clone(),
+            date: meta.date,
         })
         .collect())
 }
