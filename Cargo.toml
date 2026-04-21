@@ -6,7 +6,7 @@ edition = "2024"
 
 [dependencies]
 chrono = { version = "0.4", features = ["serde"] }
-comrak = { version = "0.51", features = ["syntect"], optional = true }
+comrak = { version = "0.52", features = ["syntect"], optional = true }
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
 dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-brands",
@@ -14,7 +14,7 @@ dioxus-free-icons = { version = "0.10", features = [
 ] }
 gray_matter = { version = "0.3" }
 scraper = { version = "0.26", optional = true }
-serde = { version = "*" }
+serde = { version = "1" }
 strum = { version = "0.28" }
 strum_macros = { version = "0.28" }
 syntect = { version = "5.3", optional = true }
@@ -23,7 +23,8 @@ tokio = { version = "1", features = [
   "rt-multi-thread",
   "macros",
 ], optional = true }
-web-sys = { version = "0.3", features = [
+wasm-bindgen = "=0.2.114"
+web-sys = { version = "0.3.91", features = [
   "Window",
   "Document",
   "Element",

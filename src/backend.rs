@@ -2,7 +2,9 @@ use dioxus::prelude::*;
 
 use crate::models::{BlogData, BlogLink, BlogMeta, HeaderLink};
 
-const BLOG_DIR: &str = "./blog";
+fn get_blog_dir() -> String {
+    std::env::var("BLOG_DIR").unwrap_or_else(|_| "./blog".to_string())
+}
 
 #[cfg(feature = "server")]
 use tokio::sync::OnceCell;
@@ -52,7 +54,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
         None
     };
 
-    let file_path = format!("{}/{}.md", BLOG_DIR, slug);
+    let file_path = format!("{}/{}.md", get_blog_dir(), slug);
     let file_content = fs::read_to_string(&file_path)
         .await
         .map_err(|e| ServerFnError::new(format!("Failed to read post: {}", e)))?;
@@ -64,7 +66,6 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
     options.extension.tagfilter = true;
     options.extension.table = true;
     options.extension.autolink = true;
-    options.extension.header_ids = Some("".to_string());
     options.extension.front_matter_delimiter = Some("---".to_string());
 
     let mut plugins = Plugins::default();
@@ -126,7 +127,7 @@ async fn get_cached_posts() -> Result<&'static Vec<(String, BlogMeta)>, ServerFn
     POST_CACHE
         .get_or_try_init(|| async {
             let mut posts = Vec::new();
-            let mut entries = fs::read_dir(BLOG_DIR)
+            let mut entries = fs::read_dir(get_blog_dir())
                 .await
                 .map_err(|e| ServerFnError::new(format!("Dir error: {}", e)))?;
 
