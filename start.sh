@@ -26,4 +26,8 @@ echo "Pre-flight checks passed. Generating sitemap..."
 
 echo "Sitemap generated! Starting the web server..."
 
+export PORT=6969
+export IP=127.0.0.1
+export RUST_LOG=info
+
 /app/website
