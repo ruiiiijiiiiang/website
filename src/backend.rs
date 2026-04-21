@@ -2,9 +2,7 @@ use dioxus::prelude::*;
 
 use crate::models::{BlogData, BlogLink, BlogMeta, HeaderLink};
 
-fn get_blog_dir() -> String {
-    std::env::var("BLOG_DIR").unwrap_or_else(|_| "./blog".to_string())
-}
+const BLOG_DIR: &str = "./blog";
 
 #[cfg(feature = "server")]
 use tokio::sync::OnceCell;
@@ -54,7 +52,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
         None
     };
 
-    let file_path = format!("{}/{}.md", get_blog_dir(), slug);
+    let file_path = format!("{}/{}.md", BLOG_DIR, slug);
     let file_content = fs::read_to_string(&file_path)
         .await
         .map_err(|e| ServerFnError::new(format!("Failed to read post: {}", e)))?;
@@ -127,7 +125,7 @@ async fn get_cached_posts() -> Result<&'static Vec<(String, BlogMeta)>, ServerFn
     POST_CACHE
         .get_or_try_init(|| async {
             let mut posts = Vec::new();
-            let mut entries = fs::read_dir(get_blog_dir())
+            let mut entries = fs::read_dir(BLOG_DIR)
                 .await
                 .map_err(|e| ServerFnError::new(format!("Dir error: {}", e)))?;
 
@@ -143,7 +141,7 @@ async fn get_cached_posts() -> Result<&'static Vec<(String, BlogMeta)>, ServerFn
                     }
                 }
             }
-            posts.sort_by(|a, b| b.1.date.cmp(&a.1.date));
+            posts.sort_by_key(|a| std::cmp::Reverse(a.1.date));
 
             Ok(posts)
         })
