@@ -1,7 +1,9 @@
 use dioxus::prelude::*;
+use dioxus_free_icons::Icon;
+use dioxus_free_icons::icons::fa_solid_icons::{FaArrowLeft, FaArrowRight, FaArrowUp};
 
+use crate::Route;
 use crate::backend::get_blog_data;
-use crate::components::{BackToTop, Footer, TableOfContents};
 
 #[component]
 pub fn BlogPost(slug: ReadSignal<String>) -> Element {
@@ -12,8 +14,20 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
 
         div {
             class: "blog",
-            TableOfContents {
-                headers: blog_data.headers
+            aside { class: "table-of-contents",
+                nav {
+                    ul {
+                        for header in {blog_data.headers} {
+                            li {
+                                Link {
+                                    to: "#{header.id}",
+                                    "aria-label": "{header.title}",
+                                    "{header.title}"
+                                }
+                            }
+                        }
+                    }
+                }
             }
             div {
                 class: "blog-content",
@@ -28,11 +42,51 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
                     dangerous_inner_html: "{blog_data.content}"
                 }
             }
-            BackToTop {}
+            button {
+                class: "back-to-top",
+                "aria-label": "back to top",
+                onclick: move |_| {
+                    spawn(async move {
+                        let _ = document::eval("window.scrollTo({ top: 0 })").await;
+                    });
+                },
+                Icon {
+                    icon: FaArrowUp
+                }
+            }
         }
-        Footer {
-            prev_post: blog_data.prev_post,
-            next_post: blog_data.next_post,
+        hr { }
+        footer {
+            nav {
+                ul {
+                    li {
+                        if let Some(prev) = blog_data.prev_post {
+                            Link {
+                                to: Route::BlogPost { slug: prev.slug },
+                                "aria-label": "previous post",
+                                Icon {
+                                    icon: FaArrowLeft
+                                }
+                                " Previous"
+                            }
+                        }
+                    }
+                }
+                ul {
+                    li {
+                        if let Some(next) = blog_data.next_post {
+                            Link {
+                                to: Route::BlogPost { slug: next.slug },
+                                "aria-label": "next post",
+                                "Next "
+                                Icon {
+                                    icon: FaArrowRight
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

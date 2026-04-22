@@ -55,6 +55,10 @@ button.back-to-top {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+nav.project-card-header ul li {
+  padding: 0 0.25rem;
+}
+
 span.repo-language-color {
   border-radius: 50%;
   width: 0.75rem;

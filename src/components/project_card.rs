@@ -14,6 +14,7 @@ pub fn ProjectCard(project: Project) -> Element {
         article {
             header {
                 nav {
+                    class: "project-card-header",
                     ul {
                         li { "{project.name}" }
                     }
