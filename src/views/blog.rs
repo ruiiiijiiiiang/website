@@ -10,9 +10,8 @@ pub fn Blog() -> Element {
     rsx! {
         document::Title { "Rui's Blog Posts" }
 
-        h2 {
-            "Blog Posts"
-        }
+        h1 { "Blog Posts" }
+
         ul {
             for post in posts {
                 li {

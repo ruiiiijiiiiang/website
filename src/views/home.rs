@@ -21,7 +21,7 @@ pub fn Home() -> Element {
             "My interests center around systems design and cybersecurity: understanding trust models, attack surfaces, and how small implementation details create large consequences. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
         }
         p {
-            "I build my workflow around Niri, WezTerm, Fish, and Neovim. I'm particularly interested in Rust for its emphasis on correctness and explicitness (which led me to building this site as a full-stack Dioxus project)."
+            "I build my workflow around Niri, WezTerm, Fish, and Neovim. I'm particularly interested in Rust for its emphasis on correctness and explicitness."
         }
         hr { }
         footer {
