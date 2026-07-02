@@ -8,6 +8,7 @@ pub fn Home() -> Element {
         document::Title { "Rui's Personal Website" }
 
         h1 {
+            class: "terminal-cursor",
             "Hi, I'm Rui."
         }
         h5 {

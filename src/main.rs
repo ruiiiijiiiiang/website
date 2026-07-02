@@ -60,9 +60,9 @@ fn main() {
                 HeaderValue::from_static(
                     "default-src 'self'; \
                      script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; \
-                     style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; \
-                     img-src 'self' data:; \
-                     font-src 'self' data: https://cdn.jsdelivr.net; \
+                     style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; \
+                     img-src 'self' data: https://raw.githubusercontent.com https://user-attachments.githubusercontent.com https://github.com https://github-production-user-asset-6210df.s3.amazonaws.com; \
+                     font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; \
                      connect-src 'self' ws: wss:; \
                      frame-ancestors 'none'; \
                      base-uri 'self'",
@@ -83,7 +83,7 @@ fn main() {
             .layer(SetResponseHeaderLayer::overriding(
                 axum::http::HeaderName::from_static("permissions-policy"),
                 HeaderValue::from_static(
-                    "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+                    "camera=(), microphone=(), geolocation=()",
                 ),
             ));
 
@@ -98,6 +98,10 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
+        document::Link {
+            rel: "stylesheet",
+            href: "https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap",
+        }
         document::Link {
             rel: "stylesheet",
             href: "https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.slate.min.css",

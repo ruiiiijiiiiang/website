@@ -41,4 +41,5 @@ pub struct Project {
     pub language: &'static str,
     pub description: &'static str,
     pub link: &'static str,
+    pub screenshot: Option<&'static str>,
 }

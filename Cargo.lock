@@ -510,9 +510,9 @@ dependencies = [
 
 [[package]]
 name = "comrak"
-version = "0.52.0"
+version = "0.53.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "aac0b255932a9cd52fbfd664b67957f9f2e095ae4711cb0e41b4e291edef94c2"
+checksum = "9795cb30f4deefbf33488819707e0f9630535dd56208ec273c1b3f150196377a"
 dependencies = [
  "bon",
  "caseless",
@@ -1098,7 +1098,7 @@ dependencies = [
  "tokio-tungstenite 0.28.0",
  "tokio-util",
  "tower",
- "tower-http",
+ "tower-http 0.6.11",
  "tower-layer",
  "tracing",
  "tungstenite 0.27.0",
@@ -1376,7 +1376,7 @@ dependencies = [
  "tokio-tungstenite 0.28.0",
  "tokio-util",
  "tower",
- "tower-http",
+ "tower-http 0.6.11",
  "tracing",
  "tracing-futures",
  "url",
@@ -3106,7 +3106,7 @@ dependencies = [
  "tokio-rustls",
  "tokio-util",
  "tower",
- "tower-http",
+ "tower-http 0.6.11",
  "tower-service",
  "url",
  "wasm-bindgen",
@@ -3953,6 +3953,21 @@ dependencies = [
 ]
 
 [[package]]
+name = "tower-http"
+version = "0.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b11f75e912b0c2be01b63d8cf8057b8c3f97cf34abb3d431a3a4c8675498e233"
+dependencies = [
+ "bitflags",
+ "bytes",
+ "http",
+ "percent-encoding",
+ "pin-project-lite",
+ "tower-layer",
+ "tower-service",
+]
+
+[[package]]
 name = "tower-layer"
 version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4375,7 +4390,7 @@ dependencies = [
  "strum_macros",
  "syntect",
  "tokio",
- "tower-http",
+ "tower-http 0.7.0",
  "wasm-bindgen",
  "web-sys",
 ]

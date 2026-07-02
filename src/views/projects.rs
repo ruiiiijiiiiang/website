@@ -9,48 +9,66 @@ const PROJECTS: &[Project] = &[
         language: "nix",
         description: "Fully declarative and reproducible NixOS configuration for a personal homelab. Utilizing Nix Flakes, it manages infrastructure-as-code, including networking, security, and services like VPN and monitoring, ensuring atomic rollbacks and consistent, automated deployments across various hosts.",
         link: "https://github.com/ruiiiijiiiiang/nixos-config",
+        screenshot: Some(
+            "https://raw.githubusercontent.com/ruiiiijiiiiang/nixos-config/master/topology/topology.png",
+        ),
     },
     Project {
         name: "sdctl",
         language: "rust",
         description: "Security-focused Ratatui TUI for managing Linux systemd services. It prioritizes least privilege, utilizing Polkit for authentication instead of sudo. The application features high-performance fuzzy search, syntax-highlighted log viewing, and integrated unit file editing with intuitive Vim-style navigation.",
         link: "https://github.com/ruiiiijiiiiang/sdctl",
+        screenshot: Some(
+            "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
+        ),
     },
     Project {
         name: "rs-top",
         language: "rust",
         description: "Lightweight, agentless remote system monitor providing a real-time TUI dashboard via SSH. Requiring no remote software installation, it offers read-only monitoring of multiple hosts. Built with Rust, it integrates with existing SSH configurations for efficient performance tracking.",
         link: "https://github.com/ruiiiijiiiiang/rs-top",
-    },
-    Project {
-        name: "lazynmap",
-        language: "rust",
-        description: "Intuitive terminal user interface designed to simplify nmap command creation. It features interactive options, live command previews, and direct execution. With input validation, it helps users build complex network scans without memorizing cryptic command-line flags.",
-        link: "https://github.com/ruiiiijiiiiang/lazynmap",
-    },
-    Project {
-        name: "website",
-        language: "rust",
-        description: "What you're reading right now. Full-stack rust web application built using Dioxus that runs as a WASM client in the browser with server-side rendering (SSR) and static site generation (SSG) for content like blog posts and project pages.",
-        link: "https://github.com/ruiiiijiiiiang/website",
+        screenshot: Some(
+            "https://raw.githubusercontent.com/ruiiiijiiiiang/rs-top/refs/heads/screenshot/screenshot.png",
+        ),
     },
     Project {
         name: "nixos-vm-provisioner",
         language: "nix",
         description: "Provides NixOS modules for automated, host-managed virtual machine installation. It handles storage creation and first-boot provisioning using disko-install, booting guests via libvirt. It installs standard NixOS systems that independently manage their own kernels and upgrades.",
         link: "https://github.com/ruiiiijiiiiang/nixos-vm-provisioner",
+        screenshot: None,
+    },
+    Project {
+        name: "lazynmap",
+        language: "rust",
+        description: "Intuitive terminal user interface designed to simplify nmap command creation. It features interactive options, live command previews, and direct execution. With input validation, it helps users build complex network scans without memorizing cryptic command-line flags.",
+        link: "https://github.com/ruiiiijiiiiang/lazynmap",
+        screenshot: Some(
+            "https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/master/assets/lazynmap.png",
+        ),
+    },
+    Project {
+        name: "website",
+        language: "rust",
+        description: "What you're reading right now. Full-stack rust web application built using Dioxus that runs as a WASM client in the browser with server-side rendering (SSR) and static site generation (SSG) for content like blog posts and project pages.",
+        link: "https://github.com/ruiiiijiiiiang/website",
+        screenshot: None,
     },
     Project {
         name: "file_clipper",
         language: "rust",
         description: "Rust CLI tool providing GUI-style copy, cut, and paste operations for terminal file management. It includes an interactive TUI for clipboard and history tracking, supports glob patterns, and enables symbolic link creation for efficiency.",
         link: "https://github.com/ruiiiijiiiiang/file_clipper",
+        screenshot: None,
     },
 ];
+
+const PROJECTS_CSS: Asset = asset!("../../assets/projects.css");
 
 #[component]
 pub fn Projects() -> Element {
     rsx! {
+        document::Link { rel: "stylesheet", href: PROJECTS_CSS }
         document::Title { "Rui's Projects" }
 
         div {
