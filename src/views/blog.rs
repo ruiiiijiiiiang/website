@@ -19,7 +19,6 @@ pub fn Blog() -> Element {
             class: "system-log-list",
             for post in posts {
                 li {
-                    span { class: "log-status ok", "[  OK  ]" }
                     span { class: "log-date", " {post.date.format(\"%Y-%m-%d\")}" }
                     span { class: "log-divider", " | " }
                     Link {

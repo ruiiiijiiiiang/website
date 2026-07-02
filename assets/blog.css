@@ -13,6 +13,10 @@ div.blog-content pre code {
   font-family: var(--font-mono) !important;
 }
 
+[data-theme="light"] div.blog-content pre {
+  filter: invert(0.92) hue-rotate(180deg) brightness(1.02) contrast(1.05);
+}
+
 div.blog {
   display: flex;
   gap: 1rem;
@@ -26,6 +30,13 @@ aside.table-of-contents {
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+aside.table-of-contents nav ul li {
+  margin-bottom: 1rem !important;
+}
+aside.table-of-contents nav ul li:last-child {
+  margin-bottom: 0 !important;
 }
 
 aside.table-of-contents nav ul li a {
@@ -94,12 +105,6 @@ ul.system-log-list {
 ul.system-log-list li {
   font-family: var(--font-mono);
   margin-bottom: 0.5rem;
-}
-
-ul.system-log-list li span.log-status.ok {
-  color: #4af626; /* Terminal green */
-  font-weight: bold;
-  margin-right: 0.5rem;
 }
 
 ul.system-log-list li span.log-date {

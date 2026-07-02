@@ -4,10 +4,10 @@ use crate::models::Project;
 
 #[component]
 pub fn ProjectCard(project: Project) -> Element {
-    let color = match project.language {
-        "rust" => "#dea584",
-        "nix" => "#7e7eff",
-        _ => "#cccccc",
+    let lang_class = match project.language {
+        "rust" => "rust",
+        "nix" => "nix",
+        _ => "other",
     };
 
     rsx! {
@@ -19,7 +19,7 @@ pub fn ProjectCard(project: Project) -> Element {
                         li { "[ {project.name} ]" }
                     }
                     ul {
-                        li { span { class: "repo-language-color", style: "background-color: {color};" } }
+                        li { span { class: "repo-language-color {lang_class}" } }
                         li { "{project.language}" }
                     }
                 }
@@ -27,15 +27,12 @@ pub fn ProjectCard(project: Project) -> Element {
             "{project.description}"
             if let Some(screenshot_url) = project.screenshot {
                 details {
-                    style: "margin-top: 1rem; border: none; padding: 0;",
                     summary {
-                        style: "cursor: pointer; font-size: 0.9rem; color: var(--pico-secondary);",
                         "View Screenshot"
                     }
                     img {
                         src: screenshot_url,
                         alt: "Screenshot of {project.name}",
-                        style: "max-width: 100%; margin-top: 0.5rem; border-radius: 4px; display: block;"
                     }
                 }
             }

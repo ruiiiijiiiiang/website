@@ -8,3 +8,27 @@ span.repo-language-color {
   height: 0.75rem;
   display: inline-block;
 }
+
+.repo-language-color.rust {
+  background-color: #dea584;
+}
+.repo-language-color.nix {
+  background-color: #7e7eff;
+}
+.repo-language-color.other {
+  background-color: #cccccc;
+}
+
+article details {
+  margin-top: 1rem;
+  border: none !important;
+  padding: 0 !important;
+}
+article details summary {
+  cursor: pointer;
+}
+article details img {
+  max-width: 100%;
+  margin-top: 0.5rem;
+  display: block;
+}

@@ -59,7 +59,7 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
         .await
         .map_err(|e| ServerFnError::new(format!("Failed to read post: {}", e)))?;
 
-    let adapter = CustomHighlighter::new("base16-eighties.dark");
+    let adapter = CustomHighlighter::new("base16-ocean.dark");
 
     let mut options = Options::default();
     options.extension.strikethrough = true;

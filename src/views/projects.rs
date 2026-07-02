@@ -50,7 +50,7 @@ const PROJECTS: &[Project] = &[
     Project {
         name: "website",
         language: "rust",
-        description: "What you're reading right now. Full-stack rust web application built using Dioxus that runs as a WASM client in the browser with server-side rendering (SSR) and static site generation (SSG) for content like blog posts and project pages.",
+        description: "What you're reading right now. Full-stack rust web application built using Dioxus with server-side rendering and static site generation.",
         link: "https://github.com/ruiiiijiiiiang/website",
         screenshot: None,
     },

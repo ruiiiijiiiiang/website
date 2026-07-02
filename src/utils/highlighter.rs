@@ -66,8 +66,9 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
         output: &mut dyn Write,
         mut attributes: HashMap<&'static str, Cow<'_, str>>,
     ) -> fmt::Result {
-        let style = "background-color: #2d2d2d;";
-        attributes.insert("style", Cow::Borrowed(style));
+        let bg = self.theme.settings.background.unwrap_or(syntect::highlighting::Color { r: 45, g: 45, b: 45, a: 255 });
+        let style = format!("background-color: #{:02x}{:02x}{:02x};", bg.r, bg.g, bg.b);
+        attributes.insert("style", Cow::Owned(style));
         comrak::html::write_opening_tag(output, "pre", attributes)
     }
 

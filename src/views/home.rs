@@ -12,17 +12,17 @@ pub fn Home() -> Element {
             "Hi, I'm Rui."
         }
         h5 {
-            "Open-Source Enthusiast. Linux lover. Rustacean. AUR and nixpkgs maintainer."
+            "Open-Source Enthusiast. Linux fan. Rustacean. AUR and nixpkgs maintainer."
         }
         hr { }
         p {
             "I'm a software engineer with a strong bias toward systems that are coherent, minimal, and internally correct. I care about structure: in code, in architecture, and in security boundaries."
         }
         p {
-            "My interests center around systems design and cybersecurity: understanding trust models, attack surfaces, and how small implementation details create large consequences. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
+            "My interests include systems design, networking, and cybersecurity. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
         }
         p {
-            "I build my workflow around Niri, WezTerm, Fish, and Neovim. I'm particularly interested in Rust for its emphasis on correctness and explicitness."
+            "My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
         }
         hr { }
         footer {

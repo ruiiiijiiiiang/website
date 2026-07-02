@@ -93,6 +93,7 @@ ul.system-log-list li::before {
   content: "▋";
   color: var(--pico-primary);
   animation: blink 1s infinite;
+  margin-bottom: 0.5rem;
   margin-left: 0.25rem;
   display: inline-block;
   vertical-align: middle;
