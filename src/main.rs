@@ -59,11 +59,11 @@ fn main() {
                 axum::http::header::CONTENT_SECURITY_POLICY,
                 HeaderValue::from_static(
                     "default-src 'self'; \
-                     script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; \
+                     script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com; \
                      style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; \
                      img-src 'self' data: https://raw.githubusercontent.com https://user-attachments.githubusercontent.com https://github.com https://github-production-user-asset-6210df.s3.amazonaws.com; \
                      font-src 'self' data: https://cdn.jsdelivr.net https://fonts.gstatic.com; \
-                     connect-src 'self' ws: wss:; \
+                     connect-src 'self' ws: wss: https://cloudflareinsights.com; \
                      frame-ancestors 'none'; \
                      base-uri 'self'",
                 ),

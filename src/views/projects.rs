@@ -16,7 +16,7 @@ const PROJECTS: &[Project] = &[
     Project {
         name: "sdctl",
         language: "rust",
-        description: "Security-focused systemd manager TUI. Built with Ratatui. Prioritizes least privilege by utilizing Polkit for authentication instead of sudo. Features fuzzy search, syntax-highlighted log viewing, and Vim-style navigation.",
+        description: "Security-focused systemd manager TUI. Prioritizes least privilege by utilizing Polkit for authentication instead of sudo. Features fuzzy search, syntax-highlighted log viewing, and Vim-style navigation.",
         link: "https://github.com/ruiiiijiiiiang/sdctl",
         screenshot: Some(
             "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
