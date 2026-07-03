@@ -16,7 +16,7 @@ pub fn Blog() -> Element {
         h1 { "Blog Posts" }
 
         ul {
-            class: "system-log-list",
+            class: "blog-list",
             for post in posts {
                 li {
                     span { class: "log-date", " {post.date.format(\"%Y-%m-%d\")}" }

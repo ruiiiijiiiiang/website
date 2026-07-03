@@ -7,12 +7,35 @@ use crate::components::ThemeToggle;
 
 #[component]
 pub fn Navbar() -> Element {
+    let current_route = use_route::<Route>();
+    let is_home_active = matches!(current_route, Route::Home {});
+    let is_blog_active = matches!(current_route, Route::Blog {} | Route::BlogPost { .. });
+    let is_projects_active = matches!(current_route, Route::Projects {});
+
     rsx! {
         nav {
             ul {
-                li { Link { to: Route::Home {}, "Home" } }
-                li { Link { to: Route::Blog {}, "Blog" } }
-                li { Link { to: Route::Projects {}, "Projects" } }
+                li {
+                    Link {
+                        to: Route::Home {},
+                        class: if is_home_active { "active-nav-link" } else { "" },
+                        "Home"
+                    }
+                }
+                li {
+                    Link {
+                        to: Route::Blog {},
+                        class: if is_blog_active { "active-nav-link" } else { "" },
+                        "Blog"
+                    }
+                }
+                li {
+                    Link {
+                        to: Route::Projects {},
+                        class: if is_projects_active { "active-nav-link" } else { "" },
+                        "Projects"
+                    }
+                }
             }
             ul {
                 li {

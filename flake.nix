@@ -29,6 +29,7 @@
             pkgs.lld
             pkgs.binaryen
             pkgs.clang
+            pkgs.wasm-bindgen-cli_0_2_114
           ];
           buildInputs = [ pkgs.openssl ];
 

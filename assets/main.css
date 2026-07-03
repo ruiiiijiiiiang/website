@@ -6,6 +6,10 @@
   --pico-font-family-monospace: var(--font-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body,
 button,
 input,
@@ -23,10 +27,6 @@ h6 {
   font-family: var(--font-mono);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 article,
 button,
 input,
@@ -41,62 +41,18 @@ code {
   --pico-border-radius: 0 !important;
 }
 
-.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 6px;
-  background-color: var(--pico-primary);
-  z-index: 9999;
-  transition: width 0.1s ease-out;
-}
-
-h1::before {
-  content: "$ ";
-  color: var(--pico-primary);
-  font-weight: bold;
-}
-
 ul {
   list-style: none !important;
   padding-left: 0 !important;
 }
+
 ul li {
   list-style: none !important;
   list-style-type: none !important;
 }
+
 ul li::marker {
   content: none !important;
-}
-
-ul li::before {
-  content: "→ ";
-  color: var(--pico-primary);
-  margin-right: 0.5rem;
-}
-
-nav ul li::before,
-ul.system-log-list li::before {
-  content: none !important;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-.terminal-cursor::after {
-  content: "▋";
-  color: var(--pico-primary);
-  animation: blink 1s infinite;
-  margin-bottom: 0.5rem;
-  margin-left: 0.25rem;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 body::before {
@@ -112,4 +68,77 @@ body::before {
   z-index: 9999;
   pointer-events: none;
   opacity: 0.4;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor::after {
+  content: "▋";
+  color: var(--pico-primary);
+  animation: blink 1s infinite;
+  margin-bottom: 0.5rem;
+  margin-left: 0.25rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+h1::before {
+  content: "$ ";
+  color: var(--pico-primary);
+  font-weight: bold;
+}
+
+ul li::before {
+  content: "→ ";
+  color: var(--pico-primary);
+  margin-right: 0.5rem;
+}
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--pico-primary);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+nav ul li {
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+
+nav ul li::before {
+  content: none !important;
+}
+
+nav ul li a.active-nav-link {
+  background-color: var(--pico-primary) !important;
+  color: var(--pico-primary-inverse) !important;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+}
+
+nav ul li a.active-nav-link::before {
+  content: none !important;
+}
+
+nav ul li a.outline,
+nav ul li button.outline {
+  border: none !important;
+  padding: 0 0.5rem !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }

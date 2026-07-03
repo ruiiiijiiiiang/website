@@ -1,5 +1,39 @@
-nav.project-card-header ul li {
-  padding: 0 0.25rem;
+.project-card-container {
+  margin-bottom: 4rem;
+}
+
+article.project-card {
+  border: 1px solid var(--pico-muted-border-color) !important;
+  background-color: var(--pico-card-background-color) !important;
+  border-radius: 0 !important;
+  padding: 1rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+  box-shadow: none !important;
+}
+
+.cli-output p {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  display: flex;
+  align-items: flex-start;
+}
+
+.cli-label {
+  color: var(--pico-primary);
+  font-weight: bold;
+  white-space: pre;
+  flex-shrink: 0;
+}
+
+.cli-value {
+  color: var(--pico-color);
+}
+
+.repo-language {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 span.repo-language-color {
@@ -12,23 +46,65 @@ span.repo-language-color {
 .repo-language-color.rust {
   background-color: #dea584;
 }
+
 .repo-language-color.nix {
   background-color: #7e7eff;
 }
+
 .repo-language-color.other {
   background-color: #cccccc;
 }
 
-article details {
+article.project-card details.cli-details {
   margin-top: 1rem;
-  border: none !important;
-  padding: 0 !important;
+  margin-bottom: 0;
+  border: 1px dashed var(--pico-muted-border-color) !important;
+  padding: 0.5rem !important;
 }
-article details summary {
+
+article.project-card details.cli-details summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--pico-primary);
+  font-weight: bold;
+  list-style: none;
   cursor: pointer;
 }
-article details img {
+
+article.project-card details.cli-details summary .folder-icon {
+  fill: currentColor;
+}
+
+article.project-card details.cli-details summary::-webkit-details-marker {
+  display: none;
+}
+
+article.project-card details.cli-details img {
   max-width: 100%;
   margin-top: 0.5rem;
   display: block;
+}
+
+.cli-footer {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--pico-muted-border-color);
+  font-size: 0.9rem;
+}
+
+.cli-footer .prompt-symbol {
+  color: var(--pico-primary);
+  font-weight: bold;
+}
+
+.cli-footer a.git-clone-link {
+  color: var(--pico-color) !important;
+  text-decoration: none;
+  font-family: var(--font-mono);
+}
+
+.cli-footer a.git-clone-link:hover {
+  color: var(--pico-primary) !important;
+  text-decoration: underline;
 }
