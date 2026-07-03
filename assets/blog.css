@@ -200,24 +200,17 @@ div.blog-content pre:has(.tui-header) code {
   flex-grow: 1;
   background-color: #282c34;
   color: #5c6370;
-  padding-left: 15px;
 }
 
-.tui-sec-x {
+.tui-sec-y {
   background-color: #21252b;
   color: #5c6370;
 }
 
-.tui-sec-y {
+.tui-sec-z {
   background-color: #3e4452;
   color: #abb2bf;
   font-weight: 500;
-}
-
-.tui-sec-z {
-  background-color: #98c379;
-  color: #21252b;
-  font-weight: bold;
 }
 
 [data-theme="light"] div.blog-content pre {
@@ -271,17 +264,12 @@ div.blog-content pre:has(.tui-header) code {
   color: #a0a1a7 !important;
 }
 
-[data-theme="light"] .tui-sec-x {
+[data-theme="light"] .tui-sec-y {
   background-color: #f0f0f1 !important;
   color: #a0a1a7 !important;
 }
 
-[data-theme="light"] .tui-sec-y {
+[data-theme="light"] .tui-sec-z {
   background-color: #e5e5e6 !important;
   color: #383a42 !important;
-}
-
-[data-theme="light"] .tui-sec-z {
-  background-color: #50a14f !important;
-  color: #ffffff !important;
 }
