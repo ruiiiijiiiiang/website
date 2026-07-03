@@ -59,7 +59,9 @@ const PROJECTS: &[Project] = &[
         language: "rust",
         description: "Rust CLI tool providing GUI-style copy, cut, and paste operations for terminal file management. It includes an interactive TUI for clipboard and history tracking, supports glob patterns, and enables symbolic link creation for efficiency.",
         link: "https://github.com/ruiiiijiiiiang/file_clipper",
-        screenshot: None,
+        screenshot: Some(
+            "https://raw.githubusercontent.com/ruiiiijiiiiang/file_clipper/master/assets/tui.png",
+        ),
     },
 ];
 
