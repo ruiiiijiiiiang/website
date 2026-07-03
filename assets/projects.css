@@ -62,6 +62,36 @@ article.project-card details.cli-details {
   padding: 0.5rem !important;
 }
 
+article.project-card details.cli-details::details-content {
+  opacity: 0;
+  block-size: 0;
+  overflow: hidden;
+}
+
+article.project-card details.cli-details[open]::details-content {
+  opacity: 1;
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  article.project-card details.cli-details {
+    interpolate-size: allow-keywords;
+  }
+
+  article.project-card details.cli-details::details-content {
+    transform: translateY(-10px);
+    transition:
+      content-visibility 0.25s allow-discrete,
+      opacity 0.25s ease-out,
+      block-size 0.25s ease-out,
+      transform 0.25s ease-out;
+  }
+
+  article.project-card details.cli-details[open]::details-content {
+    transform: translateY(0);
+  }
+}
+
 article.project-card details.cli-details summary {
   display: flex;
   align-items: center;

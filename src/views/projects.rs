@@ -7,7 +7,7 @@ const PROJECTS: &[Project] = &[
     Project {
         name: "nixos-config",
         language: "nix",
-        description: "Fully declarative and reproducible NixOS configuration for a personal homelab. Utilizing Nix Flakes, it manages infrastructure-as-code, including networking, security, and services like VPN and monitoring, ensuring atomic rollbacks and consistent, automated deployments across various hosts.",
+        description: "Fully declarative and reproducible NixOS configuration for a personal homelab. Utilizing Nix Flakes, it manages infrastructure-as-code, including networking, security, observability, and application services, ensuring atomic rollbacks and consistent, automated deployments across various hosts.",
         link: "https://github.com/ruiiiijiiiiang/nixos-config",
         screenshot: Some(
             "https://raw.githubusercontent.com/ruiiiijiiiiang/nixos-config/master/topology/topology.png",
@@ -50,7 +50,7 @@ const PROJECTS: &[Project] = &[
     Project {
         name: "website",
         language: "rust",
-        description: "What you're reading right now. Full-stack rust web application built using Dioxus with server-side rendering and static site generation.",
+        description: "What you're reading right now. Full-stack rust web application built using Dioxus with server-side rendering and static site generation. WASM front end; 100% JS/TS free.",
         link: "https://github.com/ruiiiijiiiiang/website",
         screenshot: None,
     },

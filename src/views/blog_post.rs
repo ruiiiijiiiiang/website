@@ -99,7 +99,6 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
                 .add_event_listener_with_callback("scroll", on_scroll.as_ref().unchecked_ref())
                 .unwrap();
 
-            // Trigger initial scroll calculation
             let doc_element = document.document_element().unwrap();
             let scroll_top = doc_element.scroll_top();
             let scroll_height = doc_element.scroll_height();

@@ -112,11 +112,6 @@ ul li::before {
   transition: width 0.1s ease-out;
 }
 
-nav ul li {
-  margin-left: 0.5rem !important;
-  margin-right: 0.5rem !important;
-}
-
 nav ul li::before {
   content: none !important;
 }

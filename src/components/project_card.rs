@@ -44,7 +44,7 @@ pub fn ProjectCard(project: Project) -> Element {
                                     height: 16,
                                     class: "folder-icon",
                                 }
-                                " Attachment: {project.name}-preview.png (click to render)"
+                                " Attachment: {project.name}-preview.png"
                             }
                             img {
                                 src: screenshot_url,
