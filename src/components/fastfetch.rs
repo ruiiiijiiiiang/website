@@ -1,7 +1,7 @@
 use crate::backend::get_fastfetch_data;
 use dioxus::prelude::*;
 
-const NIXOS_ASCII: &str = r#"          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖
+const NIXOS_ASCII_LARGE: &str = r#"          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖
           ▜███▙       ▜███▙  ▟███▛
            ▜███▙       ▜███▙▟███▛
             ▜███▙       ▜██████▛
@@ -21,6 +21,20 @@ const NIXOS_ASCII: &str = r#"          ▗▄▄▄       ▗▄▄▄▄    ▄
           ▟███▛▜███▙         ▜███▙
          ▟███▛  ▜███▙         ▜███▙
          ▝▀▀▀    ▀▀▀▀▘         ▀▀▀▘"#;
+
+const NIXOS_ASCII_SMALL: &str = r#"            ___   __
+     /¯\    \  \ /  ;
+     \  \    \  v  /
+  /¯¯¯   ¯¯¯¯\\   /  /\
+ ’————————————·\  \ /  ;
+      /¯¯;      \ //  /_
+_____/  /        ‘/     \
+\      /,        /  /¯¯¯¯
+ ¯¯/  // \      /__/
+  .  / \  \·————————————.
+   \/  /   \\_____   ___/
+      /  ,  \     \  \
+      \_/ \__\     \_/"#;
 
 fn draw_braille_bar(pct: u8) -> String {
     let mut bar = String::new();
@@ -64,6 +78,7 @@ pub fn FastfetchCard() -> Element {
 
     #[cfg(target_arch = "wasm32")]
     use_effect(move || {
+        let mut data_resource = data_resource;
         data_resource.restart();
     });
 
@@ -78,8 +93,12 @@ pub fn FastfetchCard() -> Element {
             class: "fastfetch-layout",
 
             pre {
-                class: "fastfetch-logo",
-                "{NIXOS_ASCII}"
+                class: "fastfetch-logo fastfetch-logo-large",
+                "{NIXOS_ASCII_LARGE}"
+            }
+            pre {
+                class: "fastfetch-logo fastfetch-logo-small",
+                "{NIXOS_ASCII_SMALL}"
             }
 
             div {

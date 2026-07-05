@@ -22,7 +22,8 @@
   display: flex;
   margin-top: 2rem;
   gap: 1.5rem;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   overflow-x: auto;
 }
 
@@ -34,6 +35,26 @@
   margin: 0 !important;
   user-select: none;
   background: var(--pico-background-color);
+  flex-shrink: 0;
+  white-space: pre !important;
+  overflow: hidden !important;
+}
+
+.fastfetch-logo-large {
+  display: block;
+}
+
+.fastfetch-logo-small {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .fastfetch-logo-large {
+    display: none;
+  }
+  .fastfetch-logo-small {
+    display: block;
+  }
 }
 
 .fastfetch-info {
