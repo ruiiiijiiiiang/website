@@ -60,7 +60,19 @@ fn draw_braille_bar(pct: u8) -> String {
 
 #[component]
 pub fn FastfetchCard() -> Element {
-    let data = use_loader(get_fastfetch_data)?();
+    let data_resource = use_resource(get_fastfetch_data);
+
+    #[cfg(target_arch = "wasm32")]
+    use_effect(move || {
+        data_resource.restart();
+    });
+
+    let data_res = data_resource.read();
+    let data = match &*data_res {
+        Some(Ok(data)) => data,
+        _ => return rsx! { div { "Loading system statistics..." } },
+    };
+
     rsx! {
         div {
             class: "fastfetch-layout",
