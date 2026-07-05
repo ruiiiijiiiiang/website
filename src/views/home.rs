@@ -2,9 +2,17 @@ use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_solid_icons::FaEnvelope;
 
+use crate::components::FastfetchCard;
+use crate::backend::get_fastfetch_data;
+
+const HOME_CSS: Asset = asset!("../../assets/home.css");
+
 #[component]
 pub fn Home() -> Element {
+    let fastfetch = use_loader(get_fastfetch_data)?();
+
     rsx! {
+        document::Link { rel: "stylesheet", href: HOME_CSS }
         document::Title { "Rui's Personal Website" }
 
         h1 {
@@ -24,6 +32,7 @@ pub fn Home() -> Element {
         p {
             "My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
         }
+        FastfetchCard { data: fastfetch }
         hr { }
         footer {
             a {

@@ -5,7 +5,7 @@ use dioxus_free_icons::icons::fa_solid_icons::{FaArrowLeft, FaArrowRight, FaArro
 use crate::Route;
 use crate::backend::get_blog_data;
 
-const BLOG_CSS: Asset = asset!("../../assets/blog.css");
+const BLOG_CSS: Asset = asset!("../../assets/blog_post.css");
 
 #[cfg(target_arch = "wasm32")]
 #[allow(dead_code)]

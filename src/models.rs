@@ -43,3 +43,17 @@ pub struct Project {
     pub link: &'static str,
     pub screenshot: Option<&'static str>,
 }
+
+#[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
+pub struct FastfetchData {
+    pub cpu_model: String,
+    pub cpu_load: u8,
+    pub ram_pct: u8,
+    pub disk_pct: u8,
+    pub uptime: String,
+    pub os_name: String,
+    pub kernel: String,
+    pub os_age: String,
+    pub packages: String,
+    pub fetched_at: String,
+}

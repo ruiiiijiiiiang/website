@@ -70,26 +70,6 @@ body::before {
   opacity: 0.4;
 }
 
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-.terminal-cursor::after {
-  content: "▋";
-  color: var(--pico-primary);
-  animation: blink 1s infinite;
-  margin-bottom: 0.5rem;
-  margin-left: 0.25rem;
-  display: inline-block;
-  vertical-align: middle;
-}
-
 h1::before {
   content: "$ ";
   color: var(--pico-primary);

@@ -92,6 +92,16 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
 
         let mut highlighter = HighlightLines::new(syntax, &self.theme);
 
+        let total_lines = LinesWithEndings::from(code).count();
+        let mut digits = 0;
+        let mut temp = total_lines;
+        while temp > 0 {
+            digits += 1;
+            temp /= 10;
+        }
+        let width = std::cmp::max(3, digits);
+
+        let mut line_num = 1;
         for line in LinesWithEndings::from(code) {
             let ranges = highlighter
                 .highlight_line(line, &self.syntax_set)
@@ -100,7 +110,14 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
             let html = styled_line_to_highlighted_html(&ranges, IncludeBackground::No)
                 .map_err(|_| fmt::Error)?;
 
-            write!(output, "{}", html)?;
+            write!(
+                output,
+                r#"<span class="tui-line-no">{:>width$} </span>{}"#,
+                line_num,
+                html,
+                width = width
+            )?;
+            line_num += 1;
         }
 
         if let Some(fname) = filename {

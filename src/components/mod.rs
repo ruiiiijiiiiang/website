@@ -6,3 +6,6 @@ pub use project_card::ProjectCard;
 
 mod theme_toggle;
 pub use theme_toggle::ThemeToggle;
+
+mod fastfetch;
+pub use fastfetch::FastfetchCard;
