@@ -90,7 +90,13 @@ pub fn FastfetchCard() -> Element {
 
     rsx! {
         div {
-            class: "fastfetch-layout",
+            class: "fastfetch-container",
+            div {
+                class: "fastfetch-prompt",
+                "~/> fastfetch"
+            }
+            div {
+                class: "fastfetch-layout",
 
             pre {
                 class: "fastfetch-logo fastfetch-logo-large",
@@ -103,10 +109,6 @@ pub fn FastfetchCard() -> Element {
 
             div {
                 class: "fastfetch-info",
-
-                div {
-                    class: "fastfetch-divider",
-                }
 
                 div {
                     class: "fastfetch-info-grid",
@@ -156,10 +158,8 @@ pub fn FastfetchCard() -> Element {
                     div { class: "fastfetch-key", "Fetched At" }
                     div { class: "fastfetch-val", "{data.fetched_at}" }
                 }
-                div {
-                    class: "fastfetch-divider",
-                }
             }
+        }
         }
     }
 }

@@ -68,12 +68,6 @@
   font-size: 0.95rem;
 }
 
-.fastfetch-divider {
-  border-bottom: 1px dashed var(--pico-contrast);
-  margin: 0.35rem 0 0.8rem 0;
-  height: 0;
-}
-
 .fastfetch-info-grid {
   display: grid;
   grid-template-columns: minmax(100px, max-content) 1fr;
@@ -98,6 +92,22 @@
 .fastfetch-val {
   font-family: var(--font-mono) !important;
   font-size: 0.88rem;
+  color: var(--pico-color);
+}
+
+.fastfetch-prompt {
+  font-family: var(--font-mono) !important;
+  font-size: 0.88rem;
+  margin-bottom: 1.2rem;
+  user-select: none;
+}
+
+.fastfetch-prompt-symbol {
+  color: var(--pico-primary);
+  font-weight: bold;
+}
+
+.fastfetch-prompt-cmd {
   color: var(--pico-color);
 }
 

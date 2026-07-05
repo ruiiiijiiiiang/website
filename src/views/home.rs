@@ -8,7 +8,6 @@ const HOME_CSS: Asset = asset!("../../assets/home.css");
 
 #[component]
 pub fn Home() -> Element {
-
     rsx! {
         document::Link { rel: "stylesheet", href: HOME_CSS }
         document::Title { "Rui's Personal Website" }
@@ -20,7 +19,9 @@ pub fn Home() -> Element {
         h5 {
             "Open-Source Enthusiast. Linux fan. Rustacean. AUR and nixpkgs maintainer."
         }
+
         hr { }
+
         p {
             "I'm a software engineer with a strong bias toward systems that are coherent, minimal, and internally correct. I care about structure: in code, in architecture, and in security boundaries."
         }
@@ -30,8 +31,13 @@ pub fn Home() -> Element {
         p {
             "My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
         }
-        FastfetchCard {}
+
         hr { }
+
+        FastfetchCard {}
+
+        hr { }
+
         footer {
             a {
                 href: "mailto:me@ruijiang.me",
