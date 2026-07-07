@@ -101,8 +101,8 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
         }
         let width = std::cmp::max(3, digits);
 
-        let mut line_num = 1;
-        for line in LinesWithEndings::from(code) {
+        for (i, line) in LinesWithEndings::from(code).enumerate() {
+            let line_num = i + 1;
             let ranges = highlighter
                 .highlight_line(line, &self.syntax_set)
                 .map_err(|_| fmt::Error)?;
@@ -117,7 +117,6 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
                 html,
                 width = width
             )?;
-            line_num += 1;
         }
 
         if let Some(fname) = filename {

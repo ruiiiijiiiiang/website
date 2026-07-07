@@ -15,11 +15,13 @@ enum Route {
     #[layout(Navbar)]
         #[route("/")]
         Home {},
-        #[route("/blog/")]
+        #[redirect("/blog/", || Route::Blog {})]
+        #[route("/blog")]
         Blog {},
         #[route("/blog/:slug")]
         BlogPost { slug: String },
-        #[route("/projects/")]
+        #[redirect("/projects/", || Route::Projects {})]
+        #[route("/projects")]
         Projects {},
 }
 
