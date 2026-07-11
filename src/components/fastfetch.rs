@@ -2,7 +2,7 @@ use crate::backend::get_fastfetch_data;
 use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::FaRust;
-use dioxus_free_icons::icons::fa_solid_icons::{FaCodeBranch, FaFolderTree};
+use dioxus_free_icons::icons::fa_solid_icons::{FaCodeBranch, FaFolder};
 
 const NIXOS_ASCII_LARGE: &str = r#"          $1▗▄▄▄       $2▗▄▄▄▄    ▄▄▄▖
           $1▜███▙       $2▜███▙  ▟███▛
@@ -147,7 +147,7 @@ pub fn FastfetchCard() -> Element {
             div { class: "fastfetch-prompt",
                 span { class: "prompt-segment prompt-dir",
                     Icon {
-                        icon: FaFolderTree,
+                        icon: FaFolder,
                         width: 14,
                         height: 14,
                         class: "prompt-icon",
