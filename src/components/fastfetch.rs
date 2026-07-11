@@ -152,7 +152,7 @@ pub fn FastfetchCard() -> Element {
                         height: 14,
                         class: "prompt-icon",
                     }
-                    "website "
+                    "~/Projects/website "
                 }
                 span { class: "prompt-separator", "on " }
                 span { class: "prompt-segment prompt-git",
