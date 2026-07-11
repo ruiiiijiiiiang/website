@@ -1,3 +1,13 @@
+:root {
+  --nixos-c1: #7ebae4;
+  --nixos-c2: #5277c3;
+}
+
+[data-theme="light"] {
+  --nixos-c1: #3075a3;
+  --nixos-c2: #244996;
+}
+
 @keyframes blink {
   0%,
   100% {
@@ -18,6 +28,56 @@
   vertical-align: middle;
 }
 
+.fastfetch-prompt {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  user-select: none;
+}
+
+.prompt-segment {
+  font-weight: bold;
+}
+
+.prompt-dir {
+  color: var(--pico-primary);
+}
+
+.prompt-git {
+  color: var(--pico-secondary);
+}
+
+.prompt-rust {
+  color: var(--pico-del-color);
+}
+
+.prompt-separator {
+  color: var(--pico-muted-color);
+  opacity: 0.8;
+}
+
+.prompt-char {
+  color: var(--pico-ins-color);
+  font-weight: bold;
+}
+
+.prompt-cmd {
+  color: var(--pico-color);
+  font-weight: 500;
+}
+
+.prompt-icon {
+  fill: currentColor;
+  display: inline-block;
+  vertical-align: -0.125em;
+  margin-right: 0.35rem;
+}
+
+.prompt-rust-icon {
+  margin-left: 0.35rem;
+}
+
 .fastfetch-layout {
   display: flex;
   margin-top: 2rem;
@@ -29,7 +89,7 @@
 
 .fastfetch-logo {
   font-family: var(--font-mono) !important;
-  color: var(--pico-primary);
+  color: var(--nixos-c2);
   font-size: 0.8rem;
   line-height: 1.15;
   margin: 0 !important;
@@ -48,13 +108,12 @@
   display: none;
 }
 
-@media (max-width: 992px) {
-  .fastfetch-logo-large {
-    display: none;
-  }
-  .fastfetch-logo-small {
-    display: block;
-  }
+.fastfetch-logo-nixos-c1 {
+  color: var(--nixos-c1);
+}
+
+.fastfetch-logo-nixos-c2 {
+  color: var(--nixos-c2);
 }
 
 .fastfetch-info {
@@ -95,20 +154,13 @@
   color: var(--pico-color);
 }
 
-.fastfetch-prompt {
-  font-family: var(--font-mono) !important;
-  font-size: 0.88rem;
-  margin-bottom: 1.2rem;
-  user-select: none;
-}
-
-.fastfetch-prompt-symbol {
-  color: var(--pico-primary);
-  font-weight: bold;
-}
-
-.fastfetch-prompt-cmd {
-  color: var(--pico-color);
+@media (max-width: 992px) {
+  .fastfetch-logo-large {
+    display: none;
+  }
+  .fastfetch-logo-small {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {

@@ -76,7 +76,7 @@ pub async fn get_fastfetch_data() -> Result<FastfetchData, ServerFnError> {
     let ram_pct = (((mem_total - mem_available) as f64 / mem_total as f64) * 100.0) as u8;
 
     let disk_pct = Command::new("df")
-        .args(&["-h", "/"])
+        .args(["-h", "/"])
         .output()
         .ok()
         .and_then(|output| {

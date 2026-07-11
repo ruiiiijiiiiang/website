@@ -50,6 +50,16 @@ fn main() {
         DOMAIN
     ));
 
+    xml.push_str(&format!(
+        "  <url>\n    <loc>{}/blog</loc>\n    <changefreq>weekly</changefreq>\n  </url>\n",
+        DOMAIN
+    ));
+
+    xml.push_str(&format!(
+        "  <url>\n    <loc>{}/projects</loc>\n    <changefreq>weekly</changefreq>\n  </url>\n",
+        DOMAIN
+    ));
+
     let matter = Matter::<YAML>::new();
     let paths = fs::read_dir(BLOG_DIR).unwrap();
 

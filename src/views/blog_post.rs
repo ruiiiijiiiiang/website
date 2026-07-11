@@ -32,8 +32,11 @@ impl Drop for ScrollListener {
 #[component]
 pub fn BlogPost(slug: ReadSignal<String>) -> Element {
     let blog_data = use_loader(move || get_blog_data(slug()))?();
+    #[allow(unused_mut)]
     let mut scroll_percentage = use_signal(|| 0.0);
+    #[allow(unused_mut)]
     let mut active_header = use_signal(String::new);
+    #[allow(unused_mut)]
     let mut _listener = use_signal(|| None::<ScrollListener>);
 
     use_effect(move || {
