@@ -176,3 +176,10 @@
     width: 100%;
   }
 }
+
+.fastfetch-loading {
+  font-family: var(--font-mono) !important;
+  color: var(--pico-muted-color);
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}

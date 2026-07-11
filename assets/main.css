@@ -67,7 +67,11 @@ body::before {
   background-size: 100% 4px;
   z-index: 9999;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.45;
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.15;
 }
 
 h1::before {
@@ -97,16 +101,21 @@ nav ul li::before {
 }
 
 nav ul li a.active-nav-link {
-  background-color: var(--pico-primary) !important;
-  color: var(--pico-primary-inverse) !important;
+  background-color: transparent !important;
+  color: var(--pico-primary) !important;
   font-weight: bold;
-  padding: 0.25rem 0.5rem !important;
+  padding: 0 0.25rem !important;
   text-decoration: none !important;
-  border-radius: 0 !important;
 }
 
 nav ul li a.active-nav-link::before {
-  content: none !important;
+  content: "[ " !important;
+  color: var(--pico-primary) !important;
+}
+
+nav ul li a.active-nav-link::after {
+  content: " ]" !important;
+  color: var(--pico-primary) !important;
 }
 
 nav ul li a.outline,

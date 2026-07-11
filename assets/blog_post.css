@@ -1,3 +1,41 @@
+:root {
+  --tui-bg-header: #1e222a;
+  --tui-bg-tab: #21252b;
+  --tui-bg-active: #2b303b;
+  --tui-bg-fill: #1b1d23;
+  --tui-border: #181a1f;
+  --tui-text-tab: #abb2bf;
+  --tui-text-active: #fff;
+  --tui-text-muted: #5c6370;
+  --tui-border-line-no: #343d46;
+  --tui-accent-bg: #98c379;
+  --tui-accent-text: #21252b;
+  --tui-sec-bg: #3e4452;
+  --tui-sec-c-bg: #282c34;
+  --tui-text-sec: #abb2bf;
+  --tui-bg-sec-y: #21252b;
+  --tui-code-bg: #2b303b;
+}
+
+[data-theme="light"] {
+  --tui-bg-header: #f0f0f1;
+  --tui-bg-tab: #e5e5e6;
+  --tui-bg-active: #ffffff;
+  --tui-bg-fill: #f0f0f1;
+  --tui-border: #d3d3d5;
+  --tui-text-tab: #a0a1a7;
+  --tui-text-active: #383a42;
+  --tui-text-muted: #a0a1a7;
+  --tui-border-line-no: #d3d3d5;
+  --tui-accent-bg: #50a14f;
+  --tui-accent-text: #ffffff;
+  --tui-sec-bg: #e5e5e6;
+  --tui-sec-c-bg: #f0f0f1;
+  --tui-text-sec: #383a42;
+  --tui-bg-sec-y: #f0f0f1;
+  --tui-code-bg: #2b303b;
+}
+
 div.blog {
   display: flex;
   gap: 1rem;
@@ -5,15 +43,6 @@ div.blog {
 
 div.blog-content {
   max-width: 80%;
-}
-
-@media (max-width: 1024px) {
-  aside.table-of-contents {
-    display: none;
-  }
-  div.blog-content {
-    max-width: 100%;
-  }
 }
 
 div.blog-content p,
@@ -29,6 +58,10 @@ div.blog-content pre,
 div.blog-content code,
 div.blog-content pre code {
   font-family: var(--font-mono) !important;
+}
+
+[data-theme="light"] div.blog-content pre {
+  filter: invert(0.92) hue-rotate(180deg) brightness(1.02) contrast(1.05);
 }
 
 h2 a[id],
@@ -67,6 +100,15 @@ aside.table-of-contents nav ul li a.active-toc-link::before {
   text-decoration: underline;
 }
 
+@media (max-width: 1024px) {
+  aside.table-of-contents {
+    display: none;
+  }
+  div.blog-content {
+    max-width: 100%;
+  }
+}
+
 button.back-to-top {
   display: flex;
   position: fixed;
@@ -95,6 +137,11 @@ div.blog-content pre:has(.tui-header) code {
   width: 100% !important;
 }
 
+[data-theme="light"] div.blog-content pre:has(.tui-header) .tui-header,
+[data-theme="light"] div.blog-content pre:has(.tui-header) .tui-footer {
+  filter: invert(1) hue-rotate(180deg) brightness(0.98) contrast(0.95) !important;
+}
+
 .tui-header,
 .tui-footer {
   position: absolute;
@@ -110,8 +157,8 @@ div.blog-content pre:has(.tui-header) code {
 .tui-header {
   top: 0;
   height: 2.2rem;
-  background-color: #1e222a;
-  border-bottom: 1px solid #181a1f;
+  background-color: var(--tui-bg-header);
+  border-bottom: 1px solid var(--tui-border);
   align-items: flex-end;
 }
 
@@ -120,34 +167,34 @@ div.blog-content pre:has(.tui-header) code {
   align-items: center;
   height: 1.8rem;
   padding: 0 10px;
-  background-color: #21252b;
-  color: #abb2bf;
+  background-color: var(--tui-bg-tab);
+  color: var(--tui-text-tab);
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
-  border-right: 1px solid #181a1f;
+  border-right: 1px solid var(--tui-border);
   font-size: 0.75rem;
 }
 
 .tui-tab.active {
-  background-color: #2b303b;
-  color: #fff;
+  background-color: var(--tui-bg-active);
+  color: var(--tui-text-active);
   font-weight: bold;
 }
 
 .tui-header-fill {
   flex-grow: 1;
   height: 2.2rem;
-  background-color: #1b1d23;
-  border-bottom: 1px solid #181a1f;
+  background-color: var(--tui-bg-fill);
+  border-bottom: 1px solid var(--tui-border);
 }
 
 .tui-line-no {
   display: inline-block;
   text-align: right;
-  color: #5c6370;
-  background-color: #2b303b;
+  color: var(--tui-text-muted);
+  background-color: var(--tui-code-bg);
   user-select: none;
-  border-right: 1px solid #343d46;
+  border-right: 1px solid var(--tui-border-line-no);
   margin-right: 10px;
   padding-right: 10px;
   position: sticky;
@@ -158,11 +205,11 @@ div.blog-content pre:has(.tui-header) code {
 .tui-footer {
   bottom: 0;
   height: 1.6rem;
-  background-color: #21252b;
-  color: #abb2bf;
+  background-color: var(--tui-bg-tab);
+  color: var(--tui-text-tab);
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #181a1f;
+  border-top: 1px solid var(--tui-border);
 }
 
 .tui-sec-a,
@@ -178,90 +225,29 @@ div.blog-content pre:has(.tui-header) code {
 }
 
 .tui-sec-a {
-  background-color: #98c379;
-  color: #21252b;
+  background-color: var(--tui-accent-bg);
+  color: var(--tui-accent-text);
   font-weight: bold;
 }
 
 .tui-sec-b {
-  background-color: #3e4452;
-  color: #abb2bf;
+  background-color: var(--tui-sec-bg);
+  color: var(--tui-text-sec);
 }
 
 .tui-sec-c {
   flex-grow: 1;
-  background-color: #282c34;
-  color: #5c6370;
+  background-color: var(--tui-sec-c-bg);
+  color: var(--tui-text-muted);
 }
 
 .tui-sec-y {
-  background-color: #21252b;
-  color: #5c6370;
+  background-color: var(--tui-bg-sec-y);
+  color: var(--tui-text-muted);
 }
 
 .tui-sec-z {
-  background-color: #3e4452;
-  color: #abb2bf;
+  background-color: var(--tui-sec-bg);
+  color: var(--tui-text-sec);
   font-weight: 500;
-}
-
-[data-theme="light"] div.blog-content pre {
-  filter: invert(0.92) hue-rotate(180deg) brightness(1.02) contrast(1.05);
-}
-
-[data-theme="light"] div.blog-content pre:has(.tui-header) .tui-header,
-[data-theme="light"] div.blog-content pre:has(.tui-header) .tui-footer {
-  filter: invert(1) hue-rotate(180deg) brightness(0.98) contrast(0.95) !important;
-}
-
-[data-theme="light"] .tui-header {
-  background-color: #f0f0f1 !important;
-  border-bottom: 1px solid #d3d3d5 !important;
-}
-
-[data-theme="light"] .tui-header-fill {
-  background-color: #f0f0f1 !important;
-  border-bottom: 1px solid #d3d3d5 !important;
-}
-
-[data-theme="light"] .tui-tab {
-  background-color: #e5e5e6 !important;
-  color: #a0a1a7 !important;
-  border-right: 1px solid #d3d3d5 !important;
-}
-
-[data-theme="light"] .tui-tab.active {
-  background-color: #ffffff !important;
-  color: #383a42 !important;
-}
-
-[data-theme="light"] .tui-footer {
-  background-color: #f0f0f1 !important;
-  color: #a0a1a7 !important;
-  border-top: 1px solid #d3d3d5 !important;
-}
-
-[data-theme="light"] .tui-sec-a {
-  background-color: #50a14f !important;
-  color: #ffffff !important;
-}
-
-[data-theme="light"] .tui-sec-b {
-  background-color: #e5e5e6 !important;
-  color: #383a42 !important;
-}
-
-[data-theme="light"] .tui-sec-c {
-  background-color: #f0f0f1 !important;
-  color: #a0a1a7 !important;
-}
-
-[data-theme="light"] .tui-sec-y {
-  background-color: #f0f0f1 !important;
-  color: #a0a1a7 !important;
-}
-
-[data-theme="light"] .tui-sec-z {
-  background-color: #e5e5e6 !important;
-  color: #383a42 !important;
 }
