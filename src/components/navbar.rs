@@ -2,6 +2,7 @@ use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::{FaGithub, FaLinkedin};
 
+use crate::DOMAIN;
 use crate::Route;
 use crate::components::ThemeToggle;
 
@@ -11,8 +12,10 @@ pub fn Navbar() -> Element {
     let is_home_active = matches!(current_route, Route::Home {});
     let is_blog_active = matches!(current_route, Route::Blog {} | Route::BlogPost { .. });
     let is_projects_active = matches!(current_route, Route::Projects {});
+    let canonical_url = format!("{}{}", DOMAIN, current_route);
 
     rsx! {
+        document::Link { rel: "canonical", href: canonical_url }
         nav {
             ul {
                 li {

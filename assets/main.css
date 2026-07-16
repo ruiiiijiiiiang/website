@@ -101,21 +101,12 @@ nav ul li::before {
 }
 
 nav ul li a.active-nav-link {
-  background-color: transparent !important;
-  color: var(--pico-primary) !important;
+  background-color: var(--pico-contrast-background) !important;
+  color: var(--pico-contrast-inverse) !important;
   font-weight: bold;
-  padding: 0 0.25rem !important;
+  padding: 0 0.5rem !important;
   text-decoration: none !important;
-}
-
-nav ul li a.active-nav-link::before {
-  content: "[ " !important;
-  color: var(--pico-primary) !important;
-}
-
-nav ul li a.active-nav-link::after {
-  content: " ]" !important;
-  color: var(--pico-primary) !important;
+  border-radius: 0 !important;
 }
 
 nav ul li a.outline,

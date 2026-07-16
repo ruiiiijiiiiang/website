@@ -27,6 +27,7 @@ enum Route {
 
 const FAVICON: Asset = asset!("../assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("../assets/main.css");
+pub const DOMAIN: &str = "https://public.ruijiang.me";
 
 fn main() {
     #[cfg(feature = "server")]
