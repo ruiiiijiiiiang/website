@@ -26,7 +26,7 @@
       package = lib.mkForce (
         { naersk, pkgs, ... }:
         let
-          rustToolchain = pkgs.rust-bin.stable.latest.default.override {
+          rustToolchain = pkgs.rust-bin.stable."1.96.1".default.override {
             targets = [ "wasm32-unknown-unknown" ];
           };
         in
@@ -50,15 +50,16 @@
             '';
 
             buildPhase = ''
-              dx bundle --release --web --ssg
+              export CARGO_TARGET_DIR=$(mktemp -d)
+              dx bundle --release --web --ssg --fullstack true @client --features web @server --features server
               cargo build --release --bin sitemap
             '';
 
             installPhase = ''
               mkdir -p $out/app
-              cp target/dx/website/release/web/server $out/app/server
-              cp -r target/dx/website/release/web/public $out/app/public
-              cp target/release/sitemap $out/app/sitemap
+              cp $CARGO_TARGET_DIR/dx/website/release/web/server $out/app/server
+              cp -r $CARGO_TARGET_DIR/dx/website/release/web/public $out/app/public
+              cp $CARGO_TARGET_DIR/release/sitemap $out/app/sitemap
             '';
           };
         }
