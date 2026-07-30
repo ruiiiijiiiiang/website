@@ -25,11 +25,6 @@
         };
       package = lib.mkForce (
         { naersk, pkgs, ... }:
-        let
-          rustToolchain = pkgs.rust-bin.stable."1.96.1".default.override {
-            targets = [ "wasm32-unknown-unknown" ];
-          };
-        in
         naersk.buildPackage {
           src = ./.;
           nativeBuildInputs = with pkgs; [
@@ -39,7 +34,7 @@
             lld
             openssl
             pkg-config
-            rustToolchain
+            rustc
             wasm-bindgen-cli_0_2_114
           ];
           buildInputs = [ pkgs.openssl ];
@@ -50,16 +45,17 @@
             '';
 
             buildPhase = ''
-              export CARGO_TARGET_DIR=$(mktemp -d)
-              dx bundle --release --web --ssg --fullstack true @client --features web @server --features server
+              export CARGO_TARGET_DIR=$PWD/target
+              cargo clean
+              dx bundle --release --web --ssg --fullstack true --force-sequential true
               cargo build --release --bin sitemap
             '';
 
             installPhase = ''
               mkdir -p $out/app
-              cp $CARGO_TARGET_DIR/dx/website/release/web/server $out/app/server
-              cp -r $CARGO_TARGET_DIR/dx/website/release/web/public $out/app/public
-              cp $CARGO_TARGET_DIR/release/sitemap $out/app/sitemap
+              cp target/dx/website/release/web/server $out/app/server
+              cp -r target/dx/website/release/web/public $out/app/public
+              cp target/release/sitemap $out/app/sitemap
             '';
           };
         }

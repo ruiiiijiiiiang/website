@@ -11,6 +11,22 @@ static POST_CACHE: OnceCell<Vec<(String, BlogMeta)>> = OnceCell::const_new();
 
 #[server]
 pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
+    #[cfg(feature = "server")]
+    {
+        return get_blog_data_impl(slug).await;
+    }
+
+    #[cfg(not(feature = "server"))]
+    {
+        let _ = slug;
+        Err(ServerFnError::new(
+            "get_blog_data is only available on the server",
+        ))
+    }
+}
+
+#[cfg(feature = "server")]
+async fn get_blog_data_impl(slug: String) -> Result<BlogData, ServerFnError> {
     use comrak::{Options, markdown_to_html_with_plugins, options::Plugins};
     use gray_matter::{Matter, engine::YAML};
     use scraper::{Html, Selector};
@@ -109,6 +125,21 @@ pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
 
 #[server]
 pub async fn get_blog_posts() -> Result<Vec<BlogLink>, ServerFnError> {
+    #[cfg(feature = "server")]
+    {
+        return get_blog_posts_impl().await;
+    }
+
+    #[cfg(not(feature = "server"))]
+    {
+        Err(ServerFnError::new(
+            "get_blog_posts is only available on the server",
+        ))
+    }
+}
+
+#[cfg(feature = "server")]
+async fn get_blog_posts_impl() -> Result<Vec<BlogLink>, ServerFnError> {
     let posts = get_cached_posts().await?;
     Ok(posts
         .iter()
