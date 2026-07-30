@@ -101,10 +101,7 @@ pub async fn get_fastfetch_data() -> Result<FastfetchData, ServerFnError> {
         })
         .unwrap_or_else(|| "NixOS".to_string());
 
-    let kernel_release = fs::read_to_string("/proc/sys/kernel/osrelease")
-        .map(|s| s.trim().to_string())
-        .unwrap_or_else(|_| "Unknown".to_string());
-    let kernel = format!("Linux {}", kernel_release);
+    let shell = std::env::var("SHELL").unwrap_or_else(|_| "Unknown".to_string());
 
     let os_age_days = fs::metadata("/etc/NIXOS")
         .or_else(|_| fs::metadata("/etc/hostname"))
@@ -139,7 +136,7 @@ pub async fn get_fastfetch_data() -> Result<FastfetchData, ServerFnError> {
         disk_pct,
         uptime,
         os_name,
-        kernel,
+        shell,
         os_age,
         packages,
         fetched_at,

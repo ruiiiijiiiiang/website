@@ -6,7 +6,7 @@ edition = "2024"
 
 [dependencies]
 chrono = { version = "0.4", features = ["serde"] }
-comrak = { version = "0.53", features = ["syntect"], optional = true }
+comrak = { version = "0.54", features = ["syntect"], optional = true }
 dioxus = { version = "0.7", features = ["router", "fullstack"] }
 dioxus-free-icons = { version = "0.10", features = [
   "font-awesome-brands",

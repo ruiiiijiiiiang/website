@@ -12,6 +12,17 @@
     flakelight-rust ./. {
       fileset = ./.;
       withOverlays = [ (import rust-overlay) ];
+      devShell.env =
+        pkgs:
+        let
+          inherit (pkgs) openssl libclang;
+        in
+        {
+          OPENSSL_DIR = "${openssl.dev}";
+          OPENSSL_LIB_DIR = "${openssl.out}/lib";
+          OPENSSL_INCLUDE_DIR = "${openssl.dev}/include";
+          LIBCLANG_PATH = "${libclang.lib}/lib";
+        };
       package = lib.mkForce (
         { naersk, pkgs, ... }:
         let
@@ -21,15 +32,15 @@
         in
         naersk.buildPackage {
           src = ./.;
-          nativeBuildInputs = [
-            pkgs.dioxus-cli
+          nativeBuildInputs = with pkgs; [
+            clang
+            binaryen
+            dioxus-cli
+            lld
+            openssl
+            pkg-config
             rustToolchain
-            pkgs.pkg-config
-            pkgs.openssl
-            pkgs.lld
-            pkgs.binaryen
-            pkgs.clang
-            pkgs.wasm-bindgen-cli_0_2_114
+            wasm-bindgen-cli_0_2_114
           ];
           buildInputs = [ pkgs.openssl ];
 

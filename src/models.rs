@@ -52,7 +52,7 @@ pub struct FastfetchData {
     pub disk_pct: u8,
     pub uptime: String,
     pub os_name: String,
-    pub kernel: String,
+    pub shell: String,
     pub os_age: String,
     pub packages: String,
     pub fetched_at: String,

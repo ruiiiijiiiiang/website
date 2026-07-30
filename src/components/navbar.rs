@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::{FaGithub, FaLinkedin};
+use dioxus_free_icons::icons::fa_solid_icons::{FaFileLines, FaHouse, FaLaptopCode};
 
 use crate::DOMAIN;
 use crate::Route;
@@ -22,6 +23,7 @@ pub fn Navbar() -> Element {
                     Link {
                         to: Route::Home {},
                         class: if is_home_active { "active-nav-link" } else { "" },
+                        Icon { icon: FaHouse }
                         "Home"
                     }
                 }
@@ -29,6 +31,7 @@ pub fn Navbar() -> Element {
                     Link {
                         to: Route::Blog {},
                         class: if is_blog_active { "active-nav-link" } else { "" },
+                        Icon { icon: FaFileLines }
                         "Blog"
                     }
                 }
@@ -36,6 +39,7 @@ pub fn Navbar() -> Element {
                     Link {
                         to: Route::Projects {},
                         class: if is_projects_active { "active-nav-link" } else { "" },
+                        Icon { icon: FaLaptopCode }
                         "Projects"
                     }
                 }

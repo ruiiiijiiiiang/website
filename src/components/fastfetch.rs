@@ -193,14 +193,14 @@ pub fn FastfetchCard() -> Element {
                                 div { class: "fastfetch-info-grid",
                                     div { class: "fastfetch-key", "OS" }
                                     div { class: "fastfetch-val", "{data.os_name}" }
-                                    div { class: "fastfetch-key", "Kernel" }
-                                    div { class: "fastfetch-val", "{data.kernel}" }
+                                    div { class: "fastfetch-key", "Age" }
+                                    div { class: "fastfetch-val", "{data.os_age}" }
                                     div { class: "fastfetch-key", "Uptime" }
                                     div { class: "fastfetch-val", "{data.uptime}" }
                                     div { class: "fastfetch-key", "Packages" }
                                     div { class: "fastfetch-val", "{data.packages} (nix)" }
-                                    div { class: "fastfetch-key", "Age" }
-                                    div { class: "fastfetch-val", "{data.os_age}" }
+                                    div { class: "fastfetch-key", "Shell" }
+                                    div { class: "fastfetch-val", "{data.shell}" }
                                     div { class: "fastfetch-key", "CPU" }
                                     div { class: "fastfetch-val", "{data.cpu_model}" }
                                     div { class: "fastfetch-key", "CPU Load" }
