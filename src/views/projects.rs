@@ -32,6 +32,13 @@ const PROJECTS: &[Project] = &[
         ),
     },
     Project {
+        name: "nixos-cis-validator",
+        language: "nix",
+        description: "Static CIS-aligned configuration validator for NixOS. Evaluates merged NixOS configurations against versioned benchmarks for common Linux distributions, including Ubuntu, Debian, and RHEL-family systems. Produces build-time JSON reports with configurable enforcement modes.",
+        link: "https://github.com/ruiiiijiiiiang/nixos-cis-validator",
+        screenshot: None,
+    },
+    Project {
         name: "nixos-vm-provisioner",
         language: "nix",
         description: "NixOS modules for automated, host-managed VM provisioning. Handles disk layout creation and first-boot installation via disko-install. Boots guests under libvirt/NixVirt. Installs standard NixOS systems that manage their own kernels and upgrades.",
