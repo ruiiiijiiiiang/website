@@ -125,7 +125,7 @@ button.back-to-top {
 
 div.blog-content pre:has(.tui-header) {
   position: relative !important;
-  padding-top: 2.2rem !important;
+  padding-top: 2rem !important;
   padding-bottom: 2rem !important;
   border: 1px solid var(--pico-muted-border-color);
   overflow: hidden;
@@ -135,6 +135,7 @@ div.blog-content pre:has(.tui-header) code {
   display: block !important;
   overflow-x: auto !important;
   width: 100% !important;
+  padding: 0 !important;
 }
 
 [data-theme="light"] div.blog-content pre:has(.tui-header) .tui-header,
@@ -156,7 +157,7 @@ div.blog-content pre:has(.tui-header) code {
 
 .tui-header {
   top: 0;
-  height: 2.2rem;
+  height: 2rem;
   background-color: var(--tui-bg-header);
   border-bottom: 1px solid var(--tui-border);
   align-items: flex-end;
@@ -183,7 +184,7 @@ div.blog-content pre:has(.tui-header) code {
 
 .tui-header-fill {
   flex-grow: 1;
-  height: 2.2rem;
+  height: 2rem;
   background-color: var(--tui-bg-fill);
   border-bottom: 1px solid var(--tui-border);
 }
