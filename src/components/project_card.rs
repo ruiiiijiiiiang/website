@@ -55,7 +55,7 @@ pub fn ProjectCard(project: Project) -> Element {
                 }
                 footer {
                     class: "cli-footer",
-                    span { class: "prompt-symbol", "$ " }
+                    span { class: "prompt-symbol", "❯ " }
                     a {
                         href: project.link,
                         target: "_blank",

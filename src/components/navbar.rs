@@ -24,7 +24,7 @@ pub fn Navbar() -> Element {
                         to: Route::Home {},
                         class: if is_home_active { "active-nav-link" } else { "" },
                         Icon { icon: FaHouse }
-                        "Home"
+                        " Home"
                     }
                 }
                 li {
@@ -32,7 +32,7 @@ pub fn Navbar() -> Element {
                         to: Route::Blog {},
                         class: if is_blog_active { "active-nav-link" } else { "" },
                         Icon { icon: FaFileLines }
-                        "Blog"
+                        " Blog"
                     }
                 }
                 li {
@@ -40,7 +40,7 @@ pub fn Navbar() -> Element {
                         to: Route::Projects {},
                         class: if is_projects_active { "active-nav-link" } else { "" },
                         Icon { icon: FaLaptopCode }
-                        "Projects"
+                        " Projects"
                     }
                 }
             }

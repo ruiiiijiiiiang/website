@@ -1,7 +1,10 @@
 use dioxus::prelude::*;
 
-use crate::models::{BlogData, BlogLink, BlogMeta, HeaderLink};
+use crate::models::{BlogData, BlogLink};
+#[cfg(feature = "server")]
+use crate::models::{BlogMeta, HeaderLink};
 
+#[cfg(feature = "server")]
 const BLOG_DIR: &str = "./blog";
 
 #[cfg(feature = "server")]
@@ -13,7 +16,7 @@ static POST_CACHE: OnceCell<Vec<(String, BlogMeta)>> = OnceCell::const_new();
 pub async fn get_blog_data(slug: String) -> Result<BlogData, ServerFnError> {
     #[cfg(feature = "server")]
     {
-        return get_blog_data_impl(slug).await;
+        get_blog_data_impl(slug).await
     }
 
     #[cfg(not(feature = "server"))]
@@ -100,17 +103,13 @@ async fn get_blog_data_impl(slug: String) -> Result<BlogData, ServerFnError> {
 
     let document = Html::parse_fragment(&content);
     let header_selector = Selector::parse("h2, h3").unwrap();
-    let anchor_selector = Selector::parse("a[id]").unwrap();
 
     let headers: Vec<HeaderLink> = document
         .select(&header_selector)
         .filter_map(|element| {
-            if let Some(anchor) = element.select(&anchor_selector).next() {
-                let id = anchor.value().attr("id").unwrap().to_string();
-                let title = element.text().collect::<Vec<_>>().join("");
-                return Some(HeaderLink { id, title });
-            }
-            None
+            let id = element.value().attr("id")?.to_string();
+            let title = element.text().collect::<Vec<_>>().join("");
+            Some(HeaderLink { id, title })
         })
         .collect();
 
@@ -127,7 +126,7 @@ async fn get_blog_data_impl(slug: String) -> Result<BlogData, ServerFnError> {
 pub async fn get_blog_posts() -> Result<Vec<BlogLink>, ServerFnError> {
     #[cfg(feature = "server")]
     {
-        return get_blog_posts_impl().await;
+        get_blog_posts_impl().await
     }
 
     #[cfg(not(feature = "server"))]
@@ -181,4 +180,23 @@ async fn get_cached_posts() -> Result<&'static Vec<(String, BlogMeta)>, ServerFn
             Ok(posts)
         })
         .await
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn test_get_blog_data_headers() {
+        let res =
+            get_blog_data("declarative-virtualization-with-nixos-hypervisor".to_string()).await;
+        assert!(res.is_ok());
+        let blog_data = res.unwrap();
+        assert!(
+            !blog_data.headers.is_empty(),
+            "Headers list should not be empty"
+        );
+        assert_eq!(blog_data.headers[0].id, "nixos-virtualization-options");
+        assert_eq!(blog_data.headers[0].title, "NixOS virtualization options");
+    }
 }
