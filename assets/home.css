@@ -179,3 +179,10 @@
   margin-top: 2rem;
   font-size: 0.9rem;
 }
+
+.live-system-notice {
+  color: var(--pico-muted-color);
+  font-family: var(--font-mono) !important;
+  font-size: 0.78rem;
+  margin: 1rem 0 0;
+}

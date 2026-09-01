@@ -39,9 +39,16 @@ pub struct HeaderLink {
 pub struct Project {
     pub name: &'static str,
     pub language: &'static str,
-    pub description: &'static str,
+    pub category: &'static str,
+    pub tagline: &'static str,
+    pub problem: &'static str,
+    pub solution: &'static str,
+    pub highlights: &'static [&'static str],
+    pub stack: &'static [&'static str],
     pub link: &'static str,
     pub screenshot: Option<&'static str>,
+    pub screenshot_alt: Option<&'static str>,
+    pub featured: bool,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]

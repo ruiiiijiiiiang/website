@@ -3,10 +3,12 @@
 ## Project Structure
 
 Personal website — full-stack Dioxus 0.7 app (Rust, edition 2024). Two feature sets:
+
 - `web` (default) — WASM client
 - `server` — SSR/SSG with Markdown blog rendering
 
 Two binaries:
+
 - `website` — main Dioxus app (entry: `src/main.rs`)
 - `sitemap` — standalone sitemap/robots.txt generator (`src/bin/sitemap.rs`)
 
@@ -22,7 +24,7 @@ Blog posts live in `blog/*.md` (`.gitignore`d; mounted at runtime in production)
   - `src/views/projects.rs` holds static project metadata.
 - **Blog Engine**: Server functions (`src/backend.rs`) read `blog/*.md`, parse frontmatter via `gray_matter`, and render HTML via `comrak` with custom `syntect` syntax highlighting. It exposes `#[server]` functions for blog loading (`get_blog_data`) and latest post lookup (`get_latest_post_slug`). Heading links (`h2`, `h3`) are extracted for the table of contents. Blog metadata types are located in `src/models.rs`.
 - **Syntax Highlighting**: Powered by a custom syntax highlighter in `src/utils/highlighter.rs` which plugs into `comrak` and injects Nix syntax from `nix-syntax.yml`.
-- **Styling**: Driven by Pico CSS v2 (loaded via CDN). Custom overrides and stylesheets live in `assets/main.css`, `assets/blog.css`, `assets/blog_post.css`, `assets/home.css`, and `assets/theme_toggle.css`.
+- **Styling**: Driven by Pico CSS v2 (loaded via CDN). Custom overrides and stylesheets live in `assets/main.css`, `assets/blog.css`, `assets/blog_post.css`, `assets/home.css`, `assets/projects.css`, and `assets/theme_toggle.css`.
 - **Theme Toggle**: Target-gated to WASM only (`#[cfg(target_arch = "wasm32")]`) using `web-sys` to toggle the `data-theme` attribute on the `<html>` tag.
 - **Sitemap Generator**: Standalone binary `src/bin/sitemap.rs` reads blog frontmatter and writes `public/sitemap.xml` and `public/robots.txt`. The startup script `start.sh` runs `/app/sitemap` before launching `/app/website`.
 - **Projects**: Static data in `src/views/projects.rs`.
@@ -38,18 +40,18 @@ Blog posts live in `blog/*.md` (`.gitignore`d; mounted at runtime in production)
 
 ## Commands
 
-| Purpose | Command |
-|---|---|
-| Dev server (web only) | `dx serve` |
-| Dev server (fullstack) | `dx serve --fullstack` |
-| Run test suite | `cargo test --quiet` |
-| Run single test | `cargo test <test_name>` |
-| Production build + SSG | `dx bundle --release --web --ssg` |
-| Sitemap binary | `cargo build --release --bin sitemap` |
-| Nix build | `nix build` |
-| Docker build | `docker build .` |
-| Check formatting | `cargo fmt -- --check` |
-| Lint code | `cargo clippy --all-targets --all-features` |
+| Purpose                | Command                                     |
+| ---------------------- | ------------------------------------------- |
+| Dev server (web only)  | `dx serve`                                  |
+| Dev server (fullstack) | `dx serve --fullstack`                      |
+| Run test suite         | `cargo test --quiet`                        |
+| Run single test        | `cargo test <test_name>`                    |
+| Production build + SSG | `dx bundle --release --web --ssg`           |
+| Sitemap binary         | `cargo build --release --bin sitemap`       |
+| Nix build              | `nix build`                                 |
+| Docker build           | `docker build .`                            |
+| Check formatting       | `cargo fmt -- --check`                      |
+| Lint code              | `cargo clippy --all-targets --all-features` |
 
 ## Guardrails & Best Practices
 
@@ -64,6 +66,7 @@ Blog posts live in `blog/*.md` (`.gitignore`d; mounted at runtime in production)
 ## CI / Deploy
 
 Both workflows are `workflow_dispatch`-only (manual trigger):
+
 - `.github/workflows/build.yml` — pushes to `ghcr.io`
 - `.forgejo/workflows/build.yml` — pushes to `git.ruijiang.me`
 
