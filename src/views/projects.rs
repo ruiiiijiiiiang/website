@@ -144,12 +144,11 @@ const PROJECTS: &[Project] = &[
         language: "rust",
         category: "Platform Delivery",
         tagline: "A full-stack personal site with a 0 JavaScript / TypeScript frontend.",
-        problem: "A personal site should be fast, maintainable, and deployable with the same reproducibility expectations as the rest of the platform.",
+        problem: "A personal site should be unique, maintainable, and deployable with the same reproducibility expectations as the rest of the platform.",
         solution: "A Dioxus application with WASM, server-side rendering, static generation, Markdown publishing, and a reproducible Nix build.",
         highlights: &[
             "0 JavaScript / TypeScript frontend: Rust compiles directly to WebAssembly",
             "Full-stack rendering with SSR fallback and static generation",
-            "Markdown publishing pipeline with custom Nix syntax highlighting",
             "Reproducible Nix build and homelab deployment",
         ],
         stack: &["Dioxus", "WASM", "Nix", "SSG"],
