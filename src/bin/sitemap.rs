@@ -36,7 +36,7 @@ struct BlogMeta {
 }
 
 const BLOG_DIR: &str = "./blog";
-const DOMAIN: &str = "https://public.ruijiang.me";
+const DOMAIN: &str = "https://www.ruijiang.me";
 const PUBLIC_DIR: &str = "./public";
 
 fn main() {

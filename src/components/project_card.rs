@@ -1,4 +1,6 @@
 use dioxus::prelude::*;
+use dioxus_free_icons::Icon;
+use dioxus_free_icons::icons::fa_brands_icons::FaGithub;
 
 use crate::models::Project;
 
@@ -9,25 +11,22 @@ pub fn ProjectCard(project: Project) -> Element {
         "nix" => "nix",
         _ => "other",
     };
-    let has_tui_preview = project.screenshot.is_some() && !project.featured;
+    let has_tui_preview = project.screenshot.is_some();
     let screenshot_alt = project.screenshot_alt.unwrap_or("Project preview");
 
     rsx! {
         div {
-            class: if project.featured { "project-card-container project-card-container-featured" } else { "project-card-container" },
+            class: "project-card-container",
             article {
-                class: if project.featured { "project-card project-card-featured" } else { "project-card" },
+                class: "project-card",
                 header {
                     class: "project-card-header",
                     div { class: "project-card-context",
                         span { class: "project-category", "{project.category}" }
-                        span { class: "project-language",
-                            span { class: "repo-language-color {lang_class}" }
-                            "{project.language}"
-                        }
                     }
-                    if project.featured {
-                        span { class: "project-featured-label", "Featured" }
+                    span { class: "project-language",
+                        span { class: "repo-language-color {lang_class}" }
+                        "{project.language}"
                     }
                 }
                 h2 { class: "project-name", "{project.name}" }
@@ -77,13 +76,16 @@ pub fn ProjectCard(project: Project) -> Element {
                 footer {
                     class: "cli-footer",
                     span { class: "prompt-symbol", "❯ " }
+                    Icon {
+                        icon: FaGithub
+                    }
                     a {
                         href: project.link,
                         target: "_blank",
                         class: "git-clone-link",
                         rel: "noreferrer",
                         "aria-label": "Open the {project.name} source repository",
-                        "view source ↗"
+                        " view source ↗"
                     }
                 }
             }

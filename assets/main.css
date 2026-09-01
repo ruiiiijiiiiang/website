@@ -37,6 +37,12 @@ code {
   border-radius: 0 !important;
 }
 
+@media (min-width: 1280px) {
+  main.container {
+    max-width: 1024px;
+  }
+}
+
 [data-tooltip] {
   --pico-border-radius: 0 !important;
 }
@@ -81,19 +87,9 @@ h1::before {
 }
 
 ul li::before {
-  content: "→ ";
+  content: "=> ";
   color: var(--pico-primary);
-  margin-right: 0.5rem;
-}
-
-.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 6px;
-  background-color: var(--pico-primary);
-  z-index: 9999;
-  transition: width 0.1s ease-out;
+  margin-right: 0.25rem;
 }
 
 nav ul li::before {

@@ -18,15 +18,17 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &[
             "NixOS",
-            "Nix Flakes",
             "libvirt/NixVirt",
-            "WireGuard",
-            "VLANs",
+            "Podman",
+            "nftables",
             "Kea DHCP",
             "Pi-hole/Unbound",
             "Keepalived",
+            "WireGuard",
             "Cloudflare Tunnels",
-            "Prometheus/Loki",
+            "Nginx",
+            "Restic",
+            "Prometheus/Grafana/Loki",
             "Wazuh",
         ],
         link: "https://github.com/ruiiiijiiiiang/nixos-config",
@@ -36,7 +38,6 @@ const PROJECTS: &[Project] = &[
         screenshot_alt: Some(
             "Network and service topology for the declarative NixOS homelab platform",
         ),
-        featured: true,
     },
     Project {
         name: "wazuh-flake",
@@ -54,7 +55,6 @@ const PROJECTS: &[Project] = &[
         link: "https://github.com/ruiiiijiiiiang/wazuh-flake",
         screenshot: None,
         screenshot_alt: None,
-        featured: true,
     },
     Project {
         name: "nixos-cis-validator",
@@ -68,16 +68,10 @@ const PROJECTS: &[Project] = &[
             "Report, warn, and error modes to fit progressive enforcement",
             "Build-time JSON reports make results usable in automation",
         ],
-        stack: &[
-            "NixOS",
-            "CIS Benchmarks",
-            "Shift-left Security",
-            "Policy as Code",
-        ],
+        stack: &["NixOS", "CIS Benchmarks", "Policy as Code"],
         link: "https://github.com/ruiiiijiiiiang/nixos-cis-validator",
         screenshot: None,
         screenshot_alt: None,
-        featured: true,
     },
     Project {
         name: "nixos-vm-provisioner",
@@ -91,11 +85,10 @@ const PROJECTS: &[Project] = &[
             "Supports file, LVM, and raw-block storage backends",
             "Separates host provisioning concerns from guest lifecycle ownership",
         ],
-        stack: &["NixOS", "NixVirt", "libvirt", "Disko", "systemd-boot"],
+        stack: &["NixOS", "libvirt/NixVirt", "Disko", "systemd-boot"],
         link: "https://github.com/ruiiiijiiiiang/nixos-vm-provisioner",
         screenshot: None,
         screenshot_alt: None,
-        featured: true,
     },
     Project {
         name: "sdctl",
@@ -109,7 +102,7 @@ const PROJECTS: &[Project] = &[
             "Combines unit control, logs, configuration inspection, and drop-in overrides",
             "Built for keyboard-first operational workflows",
         ],
-        stack: &["Ratatui", "Tokio", "D-Bus", "Polkit"],
+        stack: &["Ratatui", "systemd", "Tokio", "D-Bus", "Polkit"],
         link: "https://github.com/ruiiiijiiiiang/sdctl",
         screenshot: Some(
             "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
@@ -117,7 +110,6 @@ const PROJECTS: &[Project] = &[
         screenshot_alt: Some(
             "sdctl terminal interface showing systemd unit status and service controls",
         ),
-        featured: false,
     },
     Project {
         name: "rs-top",
@@ -137,7 +129,6 @@ const PROJECTS: &[Project] = &[
             "https://raw.githubusercontent.com/ruiiiijiiiiang/rs-top/refs/heads/screenshot/screenshot.png",
         ),
         screenshot_alt: Some("rs-top terminal dashboard monitoring remote Linux hosts over SSH"),
-        featured: false,
     },
     Project {
         name: "website",
@@ -147,7 +138,7 @@ const PROJECTS: &[Project] = &[
         problem: "A personal site should be unique, maintainable, and deployable with the same reproducibility expectations as the rest of the platform.",
         solution: "A Dioxus application with WASM, server-side rendering, static generation, Markdown publishing, and a reproducible Nix build.",
         highlights: &[
-            "0 JavaScript / TypeScript frontend: Rust compiles directly to WebAssembly",
+            "0 JavaScript / TypeScript frontend; Rust compiles directly to WebAssembly",
             "Full-stack rendering with SSR fallback and static generation",
             "Reproducible Nix build and homelab deployment",
         ],
@@ -155,7 +146,6 @@ const PROJECTS: &[Project] = &[
         link: "https://github.com/ruiiiijiiiiang/website",
         screenshot: None,
         screenshot_alt: None,
-        featured: false,
     },
     Project {
         name: "lazynmap",
@@ -175,7 +165,6 @@ const PROJECTS: &[Project] = &[
             "https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/master/assets/lazynmap.png",
         ),
         screenshot_alt: Some("lazynmap terminal interface building an nmap scan command"),
-        featured: false,
     },
     Project {
         name: "file_clipper",
@@ -197,7 +186,6 @@ const PROJECTS: &[Project] = &[
         screenshot_alt: Some(
             "file_clipper terminal interface showing clipboard history and file selection",
         ),
-        featured: false,
     },
 ];
 

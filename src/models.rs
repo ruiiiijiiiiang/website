@@ -48,7 +48,6 @@ pub struct Project {
     pub link: &'static str,
     pub screenshot: Option<&'static str>,
     pub screenshot_alt: Option<&'static str>,
-    pub featured: bool,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]

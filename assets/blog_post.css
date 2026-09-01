@@ -36,6 +36,16 @@
   --tui-code-bg: #2b303b;
 }
 
+div.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--pico-primary);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
 div.blog {
   display: flex;
   gap: 1rem;
