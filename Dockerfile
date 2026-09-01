@@ -41,9 +41,8 @@ ENV RUST_LOG=info
 EXPOSE 6969
 
 COPY start.sh /app/start.sh
-RUN chmod +x /app/start.sh
-
-RUN chown -R 1000:1000 /app/public
+RUN chmod +x /app/start.sh && \
+  chown -R 1000:1000 /app/public
 USER 1000
 
 CMD ["/app/start.sh"]

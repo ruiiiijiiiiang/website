@@ -46,6 +46,13 @@ const PROJECTS: &[Project] = &[
         screenshot: None,
     },
     Project {
+        name: "wazuh-flake",
+        language: "nix",
+        description: "Reusable native NixOS modules for running Wazuh without containers. Provides agent, manager, indexer, dashboard, and Filebeat services with automatic certificate and internal-credential provisioning.",
+        link: "https://github.com/ruiiiijiiiiang/wazuh-flake",
+        screenshot: None,
+    },
+    Project {
         name: "lazynmap",
         language: "rust",
         description: "Interactive nmap assistant TUI. Simplifies command creation with live previews, option toggles, and direct execution. Eliminates the need to memorize cryptic network scanning flags.",

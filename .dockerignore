@@ -4,6 +4,8 @@ Dockerfile
 .gitignore
 .github/
 .forgejo/
+.direnv/
+.codebase-memory/
 **/target
 **/dist/
 README.md
