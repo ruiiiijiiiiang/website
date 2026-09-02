@@ -19,7 +19,7 @@ COPY --from=planner /app/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 
 COPY . .
-RUN dx bundle --release --web --ssg --fullstack true --features server && \
+RUN dx bundle --release --web --ssg && \
   cargo build --release --bin sitemap
 
 FROM debian:bookworm-slim
