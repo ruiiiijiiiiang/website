@@ -51,7 +51,7 @@ pub fn ProjectCard(project: Project) -> Element {
                                     loading: "lazy",
                                 }
                             figcaption {
-                                if has_tui_preview { "Terminal UI preview" } else { "Architecture preview" }
+                                if project.category == "Platform Engineering" { "Architecture preview" } else { "Terminal UI preview" }
                             }
                         }
                     }
@@ -76,15 +76,15 @@ pub fn ProjectCard(project: Project) -> Element {
                 footer {
                     class: "cli-footer",
                     span { class: "prompt-symbol", "❯ " }
-                    Icon {
-                        icon: FaGithub
-                    }
                     a {
                         href: project.link,
                         target: "_blank",
                         class: "git-clone-link",
                         rel: "noreferrer",
                         "aria-label": "Open the {project.name} source repository",
+                        Icon {
+                            icon: FaGithub
+                        }
                         " view source ↗"
                     }
                 }

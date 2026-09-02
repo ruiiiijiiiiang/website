@@ -47,7 +47,7 @@
             buildPhase = ''
               export CARGO_TARGET_DIR=$PWD/target
               cargo clean
-              dx bundle --release --web --ssg --fullstack true --force-sequential true
+              dx bundle --release --web --ssg --fullstack true --features server --force-sequential true
               cargo build --release --bin sitemap
             '';
 

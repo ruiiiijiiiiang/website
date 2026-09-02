@@ -82,13 +82,11 @@ body::before {
 
 h1::before {
   content: "$ ";
-  color: var(--pico-primary);
   font-weight: bold;
 }
 
 ul li::before {
   content: "=> ";
-  color: var(--pico-primary);
   margin-right: 0.25rem;
 }
 

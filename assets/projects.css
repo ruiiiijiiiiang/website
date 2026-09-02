@@ -3,8 +3,7 @@
 }
 
 article.project-card {
-  border: 1px solid var(--pico-muted-border-color) !important;
-  background-color: var(--pico-card-background-color) !important;
+  border: 2px solid var(--pico-primary) !important;
   border-radius: 0 !important;
   padding: 1rem !important;
   margin-top: 0 !important;
@@ -13,8 +12,7 @@ article.project-card {
 }
 
 article.project-card-featured {
-  border-color: var(--pico-primary) !important;
-  border-width: 2px !important;
+  border: 2px solid var(--pico-primary) !important;
 }
 
 .project-card-header {
@@ -37,7 +35,7 @@ article.project-card-featured {
 }
 
 .project-language {
-  border: 2px solid var(--pico-primary);
+  border: 1px solid var(--pico-primary);
   color: var(--pico-muted-color);
   gap: 0.35rem;
   padding: 0.15rem 0.4rem;
@@ -153,7 +151,6 @@ span.repo-language-color {
 .project-preview img {
   display: block;
   width: 100%;
-  border: 1px dashed var(--pico-muted-border-color);
 }
 
 .project-preview-tui {
@@ -161,7 +158,6 @@ span.repo-language-color {
 }
 
 .project-preview-tui img {
-  background: var(--pico-background-color);
   max-height: 22rem;
   object-fit: contain;
   object-position: top;
