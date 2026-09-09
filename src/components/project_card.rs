@@ -64,7 +64,7 @@ pub fn ProjectCard(project: Project) -> Element {
                             }
                         }
                         div { class: "project-stack",
-                            span { class: "cli-label", "[TECH]       " }
+                            span { class: "cli-label", "[KEYWORDS]   " }
                             div { class: "project-stack-items",
                                 for technology in project.stack {
                                     span { class: "project-stack-item", "{technology}" }
