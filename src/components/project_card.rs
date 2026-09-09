@@ -35,40 +35,34 @@ pub fn ProjectCard(project: Project) -> Element {
                     class: "project-card-body",
                     div {
                         class: "cli-output",
-                        p {
-                            span { class: "cli-label", "[PROBLEM]    " }
-                            span { class: "cli-value", "{project.problem}" }
-                        }
-                        p {
-                            span { class: "cli-label", "[BUILT]      " }
-                            span { class: "cli-value", "{project.solution}" }
-                        }
-                        if let Some(screenshot_url) = project.screenshot {
-                            figure { class: if has_tui_preview { "project-preview project-preview-tui" } else { "project-preview" },
-                                img {
-                                    src: screenshot_url,
-                                    alt: "{screenshot_alt}",
-                                    loading: "lazy",
-                                }
-                            figcaption {
-                                if project.category == "Platform Engineering" { "Architecture preview" } else { "Terminal UI preview" }
-                            }
-                        }
-                    }
-                        div { class: "project-signals",
-                            span { class: "cli-label", "[HIGHLIGHTS] " }
+                        span { class: "cli-label", "[PROBLEM]" }
+                        span { class: "cli-value", "{project.problem}" }
+                        span { class: "cli-label", "[BUILT]" }
+                        span { class: "cli-value", "{project.solution}" }
+                        span { class: "cli-label", "[HIGHLIGHTS]" }
+                        div { class: "cli-value project-signals",
                             ul {
                                 for highlight in project.highlights {
                                     li { "{highlight}" }
                                 }
                             }
                         }
-                        div { class: "project-stack",
-                            span { class: "cli-label", "[KEYWORDS]   " }
-                            div { class: "project-stack-items",
-                                for technology in project.stack {
-                                    span { class: "project-stack-item", "{technology}" }
-                                }
+                        span { class: "cli-label", "[KEYWORDS]" }
+                        div { class: "cli-value project-stack-items",
+                            for technology in project.stack {
+                                span { class: "project-stack-item", "{technology}" }
+                            }
+                        }
+                    }
+                    if let Some(screenshot_url) = project.screenshot {
+                        figure { class: if has_tui_preview { "project-preview project-preview-tui" } else { "project-preview" },
+                            img {
+                                src: screenshot_url,
+                                alt: "{screenshot_alt}",
+                                loading: "lazy",
+                            }
+                            figcaption {
+                                if project.category == "Platform Engineering" { "Architecture preview" } else { "Terminal UI preview" }
                             }
                         }
                     }

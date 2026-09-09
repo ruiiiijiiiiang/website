@@ -49,7 +49,7 @@ const PROJECTS: &[Project] = &[
         category: "Security Platform",
         tagline: "Reusable, native NixOS modules for operating a Wazuh SIEM stack.",
         problem: "Operating an SIEM involves coordinated services, credentials, persistent data, backups, and recovery procedures that are difficult to manage consistently.",
-        solution: "Native NixOS modules for Wazuh agents, manager, indexer, dashboard, and Filebeat, with operational guidance for health checks, backup, recovery, rotation, and rollback.",
+        solution: "Native NixOS modules that declaratively orchestrate Wazuh manager, indexer, dashboard, and Filebeat as a cohesive SIEM stack.",
         highlights: &[
             "Automates certificate and internal-credential provisioning",
             "Encodes multi-service SIEM deployment as reusable NixOS modules",
