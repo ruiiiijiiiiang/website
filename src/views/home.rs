@@ -35,7 +35,7 @@ pub fn Home() -> Element {
 
         FastfetchCard {}
         p { class: "live-system-notice",
-            "# live system telemetry from the host serving this site; refreshed on page load"
+            "# live system telemetry from the host serving this site; refreshes on page load"
         }
 
         hr { }
