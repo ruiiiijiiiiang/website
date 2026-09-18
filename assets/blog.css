@@ -4,18 +4,33 @@ ul.blog-list {
 }
 
 ul.blog-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) max-content;
+  column-gap: 1.5rem;
   font-family: var(--font-mono);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 ul.blog-list li::before {
   content: none !important;
 }
 
-ul.blog-list li span.log-date {
-  color: var(--pico-secondary);
+.blog-item-title {
+  min-width: 0;
 }
 
-ul.blog-list li span.log-divider {
-  color: var(--pico-border-color);
+.blog-item-date {
+  color: var(--pico-muted-color);
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  ul.blog-list li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .blog-item-date {
+    text-align: left;
+  }
 }

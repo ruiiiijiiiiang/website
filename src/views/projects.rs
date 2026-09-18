@@ -175,27 +175,6 @@ const PROJECTS: &[Project] = &[
         screenshot: None,
         screenshot_alt: None,
     },
-    Project {
-        name: "file_clipper",
-        language: "rust",
-        category: "Developer Tooling",
-        tagline: "Terminal-native file operations with an interactive clipboard.",
-        problem: "Shell file operations become cumbersome when workflows need persistent selections, history, globbing, and symlink support.",
-        solution: "A command-line tool with copy, move, link, paste, and history operations backed by an interactive terminal clipboard.",
-        highlights: &[
-            "Supports copy, move, and symlink workflows",
-            "Interactive clipboard and operation history",
-            "Accepts glob patterns and paths piped from other commands",
-        ],
-        stack: &["CLI", "Terminal UI"],
-        link: "https://github.com/ruiiiijiiiiang/file_clipper",
-        screenshot: Some(
-            "https://raw.githubusercontent.com/ruiiiijiiiiang/file_clipper/master/assets/tui.png",
-        ),
-        screenshot_alt: Some(
-            "file_clipper terminal interface showing clipboard history and file selection",
-        ),
-    },
 ];
 
 const PROJECTS_CSS: Asset = asset!("../../assets/projects.css");

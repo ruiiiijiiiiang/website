@@ -19,12 +19,12 @@ pub fn Blog() -> Element {
             class: "blog-list",
             for post in posts {
                 li {
-                    span { class: "log-date", " {post.date.format(\"%Y-%m-%d\")}" }
-                    span { class: "log-divider", " | " }
                     Link {
+                        class: "blog-item-title",
                         to: Route::BlogPost { slug: post.slug },
                         "{post.title}"
                     }
+                    span { class: "blog-item-date", "{post.date.format(\"%m/%d/%Y\")}" }
                 }
             }
         }
