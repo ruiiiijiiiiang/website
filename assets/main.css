@@ -111,3 +111,14 @@ nav ul li button.outline {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+@media (max-width: 576px) {
+  nav > ul:last-child > li {
+    padding-inline: 0.125rem;
+  }
+
+  nav > ul:last-child a.outline,
+  nav > ul:last-child button.outline {
+    padding-inline: 0.25rem !important;
+  }
+}

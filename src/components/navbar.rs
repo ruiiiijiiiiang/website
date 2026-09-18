@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::{FaGithub, FaLinkedin};
-use dioxus_free_icons::icons::fa_solid_icons::{FaFileLines, FaHouse, FaLaptopCode};
+use dioxus_free_icons::icons::fa_solid_icons::{FaFileLines, FaHouse, FaLaptopCode, FaUser};
 
 use crate::DOMAIN;
 use crate::Route;
@@ -13,6 +13,7 @@ pub fn Navbar() -> Element {
     let is_home_active = matches!(current_route, Route::Home {});
     let is_blog_active = matches!(current_route, Route::Blog {} | Route::BlogPost { .. });
     let is_projects_active = matches!(current_route, Route::Projects {});
+    let is_about_active = matches!(current_route, Route::About {});
     let canonical_url = format!("{}{}", DOMAIN, current_route);
 
     rsx! {
@@ -41,6 +42,14 @@ pub fn Navbar() -> Element {
                         class: if is_projects_active { "active-nav-link" } else { "" },
                         Icon { icon: FaLaptopCode }
                         " Projects"
+                    }
+                }
+                li {
+                    Link {
+                        to: Route::About {},
+                        class: if is_about_active { "active-nav-link" } else { "" },
+                        Icon { icon: FaUser }
+                        " About"
                     }
                 }
             }

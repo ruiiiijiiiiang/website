@@ -1,0 +1,63 @@
+.about-page section {
+  border-top: 1px dashed var(--pico-muted-border-color);
+  padding-top: 1.25rem;
+  margin-top: 2rem;
+}
+
+.about-list li {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  column-gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.about-item-details,
+.about-item-name,
+.about-item-subtitle {
+  display: block;
+}
+
+.about-item-details {
+  min-width: 0;
+}
+
+.about-item-subtitle {
+  color: var(--pico-muted-color);
+  margin-top: 0.15rem;
+}
+
+.about-item-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.about-technology {
+  border: 1px solid var(--pico-muted-border-color);
+  color: var(--pico-muted-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.12rem 0.35rem;
+}
+
+.about-item-date {
+  color: var(--pico-muted-color);
+  margin-left: 1.25rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  .about-list li {
+    grid-template-columns: max-content minmax(0, 1fr);
+  }
+
+  .about-item-date {
+    grid-column: 2;
+    margin-left: 0;
+    text-align: left;
+  }
+}
