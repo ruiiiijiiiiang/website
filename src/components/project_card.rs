@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::FaGithub;
+use dioxus_free_icons::icons::fa_solid_icons::FaFileImage;
 
 use crate::models::Project;
 
@@ -13,6 +14,11 @@ pub fn ProjectCard(project: Project) -> Element {
     };
     let has_tui_preview = project.screenshot.is_some();
     let screenshot_alt = project.screenshot_alt.unwrap_or("Project preview");
+    let preview_label = if project.category == "Platform Engineering" {
+        "Architecture preview"
+    } else {
+        "Terminal UI preview"
+    };
 
     rsx! {
         div {
@@ -55,14 +61,23 @@ pub fn ProjectCard(project: Project) -> Element {
                         }
                     }
                     if let Some(screenshot_url) = project.screenshot {
-                        figure { class: if has_tui_preview { "project-preview project-preview-tui" } else { "project-preview" },
-                            img {
-                                src: screenshot_url,
-                                alt: "{screenshot_alt}",
-                                loading: "lazy",
+                        details {
+                            class: "cli-details",
+                            summary {
+                                Icon {
+                                    icon: FaFileImage,
+                                    width: 16,
+                                    height: 16,
+                                    class: "folder-icon",
+                                }
+                                "{preview_label}"
                             }
-                            figcaption {
-                                if project.category == "Platform Engineering" { "Architecture preview" } else { "Terminal UI preview" }
+                            figure { class: if has_tui_preview { "project-preview project-preview-tui" } else { "project-preview" },
+                                img {
+                                    src: screenshot_url,
+                                    alt: "{screenshot_alt}",
+                                    loading: "lazy",
+                                }
                             }
                         }
                     }

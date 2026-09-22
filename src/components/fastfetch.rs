@@ -172,7 +172,7 @@ pub fn FastfetchCard() -> Element {
                         height: 14,
                         class: "prompt-icon prompt-rust-icon",
                     }
-                    "v1.96.1"
+                    "v1.98.1"
                 }
                 br {}
                 span { class: "prompt-char", "❯ " }

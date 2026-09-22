@@ -22,7 +22,7 @@ pub fn Home() -> Element {
         hr { }
 
         p {
-            "I'm a software engineer with a strong bias toward systems that are coherent, minimal, and internally correct. I care about structure: in code, in architecture, and in security boundaries."
+            "I'm a software engineer by profession and a systems tinkerer by habit. I like systems that are coherent, inspectable, and reproducible."
         }
         p {
             "My interests include systems design, networking, and cybersecurity. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
@@ -34,6 +34,7 @@ pub fn Home() -> Element {
         hr { }
 
         FastfetchCard {}
+
         p { class: "live-system-notice",
             "# live system telemetry from the host serving this site; refreshes on page load"
         }

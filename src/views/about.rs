@@ -85,6 +85,10 @@ pub fn About() -> Element {
                 h2 { "Certifications" }
                 ul { class: "about-list",
                     li {
+                        span { class: "about-item-name", "Hashicorp Certified Terraform Associate" }
+                        span { class: "about-item-date", "09/2026" }
+                    }
+                    li {
                         span { class: "about-item-name", "Red Hat Certified Engineer in Ansible" }
                         span { class: "about-item-date", "09/2026" }
                     }
