@@ -113,12 +113,24 @@ async fn get_blog_data_impl(slug: String) -> Result<BlogData, ServerFnError> {
         })
         .collect();
 
+    let link_selector = Selector::parse("a[href^=\"/blog/\"]").unwrap();
+    let mut prefetch_links: Vec<String> = Vec::new();
+    for element in document.select(&link_selector) {
+        if let Some(href) = element.value().attr("href") {
+            let href_str = href.to_string();
+            if !prefetch_links.contains(&href_str) {
+                prefetch_links.push(href_str);
+            }
+        }
+    }
+
     Ok(BlogData {
         meta,
         content,
         headers,
         prev_post,
         next_post,
+        prefetch_links,
     })
 }
 
@@ -198,5 +210,17 @@ mod tests {
         );
         assert_eq!(blog_data.headers[0].id, "nixos-virtualization-options");
         assert_eq!(blog_data.headers[0].title, "NixOS virtualization options");
+    }
+
+    #[tokio::test]
+    async fn test_get_blog_data_prefetch_links() {
+        let res = get_blog_data("bootstrapping-nixos-guest-provisioning".to_string()).await;
+        assert!(res.is_ok());
+        let blog_data = res.unwrap();
+        assert!(
+            blog_data
+                .prefetch_links
+                .contains(&"/blog/declarative-virtualization-with-nixos-hypervisor".to_string())
+        );
     }
 }

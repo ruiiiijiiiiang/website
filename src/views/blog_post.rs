@@ -154,6 +154,10 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
         document::Link { rel: "stylesheet", href: BLOG_CSS }
         document::Title { "Rui's Blog: {blog_data.meta.title}" }
 
+        for link in &blog_data.prefetch_links {
+            document::Link { rel: "prefetch", href: "{link}" }
+        }
+
         div {
             class: "scroll-progress-bar",
             style: "width: {scroll_percentage}%;",

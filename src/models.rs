@@ -10,6 +10,7 @@ pub struct BlogData {
     pub headers: Vec<HeaderLink>,
     pub prev_post: Option<BlogLink>,
     pub next_post: Option<BlogLink>,
+    pub prefetch_links: Vec<String>,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
