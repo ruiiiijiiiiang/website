@@ -1,0 +1,90 @@
+%YAML 1.2
+---
+name: HCL
+file_extensions: [hcl, tf, tfvars]
+scope: source.hcl
+contexts:
+  main:
+    - include: comments
+    - include: strings
+    - include: heredocs
+    - include: keywords
+    - include: numbers
+    - include: variables
+    - include: operators
+
+  comments:
+    - match: '#|//'
+      scope: comment.line.hcl
+      push:
+        - meta_scope: comment.line.hcl
+        - match: '\n'
+          pop: true
+    - match: /\*
+      scope: comment.block.hcl
+      push:
+        - meta_scope: comment.block.hcl
+        - match: '\*/'
+          pop: true
+
+  strings:
+    - match: '"'
+      scope: punctuation.definition.string.begin.hcl
+      push: string_body
+
+  string_body:
+    - meta_scope: string.quoted.double.hcl
+    - match: '"'
+      scope: punctuation.definition.string.end.hcl
+      pop: true
+    - match: '\\.'
+      scope: constant.character.escape.hcl
+    - match: '\$\{|%\{'
+      scope: punctuation.section.interpolation.begin.hcl
+      push:
+        - meta_scope: source.hcl.embedded
+        - match: '\}'
+          scope: punctuation.section.interpolation.end.hcl
+          pop: true
+        - include: main
+
+  heredocs:
+    - match: '<<-?\s*([A-Za-z_][A-Za-z0-9_]*)'
+      captures:
+        0: punctuation.definition.string.begin.hcl
+        1: entity.name.tag.heredoc.hcl
+      push:
+        - meta_scope: string.unquoted.heredoc.hcl
+        - match: '^\s*[A-Za-z_][A-Za-z0-9_]*\s*$'
+          scope: punctuation.definition.string.end.hcl
+          pop: true
+        - match: '\$\{|%\{'
+          scope: punctuation.section.interpolation.begin.hcl
+          push:
+            - meta_scope: source.hcl.embedded
+            - match: '\}'
+              scope: punctuation.section.interpolation.end.hcl
+              pop: true
+            - include: main
+
+  keywords:
+    - match: '\b(true|false|null)\b'
+      scope: constant.language.hcl
+    - match: '\b(for|in|if|else|endif|endfor)\b'
+      scope: keyword.control.hcl
+    - match: '\b(terraform|provider|resource|data|variable|output|module|locals|backend|cloud|provisioner|connection|lifecycle|dynamic|check|import|moved|removed)\b'
+      scope: keyword.declaration.hcl
+
+  numbers:
+    - match: '\b0[xX][0-9A-Fa-f]+\b|\b[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)?\b'
+      scope: constant.numeric.hcl
+
+  variables:
+    - match: '\b[A-Za-z_][A-Za-z0-9_-]*\b'
+      scope: variable.other.hcl
+
+  operators:
+    - match: '==|!=|<=|>=|&&|\|\||[=+*/!<>?:.-]'
+      scope: keyword.operator.hcl
+    - match: '[{}\[\](),]'
+      scope: punctuation.section.block.hcl

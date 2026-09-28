@@ -71,6 +71,10 @@ impl CustomHighlighter {
         let def = SyntaxDefinition::load_from_str(nix_def, true, Some("nix")).unwrap();
         builder.add(def);
 
+        let hcl_def = include_str!("../../hcl-syntax.yml");
+        let def = SyntaxDefinition::load_from_str(hcl_def, true, Some("hcl")).unwrap();
+        builder.add(def);
+
         let syntax_set = builder.build();
 
         let theme_set = ThemeSet::load_defaults();
@@ -141,9 +145,13 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
             )?;
         }
 
+        let syntax_token = match real_lang {
+            "tf" | "terraform" => "hcl",
+            _ => real_lang,
+        };
         let syntax = self
             .syntax_set
-            .find_syntax_by_token(real_lang)
+            .find_syntax_by_token(syntax_token)
             .unwrap_or_else(|| self.syntax_set.find_syntax_plain_text());
 
         let mut highlighter = HighlightLines::new(syntax, &self.theme);
