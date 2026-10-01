@@ -63,7 +63,7 @@ pub fn About() -> Element {
                                 span { class: "about-technology", "php" }
                             }
                         }
-                        span { class: "about-item-date", "01/2017 — 05/2022" }
+                        span { class: "about-item-date", "03/2017 — 05/2022" }
                     }
                     li {
                         span { class: "about-item-details",
