@@ -15,9 +15,21 @@ pub fn Navbar() -> Element {
     let is_projects_active = matches!(current_route, Route::Projects {});
     let is_about_active = matches!(current_route, Route::About {});
     let canonical_url = format!("{}{}", DOMAIN, current_route);
+    let initial_canonical_url = use_hook(|| canonical_url.clone());
+
+    #[cfg(target_arch = "wasm32")]
+    use_effect(use_reactive((&canonical_url,), |(canonical_url,)| {
+        let Some(document) = web_sys::window().and_then(|window| window.document()) else {
+            return;
+        };
+        if let Ok(Some(link)) = document.query_selector("head > link[rel=\"canonical\"]") {
+            // Update the existing head element instead of accumulating canonical links.
+            let _ = link.set_attribute("href", &canonical_url);
+        }
+    }));
 
     rsx! {
-        document::Link { rel: "canonical", href: canonical_url }
+        document::Link { rel: "canonical", href: initial_canonical_url }
         nav {
             ul {
                 li {

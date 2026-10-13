@@ -85,8 +85,13 @@ span.repo-language-color {
 }
 
 .project-tagline {
-  color: var(--pico-muted-color);
+  color: var(--pico-color);
   font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  border-inline-start: 3px solid var(--pico-primary);
+  padding-inline-start: 0.75rem;
   margin-bottom: 1.25rem;
 }
 
