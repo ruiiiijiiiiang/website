@@ -70,7 +70,7 @@ const PROJECTS: &[Project] = &[
     Project {
         name: "nixos-vm-provisioner",
         language: "nix",
-        category: "Platform Engineering",
+        category: "Virtualization Automation",
         tagline: "Declarative, host-managed provisioning for autonomous NixOS VMs.",
         problem: "Traditional libvirt VM setup fragments disk allocation, installation, and lifecycle management into manual steps.",
         solution: "NixOS host and guest modules that allocate storage, run first-boot Disko installation, and then leave each guest in control of its own upgrades and boot lifecycle.",
