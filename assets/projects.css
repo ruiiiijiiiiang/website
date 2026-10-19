@@ -56,6 +56,10 @@ span.repo-language-color {
   background-color: #7e7eff;
 }
 
+.repo-language-color.python {
+  background-color: #3572a5;
+}
+
 .repo-language-color.other {
   background-color: #cccccc;
 }

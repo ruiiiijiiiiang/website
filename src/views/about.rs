@@ -59,8 +59,9 @@ pub fn About() -> Element {
                                 span { class: "about-technology", "GraphQL" }
                                 span { class: "about-technology", "MongoDB" }
                                 span { class: "about-technology", "Redis" }
+                                span { class: "about-technology", "Jenkins" }
                                 span { class: "about-technology", "RabbitMQ" }
-                                span { class: "about-technology", "php" }
+                                span { class: "about-technology", "PHP" }
                             }
                         }
                         span { class: "about-item-date", "03/2017 — 05/2022" }

@@ -10,6 +10,7 @@ pub fn ProjectCard(project: Project) -> Element {
     let lang_class = match project.language {
         "rust" => "rust",
         "nix" => "nix",
+        "python" => "python",
         _ => "other",
     };
     let has_tui_preview = project.screenshot.is_some();

@@ -58,6 +58,18 @@ fn main() {
         let app = Router::new()
             .serve_dioxus_application(config, App)
             .layer(SetResponseHeaderLayer::overriding(
+                axum::http::header::CACHE_CONTROL,
+                |response: &axum::response::Response| {
+                    let is_html = response
+                        .headers()
+                        .get(axum::http::header::CONTENT_TYPE)
+                        .and_then(|value| value.to_str().ok())
+                        .is_some_and(|value| value.split(';').next() == Some("text/html"));
+
+                    is_html.then(|| HeaderValue::from_static("no-cache"))
+                },
+            ))
+            .layer(SetResponseHeaderLayer::overriding(
                 axum::http::header::STRICT_TRANSPORT_SECURITY,
                 HeaderValue::from_static("max-age=63072000; includeSubDomains; preload"),
             ))

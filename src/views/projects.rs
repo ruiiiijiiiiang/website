@@ -86,7 +86,7 @@ const PROJECTS: &[Project] = &[
     },
     Project {
         name: "agenix-toolkit",
-        language: "nix",
+        language: "python",
         category: "Security Tooling",
         tagline: "Read, edit, and rekey agenix secrets using trusted hosts.",
         problem: "Managing agenix secrets from a workstation without recipient private keys can require moving sensitive host keys or manually coordinating remote commands.",
