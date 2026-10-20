@@ -10,6 +10,11 @@ html {
   scroll-behavior: smooth;
 }
 
+hr {
+  border: 0;
+  border-top: 1px dashed var(--pico-secondary-border);
+}
+
 body,
 button,
 input,

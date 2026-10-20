@@ -83,6 +83,7 @@ pub fn ProjectCard(project: Project) -> Element {
                         }
                     }
                 }
+                hr { }
                 footer {
                     class: "cli-footer",
                     span { class: "prompt-symbol", "❯ " }

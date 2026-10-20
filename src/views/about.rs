@@ -12,7 +12,8 @@ pub fn About() -> Element {
             class: "about-page",
 
             h1 { "About Me" }
-            p { "A brief timeline of my professional background and learning." }
+
+            hr { }
 
             section {
                 h2 { "Experience" }
@@ -82,6 +83,8 @@ pub fn About() -> Element {
                 }
             }
 
+            hr { }
+
             section {
                 h2 { "Certifications" }
                 ul { class: "about-list",
@@ -123,6 +126,8 @@ pub fn About() -> Element {
                     }
                 }
             }
+
+            hr { }
 
             section {
                 h2 { "Education" }

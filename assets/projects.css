@@ -3,7 +3,7 @@
 }
 
 article.project-card {
-  border: 2px solid var(--pico-primary) !important;
+  border: 1px solid var(--pico-secondary-border) !important;
   border-radius: 0 !important;
   padding: 1rem !important;
   margin-top: 0 !important;
@@ -20,7 +20,8 @@ article.project-card-featured {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .project-card-context,
@@ -35,7 +36,7 @@ article.project-card-featured {
 }
 
 .project-language {
-  border: 1px solid var(--pico-primary);
+  border: 1px solid var(--pico-muted-border-color);
   color: var(--pico-muted-color);
   gap: 0.35rem;
   padding: 0.15rem 0.4rem;
@@ -68,13 +69,13 @@ span.repo-language-color {
 .project-language,
 .project-stack-item {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
 .project-category {
-  color: var(--pico-primary);
+  color: var(--pico-muted-color);
 }
 
 .project-featured-label {
@@ -84,8 +85,10 @@ span.repo-language-color {
 }
 
 .project-name {
-  margin-bottom: 0.25rem;
-  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--pico-primary);
+  font-size: 1.5rem;
+  overflow-wrap: anywhere;
 }
 
 .project-tagline {
@@ -109,7 +112,7 @@ span.repo-language-color {
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   column-gap: 1.5rem;
-  row-gap: 0.5rem;
+  row-gap: 0.75rem;
   align-items: start;
   line-height: 1.4;
 }
@@ -127,6 +130,8 @@ span.repo-language-color {
 
 .project-signals {
   min-width: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 .project-signals ul {
@@ -136,11 +141,11 @@ span.repo-language-color {
 
 .project-signals li {
   margin-bottom: 0.3rem;
-  color: var(--pico-color);
+  color: var(--pico-muted-color);
 }
 
-.project-signals li::marker {
-  color: var(--pico-primary);
+.project-signals li:last-child {
+  margin-bottom: 0;
 }
 
 .project-stack-items {
@@ -154,6 +159,7 @@ span.repo-language-color {
   border: 1px solid var(--pico-muted-border-color);
   color: var(--pico-muted-color);
   padding: 0.12rem 0.35rem;
+  font-weight: 700;
   text-transform: none;
 }
 
@@ -227,9 +233,6 @@ article.project-card details.cli-details summary::-webkit-details-marker {
 }
 
 .cli-footer {
-  margin-top: 1rem;
-  padding-top: 0.5rem;
-  border-top: 1px dashed var(--pico-muted-border-color);
   font-size: 0.9rem;
 }
 

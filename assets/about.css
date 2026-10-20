@@ -1,7 +1,5 @@
 .about-page section {
-  border-top: 1px dashed var(--pico-muted-border-color);
-  padding-top: 1.25rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .about-list li {

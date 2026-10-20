@@ -30,7 +30,7 @@ const PROJECTS: &[Project] = &[
             "Pi-hole/Unbound",
             "Keepalived",
             "WireGuard",
-            "Cloudflare Tunnels",
+            "Cloudflare",
             "Nginx",
             "Trivy",
             "Restic",
@@ -85,7 +85,7 @@ const PROJECTS: &[Project] = &[
         screenshot_alt: None,
     },
     Project {
-        name: "agenix-toolkit",
+        name: "agenix-helper",
         language: "python",
         category: "Security Tooling",
         tagline: "Read, edit, and rekey agenix secrets using trusted hosts.",
@@ -96,8 +96,8 @@ const PROJECTS: &[Project] = &[
             "Temporary recipient access for local reading and editing",
             "Recipient verification and source-change checks before updating ciphertext",
         ],
-        stack: &["NixOS", "Python", "agenix", "age", "SSH"],
-        link: "https://github.com/ruiiiijiiiiang/agenix-toolkit",
+        stack: &["NixOS", "Python", "age"],
+        link: "https://github.com/ruiiiijiiiiang/agenix-helper",
         screenshot: None,
         screenshot_alt: None,
     },
@@ -130,7 +130,7 @@ const PROJECTS: &[Project] = &[
             "Combines unit control, logs, configuration inspection, and drop-in overrides",
             "Built for keyboard-first operational workflows",
         ],
-        stack: &["Ratatui", "systemd", "Tokio", "D-Bus", "Polkit"],
+        stack: &["Ratatui", "Tokio", "systemd", "D-Bus", "Polkit"],
         link: "https://github.com/ruiiiijiiiiang/sdctl",
         screenshot: Some(
             "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
@@ -151,7 +151,7 @@ const PROJECTS: &[Project] = &[
             "Reuses existing SSH configuration, keys, and known-hosts trust",
             "Concurrent remote monitoring with a terminal-native interface",
         ],
-        stack: &["SSH", "Ratatui", "Tokio"],
+        stack: &["Ratatui", "Tokio", "SSH"],
         link: "https://github.com/ruiiiijiiiiang/rs-top",
         screenshot: Some(
             "https://raw.githubusercontent.com/ruiiiijiiiiang/rs-top/refs/heads/screenshot/screenshot.png",
@@ -170,7 +170,7 @@ const PROJECTS: &[Project] = &[
             "Validates values for scan flags to reduce common mistakes",
             "Keyboard-first workflow for security testing",
         ],
-        stack: &["Nmap", "Terminal UI"],
+        stack: &["Ratatui", "Nmap"],
         link: "https://github.com/ruiiiijiiiiang/lazynmap",
         screenshot: Some(
             "https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/master/assets/lazynmap.png",
@@ -189,7 +189,7 @@ const PROJECTS: &[Project] = &[
             "Markdown publishing pipeline with custom Nix syntax highlighting",
             "Reproducible Nix build and homelab deployment",
         ],
-        stack: &["Dioxus", "WASM", "Nix", "SSG"],
+        stack: &["Dioxus", "Nix", "WASM", "SSG"],
         link: "https://github.com/ruiiiijiiiiang/website",
         screenshot: None,
         screenshot_alt: None,
@@ -206,7 +206,6 @@ pub fn Projects() -> Element {
 
         div {
             h1 { "Projects" }
-            p { "Selected work in platform engineering, security automation, observability, and developer tooling." }
 
             div {
                 for project in PROJECTS {
