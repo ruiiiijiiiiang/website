@@ -4,7 +4,10 @@ use crate::models::{BlogData, BlogLink};
 #[cfg(feature = "server")]
 use crate::models::{BlogMeta, HeaderLink};
 
-#[cfg(feature = "server")]
+#[cfg(all(feature = "server", debug_assertions))]
+const BLOG_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/blog");
+
+#[cfg(all(feature = "server", not(debug_assertions)))]
 const BLOG_DIR: &str = "./blog";
 
 #[cfg(feature = "server")]
@@ -82,7 +85,6 @@ async fn get_blog_data_impl(slug: String) -> Result<BlogData, ServerFnError> {
 
     let mut options = Options::default();
     options.extension.strikethrough = true;
-    options.extension.tagfilter = true;
     options.extension.table = true;
     options.extension.autolink = true;
     options.extension.header_id_prefix = Some("".to_string());
@@ -171,9 +173,9 @@ async fn get_cached_posts() -> Result<&'static Vec<(String, BlogMeta)>, ServerFn
     POST_CACHE
         .get_or_try_init(|| async {
             let mut posts = Vec::new();
-            let mut entries = fs::read_dir(BLOG_DIR)
-                .await
-                .map_err(|e| ServerFnError::new(format!("Dir error: {}", e)))?;
+            let mut entries = fs::read_dir(BLOG_DIR).await.map_err(|e| {
+                ServerFnError::new(format!("Failed to read blog directory {BLOG_DIR:?}: {e}"))
+            })?;
 
             let matter = Matter::<YAML>::new();
 

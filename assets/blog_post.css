@@ -192,6 +192,12 @@ div.blog-content pre:has(.tui-header) code {
   font-weight: bold;
 }
 
+.tui-file-icon {
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 5px;
+}
+
 .tui-header-fill {
   flex-grow: 1;
   height: 2rem;

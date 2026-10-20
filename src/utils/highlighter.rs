@@ -10,7 +10,8 @@ use syntect::util::LinesWithEndings;
 
 use dioxus::core::{TemplateAttribute, TemplateNode};
 use dioxus_free_icons::IconShape;
-use dioxus_free_icons::icons::fa_brands_icons::FaRust;
+use dioxus_free_icons::icons::bs_icons::BsFiletypeYml;
+use dioxus_free_icons::icons::fa_brands_icons::{FaPython, FaRust};
 use dioxus_free_icons::icons::fa_solid_icons::{FaCodeBranch, FaFile, FaLock, FaTerminal, FaXmark};
 
 fn render_template_node(node: &TemplateNode) -> String {
@@ -126,6 +127,12 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
                 "rust" | "rs" => {
                     render_icon_svg(FaRust, r#"width="13" height="13" style="display: inline-block; vertical-align: -2px; margin-right: 5px;""#)
                 }
+                "python" | "py" => {
+                    render_icon_svg(FaPython, r#"width="12" height="12" class="tui-file-icon""#)
+                }
+                "yaml" | "yml" => {
+                    render_icon_svg(BsFiletypeYml, r#"width="12" height="12" class="tui-file-icon""#)
+                }
                 "sh" | "bash" | "zsh" | "shell" => {
                     render_icon_svg(FaTerminal, r#"width="12" height="12" style="display: inline-block; vertical-align: -2px; margin-right: 5px;""#)
                 }
@@ -227,5 +234,108 @@ impl SyntaxHighlighterAdapter for CustomHighlighter {
         attributes: HashMap<&'static str, Cow<'_, str>>,
     ) -> fmt::Result {
         comrak::html::write_opening_tag(output, "code", attributes)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use comrak::{Options, markdown_to_html_with_plugins, options::Plugins};
+    use scraper::{Html, Selector};
+    use std::collections::HashSet;
+
+    fn assert_code_fences(
+        aliases: &[&str],
+        syntax_name: &str,
+        filename: &str,
+        code: &str,
+        icon: impl IconShape,
+    ) {
+        let highlighter = CustomHighlighter::new("base16-ocean.dark");
+        let mut plugins = Plugins::default();
+        plugins.render.codefence_syntax_highlighter = Some(&highlighter);
+        let expected_icon = get_icon_svg_inner(icon);
+        assert!(expected_icon.contains("<path"));
+
+        for alias in aliases {
+            assert_eq!(
+                highlighter
+                    .syntax_set
+                    .find_syntax_by_token(alias)
+                    .unwrap()
+                    .name,
+                syntax_name
+            );
+
+            for named in [false, true] {
+                let info = if named {
+                    format!("{alias}:{filename}:feature")
+                } else {
+                    alias.to_string()
+                };
+                let markdown = format!("```{info}\n{code}```\n");
+                let html = markdown_to_html_with_plugins(&markdown, &Options::default(), &plugins);
+                let document = Html::parse_fragment(&html);
+                let code_element = document
+                    .select(&Selector::parse("pre code").unwrap())
+                    .next()
+                    .unwrap();
+                let text = code_element.text().collect::<String>();
+                for line in code.lines() {
+                    assert!(text.contains(line), "{info}: missing source line {line:?}");
+                }
+                let colors: HashSet<_> = code_element
+                    .select(&Selector::parse("span[style]").unwrap())
+                    .filter_map(|span| span.value().attr("style"))
+                    .collect();
+                assert!(colors.len() > 1, "{info}: expected syntax highlighting");
+                assert_eq!(
+                    code_element
+                        .select(&Selector::parse(".tui-line-no").unwrap())
+                        .count(),
+                    code.lines().count()
+                );
+
+                let tab = document
+                    .select(&Selector::parse(".tui-tab").unwrap())
+                    .next();
+                if named {
+                    let tab = tab.unwrap();
+                    assert_eq!(tab.text().collect::<String>(), filename);
+                    let svg = tab.select(&Selector::parse("svg").unwrap()).next().unwrap();
+                    assert_eq!(svg.inner_html(), expected_icon);
+                    assert_eq!(svg.value().attr("fill"), Some("currentColor"));
+                    let footer = document
+                        .select(&Selector::parse(".tui-footer").unwrap())
+                        .next()
+                        .unwrap();
+                    assert!(footer.text().collect::<String>().contains("feature"));
+                } else {
+                    assert!(tab.is_none());
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn python_fences_highlight_with_python_icons() {
+        assert_code_fences(
+            &["python", "py"],
+            "Python",
+            "hello.py",
+            "def greet(name: str):\n    message = \"\"\"Hello <world>!\n    Multiline string.\"\"\"\n    return f\"{message} {name}\"\n",
+            FaPython,
+        );
+    }
+
+    #[test]
+    fn yaml_fences_highlight_with_yaml_icons() {
+        assert_code_fences(
+            &["yaml", "yml"],
+            "YAML",
+            "config.yaml",
+            "# Example configuration\nservice:\n  enabled: true\n  ports: [80, 443]\n  message: |\n    Hello <world>!\n    Multiline string.\n",
+            BsFiletypeYml,
+        );
     }
 }
