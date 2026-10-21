@@ -36,6 +36,7 @@ pub fn ProjectCard(project: Project) -> Element {
                         "{project.language}"
                     }
                 }
+
                 h2 { class: "project-name", "{project.name}" }
                 p { class: "project-tagline", "{project.tagline}" }
                 div {
@@ -57,7 +58,7 @@ pub fn ProjectCard(project: Project) -> Element {
                         span { class: "cli-label", "[KEYWORDS]" }
                         div { class: "cli-value project-stack-items",
                             for technology in project.stack {
-                                span { class: "project-stack-item", "{technology}" }
+                                span { class: "technology-tag", "{technology}" }
                             }
                         }
                     }
@@ -83,7 +84,7 @@ pub fn ProjectCard(project: Project) -> Element {
                         }
                     }
                 }
-                hr { }
+
                 footer {
                     class: "cli-footer",
                     span { class: "prompt-symbol", "❯ " }

@@ -32,15 +32,6 @@
   margin-top: 0.5rem;
 }
 
-.about-technology {
-  border: 1px solid var(--pico-muted-border-color);
-  color: var(--pico-muted-color);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0.12rem 0.35rem;
-}
-
 .about-item-date {
   color: var(--pico-muted-color);
   margin-left: 1.25rem;

@@ -66,8 +66,7 @@ span.repo-language-color {
 }
 
 .project-category,
-.project-language,
-.project-stack-item {
+.project-language {
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -153,14 +152,6 @@ span.repo-language-color {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.4rem;
-}
-
-.project-stack-item {
-  border: 1px solid var(--pico-muted-border-color);
-  color: var(--pico-muted-color);
-  padding: 0.12rem 0.35rem;
-  font-weight: 700;
-  text-transform: none;
 }
 
 .project-preview {

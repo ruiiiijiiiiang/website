@@ -23,11 +23,11 @@ pub fn About() -> Element {
                             span { class: "about-item-name", "Gavel" }
                             small { class: "about-item-subtitle", "Senior Software Engineer" }
                             span { class: "about-item-technologies", "aria-label": "Technologies",
-                                span { class: "about-technology", "Typescript" }
-                                span { class: "about-technology", "React" }
-                                span { class: "about-technology", "Node.js" }
-                                span { class: "about-technology", "Ruby on Rails" }
-                                span { class: "about-technology", "Python" }
+                                span { class: "technology-tag", "Typescript" }
+                                span { class: "technology-tag", "React" }
+                                span { class: "technology-tag", "Node.js" }
+                                span { class: "technology-tag", "Ruby on Rails" }
+                                span { class: "technology-tag", "Python" }
                             }
                         }
                         span { class: "about-item-date", "08/2023 — 02/2024" }
@@ -37,12 +37,12 @@ pub fn About() -> Element {
                             span { class: "about-item-name", "Glue" }
                             small { class: "about-item-subtitle", "Senior Software Engineer" }
                             span { class: "about-item-technologies", "aria-label": "Technologies",
-                                span { class: "about-technology", "Typescript" }
-                                span { class: "about-technology", "React" }
-                                span { class: "about-technology", "Node.js" }
-                                span { class: "about-technology", "GraphQL" }
-                                span { class: "about-technology", "PostgreSQL" }
-                                span { class: "about-technology", "D3.js" }
+                                span { class: "technology-tag", "Typescript" }
+                                span { class: "technology-tag", "React" }
+                                span { class: "technology-tag", "Node.js" }
+                                span { class: "technology-tag", "GraphQL" }
+                                span { class: "technology-tag", "PostgreSQL" }
+                                span { class: "technology-tag", "D3.js" }
                             }
                         }
                         span { class: "about-item-date", "05/2022 — 06/2023" }
@@ -52,17 +52,17 @@ pub fn About() -> Element {
                             span { class: "about-item-name", "Scalable Press" }
                             small { class: "about-item-subtitle", "Software Engineer" }
                             span { class: "about-item-technologies", "aria-label": "Technologies",
-                                span { class: "about-technology", "Typescript" }
-                                span { class: "about-technology", "CoffeeScript" }
-                                span { class: "about-technology", "React" }
-                                span { class: "about-technology", "AngularJS" }
-                                span { class: "about-technology", "Node.js" }
-                                span { class: "about-technology", "GraphQL" }
-                                span { class: "about-technology", "MongoDB" }
-                                span { class: "about-technology", "Redis" }
-                                span { class: "about-technology", "Jenkins" }
-                                span { class: "about-technology", "RabbitMQ" }
-                                span { class: "about-technology", "PHP" }
+                                span { class: "technology-tag", "Typescript" }
+                                span { class: "technology-tag", "CoffeeScript" }
+                                span { class: "technology-tag", "React" }
+                                span { class: "technology-tag", "AngularJS" }
+                                span { class: "technology-tag", "Node.js" }
+                                span { class: "technology-tag", "GraphQL" }
+                                span { class: "technology-tag", "MongoDB" }
+                                span { class: "technology-tag", "Redis" }
+                                span { class: "technology-tag", "Jenkins" }
+                                span { class: "technology-tag", "RabbitMQ" }
+                                span { class: "technology-tag", "PHP" }
                             }
                         }
                         span { class: "about-item-date", "03/2017 — 05/2022" }
@@ -72,10 +72,10 @@ pub fn About() -> Element {
                             span { class: "about-item-name", "Asurion" }
                             small { class: "about-item-subtitle", "Software Engineer" }
                             span { class: "about-item-technologies", "aria-label": "Technologies",
-                                span { class: "about-technology", "Javascript" }
-                                span { class: "about-technology", "Knockout.js" }
-                                span { class: "about-technology", "C#" }
-                                span { class: "about-technology", ".NET" }
+                                span { class: "technology-tag", "Javascript" }
+                                span { class: "technology-tag", "Knockout.js" }
+                                span { class: "technology-tag", "C#" }
+                                span { class: "technology-tag", ".NET" }
                             }
                         }
                         span { class: "about-item-date", "06/2013 — 04/2014" }

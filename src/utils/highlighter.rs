@@ -68,11 +68,11 @@ impl CustomHighlighter {
     pub fn new(theme_name: &str) -> Self {
         let mut builder = SyntaxSet::load_defaults_newlines().into_builder();
 
-        let nix_def = include_str!("../../nix-syntax.yml");
+        let nix_def = include_str!("../../syntaxes/nix-syntax.yml");
         let def = SyntaxDefinition::load_from_str(nix_def, true, Some("nix")).unwrap();
         builder.add(def);
 
-        let hcl_def = include_str!("../../hcl-syntax.yml");
+        let hcl_def = include_str!("../../syntaxes/hcl-syntax.yml");
         let def = SyntaxDefinition::load_from_str(hcl_def, true, Some("hcl")).unwrap();
         builder.add(def);
 
