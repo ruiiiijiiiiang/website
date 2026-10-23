@@ -46,6 +46,23 @@ const PROJECTS: &[Project] = &[
         ),
     },
     Project {
+        name: "infrastructure-memory",
+        language: "python",
+        category: "AI Tooling",
+        tagline: "Persistent operational knowledge for local AI agents.",
+        problem: "AI agents lose troubleshooting context between sessions and workstations, leading to repeated investigations and inconsistent advice.",
+        solution: "A local memory daemon that combines repository context with incidents, decisions, and runbooks, exposed through MCP and synchronized as immutable records.",
+        highlights: &[
+            "Hybrid keyword and semantic search with source citations",
+            "Offline operation with records synchronized between workstations",
+            "Signed operator approval and conflict resolution for agent proposals",
+        ],
+        stack: &["Python", "MCP", "SQLite/FTS5", "ONNX Runtime", "NixOS"],
+        link: "https://github.com/ruiiiijiiiiang/infrastructure-memory",
+        screenshot: None,
+        screenshot_alt: None,
+    },
+    Project {
         name: "nixos-cis-validator",
         language: "nix",
         category: "Security Automation",
@@ -182,7 +199,7 @@ const PROJECTS: &[Project] = &[
         language: "rust",
         category: "Web Application",
         tagline: "A full-stack personal site with a 0 JavaScript / TypeScript frontend.",
-        problem: "A personal site should be unique, maintainable, and deployable with the same reproducibility expectations as the rest of the platform.",
+        problem: "A personal site should be unique, secure, and deployable with the same reproducibility expectations as the rest of the platform.",
         solution: "A Dioxus application with WASM, server-side rendering, static generation, Markdown publishing, and a reproducible Nix build.",
         highlights: &[
             "Full-stack rendering with SSR fallback and static generation",
