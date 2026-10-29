@@ -169,6 +169,38 @@ span.repo-language-color {
   object-position: top;
 }
 
+.project-preview-diagram {
+  overflow-x: auto;
+}
+
+.project-preview-diagram img {
+  min-width: 44rem;
+  height: auto;
+}
+
+.project-preview-diagram figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+}
+
+[data-theme="dark"] .project-preview-theme-light {
+  display: none;
+}
+
+[data-theme="dark"] .project-preview-theme-dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .project-preview-theme-light {
+    display: none;
+  }
+
+  :root:not([data-theme]) .project-preview-theme-dark {
+    display: block;
+  }
+}
+
 article.project-card details.cli-details {
   margin: 0;
   border: 1px dashed var(--pico-muted-border-color) !important;

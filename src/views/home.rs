@@ -28,7 +28,7 @@ pub fn Home() -> Element {
             "My interests include systems design, networking, and cybersecurity. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
         }
         p {
-            "My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
+            "I'm based in Houston, Texas. My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
         }
 
         hr { }

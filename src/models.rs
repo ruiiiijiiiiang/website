@@ -47,8 +47,7 @@ pub struct Project {
     pub highlights: &'static [&'static str],
     pub stack: &'static [&'static str],
     pub link: &'static str,
-    pub screenshot: Option<&'static str>,
-    pub screenshot_alt: Option<&'static str>,
+    pub preview: Option<ProjectPreview>,
 }
 
 #[derive(Clone, Debug, Deserialize, PartialEq, Serialize)]
@@ -63,4 +62,27 @@ pub struct FastfetchData {
     pub os_age: String,
     pub packages: String,
     pub fetched_at: String,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum PreviewSource {
+    Remote(&'static str),
+    ThemedLocal {
+        light: dioxus::prelude::Asset,
+        dark: dioxus::prelude::Asset,
+    },
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum PreviewKind {
+    Terminal,
+    Architecture,
+    Workflow,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ProjectPreview {
+    pub source: PreviewSource,
+    pub alt: &'static str,
+    pub kind: PreviewKind,
 }

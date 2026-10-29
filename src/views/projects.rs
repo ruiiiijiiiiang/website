@@ -1,7 +1,11 @@
 use dioxus::prelude::*;
 
 use crate::components::ProjectCard;
-use crate::models::Project;
+use crate::models::{PreviewKind, PreviewSource, Project, ProjectPreview};
+
+const AGENIX_HELPER_WORKFLOW_LIGHT: Asset = asset!("../../assets/diagrams/agenix-helper-light.svg");
+
+const AGENIX_HELPER_WORKFLOW_DARK: Asset = asset!("../../assets/diagrams/agenix-helper-dark.svg");
 
 const PROJECTS: &[Project] = &[
     Project {
@@ -38,12 +42,13 @@ const PROJECTS: &[Project] = &[
             "Wazuh",
         ],
         link: "https://github.com/ruiiiijiiiiang/nixos-config",
-        screenshot: Some(
-            "https://raw.githubusercontent.com/ruiiiijiiiiang/nixos-config/master/topology/topology.png",
-        ),
-        screenshot_alt: Some(
-            "Network and service topology for the declarative NixOS homelab platform",
-        ),
+        preview: Some(ProjectPreview {
+            source: PreviewSource::Remote(
+                "https://raw.githubusercontent.com/ruiiiijiiiiang/nixos-config/master/topology/topology.png",
+            ),
+            alt: "Network and service topology for the declarative NixOS homelab platform",
+            kind: PreviewKind::Architecture,
+        }),
     },
     Project {
         name: "infrastructure-memory",
@@ -59,8 +64,7 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["Python", "MCP", "SQLite/FTS5", "ONNX Runtime", "NixOS"],
         link: "https://github.com/ruiiiijiiiiang/infrastructure-memory",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: None,
     },
     Project {
         name: "nixos-cis-validator",
@@ -81,8 +85,7 @@ const PROJECTS: &[Project] = &[
             "Policy as Code",
         ],
         link: "https://github.com/ruiiiijiiiiang/nixos-cis-validator",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: None,
     },
     Project {
         name: "nixos-vm-provisioner",
@@ -98,8 +101,7 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["NixOS", "libvirt/NixVirt", "Disko", "systemd-boot"],
         link: "https://github.com/ruiiiijiiiiang/nixos-vm-provisioner",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: None,
     },
     Project {
         name: "agenix-helper",
@@ -115,8 +117,14 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["NixOS", "Python", "age"],
         link: "https://github.com/ruiiiijiiiiang/agenix-helper",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: Some(ProjectPreview {
+            source: PreviewSource::ThemedLocal {
+                light: AGENIX_HELPER_WORKFLOW_LIGHT,
+                dark: AGENIX_HELPER_WORKFLOW_DARK,
+            },
+            alt: "agenix-edit workflow: the workstation sends encrypted staging to a server, receives ciphertext with temporary access, edits locally, and restores the original recipients.",
+            kind: PreviewKind::Workflow,
+        }),
     },
     Project {
         name: "wazuh-flake",
@@ -132,8 +140,7 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["NixOS", "Wazuh", "Filebeat", "TLS/PKI", "OpenSearch"],
         link: "https://github.com/ruiiiijiiiiang/wazuh-flake",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: None,
     },
     Project {
         name: "sdctl",
@@ -149,12 +156,13 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["Ratatui", "Tokio", "systemd", "D-Bus", "Polkit"],
         link: "https://github.com/ruiiiijiiiiang/sdctl",
-        screenshot: Some(
-            "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
-        ),
-        screenshot_alt: Some(
-            "sdctl terminal interface showing systemd unit status and service controls",
-        ),
+        preview: Some(ProjectPreview {
+            source: PreviewSource::Remote(
+                "https://github.com/user-attachments/assets/16267839-1349-4ea4-a00f-89d763cd8d5a",
+            ),
+            alt: "sdctl terminal interface showing systemd unit status and service controls",
+            kind: PreviewKind::Terminal,
+        }),
     },
     Project {
         name: "rs-top",
@@ -170,10 +178,13 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["Ratatui", "Tokio", "SSH"],
         link: "https://github.com/ruiiiijiiiiang/rs-top",
-        screenshot: Some(
-            "https://raw.githubusercontent.com/ruiiiijiiiiang/rs-top/refs/heads/screenshot/screenshot.png",
-        ),
-        screenshot_alt: Some("rs-top terminal dashboard monitoring remote Linux hosts over SSH"),
+        preview: Some(ProjectPreview {
+            source: PreviewSource::Remote(
+                "https://raw.githubusercontent.com/ruiiiijiiiiang/rs-top/refs/heads/screenshot/screenshot.png",
+            ),
+            alt: "rs-top terminal dashboard monitoring remote Linux hosts over SSH",
+            kind: PreviewKind::Terminal,
+        }),
     },
     Project {
         name: "lazynmap",
@@ -189,10 +200,13 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["Ratatui", "Nmap"],
         link: "https://github.com/ruiiiijiiiiang/lazynmap",
-        screenshot: Some(
-            "https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/master/assets/lazynmap.png",
-        ),
-        screenshot_alt: Some("lazynmap terminal interface building an nmap scan command"),
+        preview: Some(ProjectPreview {
+            source: PreviewSource::Remote(
+                "https://raw.githubusercontent.com/ruiiiijiiiiang/lazynmap/master/assets/lazynmap.png",
+            ),
+            alt: "lazynmap terminal interface building an nmap scan command",
+            kind: PreviewKind::Terminal,
+        }),
     },
     Project {
         name: "website",
@@ -208,8 +222,7 @@ const PROJECTS: &[Project] = &[
         ],
         stack: &["Dioxus", "Nix", "WASM", "SSG"],
         link: "https://github.com/ruiiiijiiiiang/website",
-        screenshot: None,
-        screenshot_alt: None,
+        preview: None,
     },
 ];
 

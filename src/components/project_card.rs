@@ -3,7 +3,7 @@ use dioxus_free_icons::Icon;
 use dioxus_free_icons::icons::fa_brands_icons::FaGithub;
 use dioxus_free_icons::icons::fa_solid_icons::FaFileImage;
 
-use crate::models::Project;
+use crate::models::{PreviewKind, PreviewSource, Project};
 
 #[component]
 pub fn ProjectCard(project: Project) -> Element {
@@ -13,13 +13,27 @@ pub fn ProjectCard(project: Project) -> Element {
         "python" => "python",
         _ => "other",
     };
-    let has_tui_preview = project.screenshot.is_some();
-    let screenshot_alt = project.screenshot_alt.unwrap_or("Project preview");
-    let preview_label = if project.category == "Platform Engineering" {
-        "Architecture preview"
-    } else {
-        "Terminal UI preview"
-    };
+    let preview = project.preview.map(|preview| {
+        let images = match preview.source {
+            PreviewSource::Remote(url) => vec![(url.to_string(), "")],
+            PreviewSource::ThemedLocal { light, dark } => vec![
+                (light.to_string(), "project-preview-theme-light"),
+                (dark.to_string(), "project-preview-theme-dark"),
+            ],
+        };
+        let (label, class) = match preview.kind {
+            PreviewKind::Terminal => ("Terminal UI preview", "project-preview project-preview-tui"),
+            PreviewKind::Architecture => (
+                "Architecture preview",
+                "project-preview project-preview-diagram",
+            ),
+            PreviewKind::Workflow => (
+                "Workflow preview",
+                "project-preview project-preview-diagram",
+            ),
+        };
+        (preview, images, label, class)
+    });
 
     rsx! {
         div {
@@ -62,7 +76,7 @@ pub fn ProjectCard(project: Project) -> Element {
                             }
                         }
                     }
-                    if let Some(screenshot_url) = project.screenshot {
+                    if let Some((preview, preview_images, preview_label, preview_class)) = &preview {
                         details {
                             class: "cli-details",
                             summary {
@@ -74,11 +88,24 @@ pub fn ProjectCard(project: Project) -> Element {
                                 }
                                 "{preview_label}"
                             }
-                            figure { class: if has_tui_preview { "project-preview project-preview-tui" } else { "project-preview" },
-                                img {
-                                    src: screenshot_url,
-                                    alt: "{screenshot_alt}",
-                                    loading: "lazy",
+                            for (preview_url, theme_class) in preview_images {
+                                figure { class: "{preview_class} {theme_class}",
+                                    img {
+                                        src: "{preview_url}",
+                                        alt: "{preview.alt}",
+                                        loading: "lazy",
+                                    }
+                                    if preview.kind != PreviewKind::Terminal {
+                                        figcaption {
+                                            a {
+                                                href: "{preview_url}",
+                                                target: "_blank",
+                                                rel: "noreferrer",
+                                                "aria-label": "Open the {project.name} diagram at full size",
+                                                "Open full-size diagram ↗"
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
