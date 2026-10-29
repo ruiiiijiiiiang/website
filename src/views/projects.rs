@@ -212,7 +212,7 @@ const PROJECTS: &[Project] = &[
         name: "website",
         language: "rust",
         category: "Web Application",
-        tagline: "A full-stack personal site with a 0 JavaScript / TypeScript frontend.",
+        tagline: "A full-stack personal site with a JavaScript-free frontend.",
         problem: "A personal site should be unique, secure, and deployable with the same reproducibility expectations as the rest of the platform.",
         solution: "A Dioxus application with WASM, server-side rendering, static generation, Markdown publishing, and a reproducible Nix build.",
         highlights: &[

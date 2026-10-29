@@ -95,17 +95,6 @@ pub fn ProjectCard(project: Project) -> Element {
                                         alt: "{preview.alt}",
                                         loading: "lazy",
                                     }
-                                    if preview.kind != PreviewKind::Terminal {
-                                        figcaption {
-                                            a {
-                                                href: "{preview_url}",
-                                                target: "_blank",
-                                                rel: "noreferrer",
-                                                "aria-label": "Open the {project.name} diagram at full size",
-                                                "Open full-size diagram ↗"
-                                            }
-                                        }
-                                    }
                                 }
                             }
                         }
