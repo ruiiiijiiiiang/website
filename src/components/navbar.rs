@@ -5,7 +5,7 @@ use dioxus_free_icons::icons::fa_solid_icons::{FaFileLines, FaHouse, FaLaptopCod
 
 use crate::DOMAIN;
 use crate::Route;
-use crate::components::ThemeToggle;
+use crate::components::{ScrollControls, ThemeToggle};
 
 #[component]
 pub fn Navbar() -> Element {
@@ -96,6 +96,7 @@ pub fn Navbar() -> Element {
             }
         }
 
+        ScrollControls {}
         Outlet::<Route> {}
     }
 }

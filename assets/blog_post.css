@@ -36,16 +36,6 @@
   --tui-code-bg: #2b303b;
 }
 
-div.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 6px;
-  background-color: var(--pico-primary);
-  z-index: 9999;
-  transition: width 0.1s ease-out;
-}
-
 div.blog {
   display: flex;
   gap: 1rem;
@@ -117,20 +107,6 @@ aside.table-of-contents nav ul li a.active-toc-link::before {
   div.blog-content {
     max-width: 100%;
   }
-}
-
-button.back-to-top {
-  display: flex;
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 div.blog-content pre:has(.tui-header) {

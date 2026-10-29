@@ -10,6 +10,41 @@ html {
   scroll-behavior: smooth;
 }
 
+div.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  background-color: var(--pico-primary);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+
+button.back-to-top {
+  display: flex;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  div.scroll-progress-bar {
+    transition: none;
+  }
+}
+
 hr {
   border: 0;
   border-top: 1px dashed var(--pico-secondary-border);
@@ -60,6 +95,13 @@ code {
 
 [data-tooltip] {
   --pico-border-radius: 0 !important;
+}
+
+@media (hover: none) {
+  [data-tooltip]::before,
+  [data-tooltip]::after {
+    display: none;
+  }
 }
 
 ul {

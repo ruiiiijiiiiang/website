@@ -1,6 +1,9 @@
 mod navbar;
 pub use navbar::Navbar;
 
+mod scroll_controls;
+pub use scroll_controls::ScrollControls;
+
 mod project_card;
 pub use project_card::ProjectCard;
 

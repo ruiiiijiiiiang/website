@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 use dioxus_free_icons::Icon;
-use dioxus_free_icons::icons::fa_solid_icons::{FaArrowLeft, FaArrowRight, FaArrowUp, FaCalendar};
+use dioxus_free_icons::icons::fa_solid_icons::{FaArrowLeft, FaArrowRight, FaCalendar};
 
 use crate::Route;
 use crate::backend::get_blog_data;
@@ -33,8 +33,6 @@ impl Drop for ScrollListener {
 pub fn BlogPost(slug: ReadSignal<String>) -> Element {
     let blog_data = use_loader(move || get_blog_data(slug()))?();
     #[allow(unused_mut)]
-    let mut scroll_percentage = use_signal(|| 0.0);
-    #[allow(unused_mut)]
     let mut active_header = use_signal(String::new);
     #[allow(unused_mut)]
     let mut _listener = use_signal(|| None::<ScrollListener>);
@@ -58,13 +56,6 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
                 let client_height = doc_element.client_height();
 
                 let max_scroll = scroll_height - client_height;
-                let percent = if max_scroll > 0 {
-                    (scroll_top as f64 / max_scroll as f64) * 100.0
-                } else {
-                    0.0
-                };
-                scroll_percentage.set(percent);
-
                 let headers = document
                     .query_selector_all(".blog-content h2, .blog-content h3")
                     .unwrap();
@@ -106,13 +97,6 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
             let scroll_height = doc_element.scroll_height();
             let client_height = doc_element.client_height();
             let max_scroll = scroll_height - client_height;
-            let percent = if max_scroll > 0 {
-                (scroll_top as f64 / max_scroll as f64) * 100.0
-            } else {
-                0.0
-            };
-            scroll_percentage.set(percent);
-
             let max_slide_range = std::cmp::min(max_scroll, client_height);
             let remaining_slide = max_scroll - scroll_top;
             let slide_progress = if max_slide_range > 0 {
@@ -159,11 +143,6 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
         }
 
         div {
-            class: "scroll-progress-bar",
-            style: "width: {scroll_percentage}%;",
-        }
-
-        div {
             class: "blog",
             aside { class: "table-of-contents",
                 nav {
@@ -193,18 +172,6 @@ pub fn BlogPost(slug: ReadSignal<String>) -> Element {
                 hr { }
                 div {
                     dangerous_inner_html: "{blog_data.content}"
-                }
-            }
-            button {
-                class: "back-to-top",
-                "aria-label": "back to top",
-                onclick: move |_| {
-                    spawn(async move {
-                        let _ = document::eval("window.scrollTo({ top: 0 })").await;
-                    });
-                },
-                Icon {
-                    icon: FaArrowUp
                 }
             }
         }
