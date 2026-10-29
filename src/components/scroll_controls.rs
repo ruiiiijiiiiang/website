@@ -5,6 +5,7 @@ use dioxus_free_icons::icons::fa_solid_icons::FaArrowUp;
 #[derive(Clone, Copy, Default, PartialEq)]
 struct ScrollState {
     can_scroll: bool,
+    show_back_to_top: bool,
     percentage: f64,
 }
 
@@ -19,6 +20,7 @@ impl ScrollState {
 
         Self {
             can_scroll: true,
+            show_back_to_top: scroll_top > 1,
             percentage: (f64::from(scroll_top) / f64::from(max_scroll) * 100.0).clamp(0.0, 100.0),
         }
     }
@@ -129,17 +131,19 @@ pub fn ScrollControls() -> Element {
                 style: "width: {state.percentage}%;",
                 "aria-hidden": "true",
             }
-            button {
-                class: "back-to-top",
-                r#type: "button",
-                "aria-label": "back to top",
-                onclick: move |_| {
-                    #[cfg(target_arch = "wasm32")]
-                    if let Some(window) = web_sys::window() {
-                        window.scroll_to_with_x_and_y(0.0, 0.0);
-                    }
-                },
-                Icon { icon: FaArrowUp }
+            if state.show_back_to_top {
+                button {
+                    class: "back-to-top",
+                    r#type: "button",
+                    "aria-label": "back to top",
+                    onclick: move |_| {
+                        #[cfg(target_arch = "wasm32")]
+                        if let Some(window) = web_sys::window() {
+                            window.scroll_to_with_x_and_y(0.0, 0.0);
+                        }
+                    },
+                    Icon { icon: FaArrowUp }
+                }
             }
         }
     }
@@ -154,9 +158,19 @@ mod tests {
         for height in [600, 800, 801] {
             let state = ScrollState::from_dimensions(0, height, 800);
             assert!(!state.can_scroll);
+            assert!(!state.show_back_to_top);
             assert_eq!(state.percentage, 0.0);
         }
         assert!(ScrollState::from_dimensions(0, 802, 800).can_scroll);
+    }
+
+    #[test]
+    fn shows_back_to_top_only_after_leaving_top() {
+        for (position, visible) in [(-20, false), (0, false), (1, false), (2, true), (400, true)] {
+            let state = ScrollState::from_dimensions(position, 1600, 800);
+            assert!(state.can_scroll);
+            assert_eq!(state.show_back_to_top, visible);
+        }
     }
 
     #[test]
