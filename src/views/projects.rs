@@ -127,22 +127,6 @@ const PROJECTS: &[Project] = &[
         }),
     },
     Project {
-        name: "wazuh-flake",
-        language: "nix",
-        category: "Security Platform Orchestration",
-        tagline: "Reusable, native NixOS modules for operating a Wazuh SIEM stack.",
-        problem: "Operating an SIEM involves coordinated services, credentials, persistent data, backups, and recovery procedures that are difficult to manage consistently.",
-        solution: "Native NixOS modules that declaratively orchestrate Wazuh manager, indexer, dashboard, and Filebeat as a cohesive SIEM stack.",
-        highlights: &[
-            "Automates certificate and internal-credential provisioning",
-            "Encodes multi-service SIEM deployment as reusable NixOS modules",
-            "Documents production operations, persistent state, recovery, and upgrades",
-        ],
-        stack: &["NixOS", "Wazuh", "Filebeat", "TLS/PKI", "OpenSearch"],
-        link: "https://github.com/ruiiiijiiiiang/wazuh-flake",
-        preview: None,
-    },
-    Project {
         name: "sdctl",
         language: "rust",
         category: "Security Tooling",

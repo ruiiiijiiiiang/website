@@ -86,6 +86,35 @@ pub fn About() -> Element {
             hr { }
 
             section {
+                h2 { "Education" }
+                ul { class: "about-list",
+                    li {
+                        span { class: "about-item-details",
+                            span { class: "about-item-name", "Houston City College" }
+                            small { class: "about-item-subtitle", "Associate of Applied Science in Cyber Security" }
+                        }
+                        span { class: "about-item-date", "01/2025 — Present" }
+                    }
+                    li {
+                        span { class: "about-item-details",
+                            span { class: "about-item-name", "Emory University" }
+                            small { class: "about-item-subtitle", "Master of Science in Computer Science" }
+                        }
+                        span { class: "about-item-date", "08/2014 — 12/2016" }
+                    }
+                    li {
+                        span { class: "about-item-details",
+                            span { class: "about-item-name", "Vanderbilt University" }
+                            small { class: "about-item-subtitle", "Bachelor of Science in Mathematics and Computer Science" }
+                        }
+                        span { class: "about-item-date", "08/2009 — 05/2013" }
+                    }
+                }
+            }
+
+            hr { }
+
+            section {
                 h2 { "Certifications" }
                 ul { class: "about-list",
                     li {
@@ -123,35 +152,6 @@ pub fn About() -> Element {
                     li {
                         span { class: "about-item-name", "Cisco Certified Network Associate" }
                         span { class: "about-item-date", "06/2026" }
-                    }
-                }
-            }
-
-            hr { }
-
-            section {
-                h2 { "Education" }
-                ul { class: "about-list",
-                    li {
-                        span { class: "about-item-details",
-                            span { class: "about-item-name", "Houston City College" }
-                            small { class: "about-item-subtitle", "Associate of Applied Science in Cyber Security" }
-                        }
-                        span { class: "about-item-date", "01/2025 — Present" }
-                    }
-                    li {
-                        span { class: "about-item-details",
-                            span { class: "about-item-name", "Emory University" }
-                            small { class: "about-item-subtitle", "Master of Science in Computer Science" }
-                        }
-                        span { class: "about-item-date", "08/2014 — 12/2016" }
-                    }
-                    li {
-                        span { class: "about-item-details",
-                            span { class: "about-item-name", "Vanderbilt University" }
-                            small { class: "about-item-subtitle", "Bachelor of Science in Mathematics and Computer Science" }
-                        }
-                        span { class: "about-item-date", "08/2009 — 05/2013" }
                     }
                 }
             }
