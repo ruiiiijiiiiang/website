@@ -2,11 +2,28 @@
   margin-bottom: 2rem;
 }
 
-.about-list li {
+.about-list > div,
+.about-item-header {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  grid-template-columns: minmax(0, 1fr) max-content;
   column-gap: 0.25rem;
+  align-items: start;
+}
+
+.about-list > div {
   margin-bottom: 0.75rem;
+}
+
+.about-experience > div {
+  display: block;
+}
+
+.about-item-header > div {
+  min-width: 0;
+}
+
+.about-experience > div:not(:last-child) {
+  margin-bottom: 2rem;
 }
 
 .about-item-details,
@@ -32,6 +49,20 @@
   margin-top: 0.5rem;
 }
 
+.about-item-summary {
+  margin: 0.75rem 0;
+}
+
+.about-item-achievements {
+  margin-bottom: 0.75rem;
+}
+
+.about-item-achievements > li {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  margin-bottom: 0.5rem;
+}
+
 .about-item-date {
   color: var(--pico-muted-color);
   margin-left: 1.25rem;
@@ -40,12 +71,13 @@
 }
 
 @media (max-width: 576px) {
-  .about-list li {
-    grid-template-columns: max-content minmax(0, 1fr);
+  .about-list > div,
+  .about-item-header {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .about-item-date {
-    grid-column: 2;
+    grid-column: 1;
     margin-left: 0;
     text-align: left;
   }
