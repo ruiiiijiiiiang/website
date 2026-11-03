@@ -36,6 +36,15 @@
   min-width: 0;
 }
 
+.about-experience .about-item-name {
+  margin-bottom: 0.5rem;
+  color: var(--pico-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
 .about-item-subtitle {
   color: var(--pico-muted-color);
   margin-top: 0.15rem;
@@ -49,18 +58,20 @@
   margin-top: 0.5rem;
 }
 
-.about-item-summary {
-  margin: 0.75rem 0;
-}
-
 .about-item-achievements {
-  margin-bottom: 0.75rem;
+  min-width: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
 .about-item-achievements > li {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  color: var(--pico-muted-color);
+}
+
+.about-item-achievements > li:last-child {
+  margin-bottom: 0;
 }
 
 .about-item-date {
