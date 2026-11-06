@@ -1,41 +1,29 @@
-.project-card-container {
-  margin-bottom: 2rem;
+.project-details {
+  min-width: 0;
 }
 
-article.project-card {
-  border: 1px solid var(--pico-secondary-border) !important;
-  border-radius: 0 !important;
-  padding: 1rem !important;
-  margin-top: 0 !important;
-  margin-bottom: 0.5rem !important;
-  box-shadow: none !important;
+@media (min-width: 768px) and (max-width: 1023px) {
+  .projects-explorer .cli-output {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.5rem;
+  }
+
+  .projects-explorer .cli-value {
+    margin-bottom: 0.75rem;
+  }
 }
 
-article.project-card-featured {
-  border: 2px solid var(--pico-primary) !important;
-}
-
-.project-card-header {
+.project-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
-.project-card-context,
 .project-language {
   display: inline-flex;
   align-items: center;
-}
-
-.project-card-context {
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.project-language {
   border: 1px solid var(--pico-muted-border-color);
   color: var(--pico-muted-color);
   gap: 0.35rem;
@@ -77,12 +65,6 @@ span.repo-language-color {
   color: var(--pico-muted-color);
 }
 
-.project-featured-label {
-  border: 1px solid var(--pico-primary);
-  color: var(--pico-primary);
-  padding: 0.15rem 0.4rem;
-}
-
 .project-name {
   margin-bottom: 0.5rem;
   color: var(--pico-primary);
@@ -101,7 +83,7 @@ span.repo-language-color {
   margin-bottom: 1.25rem;
 }
 
-.project-card-body {
+.project-details-body {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -200,29 +182,29 @@ span.repo-language-color {
   }
 }
 
-article.project-card details.cli-details {
+.project-details .cli-details {
   margin: 0;
-  border: 1px dashed var(--pico-muted-border-color) !important;
-  padding: 0.5rem !important;
+  border: 1px dashed var(--pico-muted-border-color);
+  padding: 0.5rem;
 }
 
-article.project-card details.cli-details::details-content {
+.project-details .cli-details::details-content {
   opacity: 0;
   block-size: 0;
   overflow: hidden;
 }
 
-article.project-card details.cli-details[open]::details-content {
+.project-details .cli-details[open]::details-content {
   opacity: 1;
   block-size: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  article.project-card details.cli-details {
+  .project-details .cli-details {
     interpolate-size: allow-keywords;
   }
 
-  article.project-card details.cli-details::details-content {
+  .project-details .cli-details::details-content {
     transform: translateY(-10px);
     transition:
       content-visibility 0.25s allow-discrete,
@@ -231,12 +213,12 @@ article.project-card details.cli-details[open]::details-content {
       transform 0.25s ease-out;
   }
 
-  article.project-card details.cli-details[open]::details-content {
+  .project-details .cli-details[open]::details-content {
     transform: translateY(0);
   }
 }
 
-article.project-card details.cli-details summary {
+.project-details .cli-details summary {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -246,31 +228,32 @@ article.project-card details.cli-details summary {
   cursor: pointer;
 }
 
-article.project-card details.cli-details summary .folder-icon {
+.project-details .cli-details summary .folder-icon {
   fill: currentColor;
 }
 
-article.project-card details.cli-details summary::-webkit-details-marker {
+.project-details .cli-details summary::-webkit-details-marker {
   display: none;
 }
 
-.cli-footer {
+.project-source {
+  margin-top: 1.25rem;
   font-size: 0.9rem;
 }
 
-.cli-footer .prompt-symbol {
+.project-source .prompt-symbol {
   color: var(--pico-primary);
   font-weight: bold;
 }
 
-.cli-footer a.git-clone-link {
-  color: var(--pico-color) !important;
+.project-source a {
+  color: var(--pico-color);
   text-decoration: none;
   font-family: var(--font-mono);
 }
 
-.cli-footer a.git-clone-link:hover {
-  color: var(--pico-primary) !important;
+.project-source a:hover {
+  color: var(--pico-primary);
   text-decoration: underline;
 }
 

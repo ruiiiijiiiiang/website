@@ -16,19 +16,19 @@ pub fn Home() -> Element {
             "Hi, I'm Rui."
         }
         h5 {
-            "Open-Source Enthusiast. Linux fan. Rustacean. AUR and nixpkgs maintainer."
+            "Software engineer focused on platform engineering, cloud automation, and secure Linux systems."
         }
 
         hr { }
 
         p {
-            "I'm a software engineer by profession and a systems tinkerer by habit. I like systems that are coherent, inspectable, and reproducible."
+            "I’m a full-stack software engineer with over seven years of professional experience across multiple startups. Those environments have shaped how I work: take ownership, adapt quickly, and deliver with urgency. I thrive when I’m tackling unfamiliar problems, being challenged to grow, and learning something new along the way."
         }
         p {
-            "My interests include systems design, networking, and cybersecurity. I'm driven by curiosity, precision, and a desire to understand how things work beneath the abstraction layer."
+            "My open-source work focuses on reproducible infrastructure, monitoring, and secure operations. I build Linux automation and developer tools with Nix, Rust, and Python, and maintain packages in AUR and nixpkgs."
         }
         p {
-            "I'm based in Houston, Texas. My workflow is built around Niri, WezTerm, Fish, and Neovim. I use Arch, and NixOS, btw."
+            "Based in Houston, Texas. Let’s talk about software engineering, DevOps, and SRE opportunities."
         }
 
         hr { }
@@ -36,7 +36,7 @@ pub fn Home() -> Element {
         FastfetchCard {}
 
         p { class: "live-system-notice",
-            "# live system telemetry from the host serving this site; refreshes on page load"
+            "# Live system telemetry from the NixOS server hosting this site; refreshes on page load."
         }
 
         hr { }

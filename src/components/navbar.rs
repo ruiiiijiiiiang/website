@@ -31,6 +31,8 @@ pub fn Navbar() -> Element {
     rsx! {
         document::Link { rel: "canonical", href: initial_canonical_url }
         nav {
+            class: "site-navbar",
+            "aria-label": "Primary",
             ul {
                 li {
                     Link {

@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::components::ProjectCard;
+use crate::components::{ExplorerEntry, ProjectCard, ProjectMeta, TuiExplorer};
 use crate::models::{PreviewKind, PreviewSource, Project, ProjectPreview};
 
 const AGENIX_HELPER_WORKFLOW_LIGHT: Asset = asset!("../../assets/diagrams/agenix-helper-light.svg");
@@ -127,6 +127,22 @@ const PROJECTS: &[Project] = &[
         }),
     },
     Project {
+        name: "wazuh-flake",
+        language: "nix",
+        category: "Security Platform Orchestration",
+        tagline: "Reusable, native NixOS modules for operating a Wazuh SIEM stack.",
+        problem: "Operating an SIEM involves coordinated services, credentials, persistent data, backups, and recovery procedures that are difficult to manage consistently.",
+        solution: "Native NixOS modules that declaratively orchestrate Wazuh manager, indexer, dashboard, and Filebeat as a cohesive SIEM stack.",
+        highlights: &[
+            "Automates certificate and internal-credential provisioning",
+            "Encodes multi-service SIEM deployment as reusable NixOS modules",
+            "Documents production operations, persistent state, recovery, and upgrades",
+        ],
+        stack: &["NixOS", "Wazuh", "Filebeat", "TLS/PKI", "OpenSearch"],
+        link: "https://github.com/ruiiiijiiiiang/wazuh-flake",
+        preview: None,
+    },
+    Project {
         name: "sdctl",
         language: "rust",
         category: "Security Tooling",
@@ -214,6 +230,18 @@ const PROJECTS_CSS: Asset = asset!("../../assets/projects.css");
 
 #[component]
 pub fn Projects() -> Element {
+    let entries = PROJECTS
+        .iter()
+        .map(|project| ExplorerEntry {
+            id: project.name.to_string(),
+            label: project.name.to_string(),
+            title: Some(rsx! {
+                ProjectMeta { category: project.category, language: project.language }
+            }),
+            content: rsx! { ProjectCard { project: project.clone() } },
+        })
+        .collect();
+
     rsx! {
         document::Link { rel: "stylesheet", href: PROJECTS_CSS }
         document::Title { "Rui's Projects" }
@@ -221,12 +249,14 @@ pub fn Projects() -> Element {
         div {
             h1 { "Projects" }
 
-            div {
-                for project in PROJECTS {
-                    ProjectCard {
-                        project: project.clone()
-                    }
-                }
+            hr { }
+
+            p {
+                "Every project here started with a gap in my day-to-day workflows. I build and maintain these tools to meet real operational needs, and I love sharing them with others running similar setups."
+            }
+
+            div { class: "projects-explorer",
+                TuiExplorer { id: "projects", label: "projects", entries }
             }
         }
     }

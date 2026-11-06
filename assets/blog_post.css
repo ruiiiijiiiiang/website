@@ -43,15 +43,28 @@ div.blog {
 
 div.blog-content {
   max-width: 80%;
+  min-width: 0;
 }
 
 div.blog-content p,
+div.blog-content ul,
+div.blog-content ol,
+div.blog-content dl,
 div.blog-content li,
 div.blog-content blockquote,
 div.blog-content table {
   font-family: var(--font-sans);
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+div.blog-content :is(p, ul, ol, dl, blockquote) {
+  max-inline-size: 75ch;
+}
+
+/* Standalone images and diagrams can use the full content column. */
+div.blog-content p:has(img, picture, svg) {
+  max-inline-size: none;
 }
 
 div.blog-content pre,
@@ -66,15 +79,16 @@ div.blog-content pre code {
 
 h2[id],
 h3[id] {
-  scroll-margin-top: 2rem;
+  scroll-margin-top: var(--site-navbar-clearance);
 }
 
 aside.table-of-contents {
   position: sticky;
-  top: 5rem;
+  align-self: flex-start;
+  top: var(--site-navbar-clearance);
   left: 0;
   width: 20%;
-  height: 100vh;
+  max-height: calc(100dvh - var(--site-navbar-clearance) - 1rem);
   overflow-y: auto;
   overflow-x: hidden;
 }

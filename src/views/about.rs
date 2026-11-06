@@ -31,8 +31,8 @@ pub fn About() -> Element {
                                 "Developed customer-facing document automation tools for a legal technology platform, enabling law firms and legal professionals to streamline client intake, automate document preparation, and generate customized legal documents."
                             }
                             ul { class: "about-item-achievements",
-                                li { "Developed an AI-powered data extraction workflow using GPT-4 for a legal document automation platform; built a benchmarking tool to evaluate prompt and model performance, accelerating iteration and improving the clarity and accuracy of generated outputs." }
-                                li { "Redesigned the new-user registration experience to reduce onboarding friction and improve usability, contributing to increased user acquisition and sign-up conversion." }
+                                li { "Built an interactive document templating interface that visualized LLM-identified, context-dependent entities within uploaded legal PDFs, enabling users to review, validate, and customize semantically accurate placeholder substitutions before generating reusable templates." }
+                                li { "Led a comprehensive overhaul of the user registration lifecycle, redesigning frontend and backend validation mechanisms, email verification flows, and account activation logic to improve onboarding reliability and optimize customer acquisition." }
                             }
                             span { class: "about-item-technologies", "Technologies: "
                                 span { class: "technology-tag", "Typescript" }
@@ -165,6 +165,15 @@ pub fn About() -> Element {
 
             section {
                 h2 { "Certifications" }
+                div {
+                  a {
+                    href: "https://www.credly.com/users/rui-jiang.5598bd5c/badges/credly",
+                    target: "_blank",
+                    "aria-label": "link to credly account",
+                    "Credly Account ↗"
+                  }
+                }
+                br { }
                 div { class: "about-list",
                     div {
                         span { class: "about-item-name", "AWS Certified DevOps Engineer – Professional" }

@@ -1,0 +1,151 @@
+.tui-explorer {
+  border: 1px solid var(--pico-muted-border-color);
+  margin-bottom: 2rem;
+}
+
+.tui-explorer-panes {
+  display: grid;
+  grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
+  min-height: 30rem;
+}
+
+.tui-explorer-sidebar {
+  min-width: 0;
+  border-inline-end: 1px solid var(--pico-muted-border-color);
+}
+
+.tui-explorer-title {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  border-bottom: 1px solid var(--pico-muted-border-color);
+  padding: 0.5rem 0.75rem;
+  color: var(--pico-muted-color);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+}
+
+.tui-explorer-title-content {
+  width: 100%;
+  min-width: 0;
+}
+
+ul.tui-explorer-list {
+  display: block;
+  margin: 0;
+  padding: 0.5rem 0 !important;
+}
+
+.tui-explorer-list li {
+  padding: 0;
+  margin: 0;
+}
+
+.tui-explorer-list li::before {
+  content: none;
+}
+
+button.tui-explorer-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  border: 0;
+  background: transparent;
+  color: var(--pico-color);
+  box-shadow: none;
+  transition: none;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: start;
+}
+
+.tui-explorer-marker {
+  flex: 0 0 1ch;
+  color: var(--pico-muted-color);
+}
+
+.tui-explorer-entry-label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+button.tui-explorer-entry:hover {
+  background: var(--pico-secondary-background);
+  color: var(--pico-secondary-inverse);
+}
+
+button.tui-explorer-entry[aria-pressed="true"] {
+  background: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+  font-weight: 700;
+}
+
+button.tui-explorer-entry[aria-pressed="true"] .tui-explorer-marker {
+  color: inherit;
+}
+
+button.tui-explorer-entry:focus-visible {
+  outline: 2px solid var(--pico-contrast);
+  outline-offset: -3px;
+}
+
+.tui-explorer-detail {
+  min-width: 0;
+  margin: 0;
+}
+
+.tui-explorer-content {
+  padding: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.tui-explorer-empty {
+  color: var(--pico-muted-color);
+  margin: 0;
+}
+
+.tui-explorer-status {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  border-top: 1px solid var(--pico-muted-border-color);
+  padding: 0.4rem 0.75rem;
+  color: var(--pico-muted-color);
+  font-size: 0.7rem;
+}
+
+.tui-explorer-position {
+  color: var(--pico-primary);
+}
+
+.tui-explorer-hint kbd {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+}
+
+@media (max-width: 767px) {
+  .tui-explorer-panes {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .tui-explorer-sidebar {
+    border-inline-end: 0;
+    border-bottom: 1px solid var(--pico-muted-border-color);
+  }
+
+  ul.tui-explorer-list {
+    max-height: 13rem;
+    overflow-y: auto;
+  }
+
+  .tui-explorer-content {
+    padding: 0.75rem;
+  }
+}

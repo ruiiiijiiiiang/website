@@ -15,6 +15,8 @@ pub fn Blog() -> Element {
 
         h1 { "Blog Posts" }
 
+        hr { }
+
         ul {
             class: "blog-list",
             for post in posts {
