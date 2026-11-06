@@ -167,6 +167,10 @@ pub fn About() -> Element {
                 h2 { "Certifications" }
                 div { class: "about-list",
                     div {
+                        span { class: "about-item-name", "AWS Certified DevOps Engineer – Professional" }
+                        span { class: "about-item-date", "11/2026" }
+                    }
+                    div {
                         span { class: "about-item-name", "AWS Certified Security – Specialty" }
                         span { class: "about-item-date", "10/2026" }
                     }
