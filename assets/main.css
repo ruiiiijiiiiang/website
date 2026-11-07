@@ -17,6 +17,8 @@ nav.site-navbar {
   z-index: 1000;
   background-color: var(--pico-background-color);
   border-bottom: 1px solid var(--pico-muted-border-color);
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
 }
 
 div.scroll-progress-bar {
@@ -88,7 +90,7 @@ code {
 
 .technology-tag {
   border: 1px solid var(--pico-muted-border-color);
-  color: var(--pico-muted-color);
+  color: var(--pico-contrast);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;

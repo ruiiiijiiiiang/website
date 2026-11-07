@@ -30,10 +30,6 @@ pub fn About() -> Element {
                             p { class: "about-item-summary",
                                 "Developed customer-facing document automation tools for a legal technology platform, enabling law firms and legal professionals to streamline client intake, automate document preparation, and generate customized legal documents."
                             }
-                            ul { class: "about-item-achievements",
-                                li { "Built an interactive document templating interface that visualized LLM-identified, context-dependent entities within uploaded legal PDFs, enabling users to review, validate, and customize semantically accurate placeholder substitutions before generating reusable templates." }
-                                li { "Led a comprehensive overhaul of the user registration lifecycle, redesigning frontend and backend validation mechanisms, email verification flows, and account activation logic to improve onboarding reliability and optimize customer acquisition." }
-                            }
                             span { class: "about-item-technologies", "Technologies: "
                                 span { class: "technology-tag", "Typescript" }
                                 span { class: "technology-tag", "React" }
@@ -54,11 +50,6 @@ pub fn About() -> Element {
                             }
                             p { class: "about-item-summary",
                                 "Developed a customer-facing employee engagement platform that helps organizations strengthen workplace relationships through team-building events, organizational relationship analysis, and data-driven engagement insights."
-                            }
-                            ul { class: "about-item-achievements",
-                                li { "Developed high-performance employee data visualizations using D3.js, engineering scalable data structures to model organizational hierarchies and enable interactive analysis of workforce engagement." }
-                                li { "Redesigned the customer self-service experience, combining an intuitive checkout workflow with an enhanced event catalog featuring advanced filtering and sorting." }
-                                li { "Developed an interactive scheduling system that dynamically identifies optimal time slots, integrating GraphQL-based state management with continuous backend synchronization." }
                             }
                             span { class: "about-item-technologies", "Technologies: "
                                 span { class: "technology-tag", "Typescript" }
@@ -81,14 +72,6 @@ pub fn About() -> Element {
                             }
                             p { class: "about-item-summary",
                                 "Developed customer-facing e-commerce platforms for custom commercial printing, alongside internal inventory and production management systems."
-                            }
-                            ul { class: "about-item-achievements",
-                                li { "Architected a scalable, RabbitMQ-powered image processing pipeline and designed its EC2 Auto Scaling mechanism, handling 50K daily jobs and scaling to 500K+ per day during peak seasons to generate customer-specific product mockups." }
-                                li { "Designed and implemented an organization-wide identity and access management system combining DigitalPersona fingerprint authentication with a hierarchical RBAC model, enforcing secure access validation and granular permissions across warehouse production, customer service, sales, and management." }
-                                li { "Designed and developed an internal financial reporting platform that processed large datasets from MongoDB read replicas using aggregation pipelines, generating structured reports in formats tailored to the finance team's requirements." }
-                                li { "Engineered an embroidery production integration pipeline that parses industry-standard embroidery file formats into internal production data structures, alongside a customer-facing frontend for editing and fine-tuning embroidery designs." }
-                                li { "Integrated the Namecheap API to automate asynchronous domain provisioning within the customer platform, encompassing domain validation, registration, email verification, DNS configuration, SSL certificate provisioning, and routing to AWS-hosted web servers, providing customers with a seamless purchasing experience." }
-                                li { "Integrated third-party payment and shipping services, including PayPal, Payoneer, Stripe, and DHL, supporting payment processing, shipping manifest generation, and pricing policy synchronization." }
                             }
                             span { class: "about-item-technologies", "Technologies: "
                                 span { class: "technology-tag", "Typescript" }
@@ -116,10 +99,6 @@ pub fn About() -> Element {
                             }
                             p { class: "about-item-summary",
                                 "Developed internal customer service applications for Asurion's mobile device protection business, supporting customer representatives in processing insurance claims, managing claim information, and coordinating device repair and replacement workflows."
-                            }
-                            ul { class: "about-item-achievements",
-                                li { "Customized and localized an internal customer service dashboard to accommodate the operational and business requirements of four clients across the Asia-Pacific region." }
-                                li { "Supported backend integration with TIBCO middleware, facilitating data exchange and transformation between application interfaces and underlying databases." }
                             }
                             span { class: "about-item-technologies", "Technologies: "
                                 span { class: "technology-tag", "Javascript" }

@@ -214,7 +214,7 @@ const PROJECTS: &[Project] = &[
         category: "Web Application",
         tagline: "A full-stack personal site with a JavaScript-free frontend.",
         problem: "A personal site should be unique, secure, and deployable with the same reproducibility expectations as the rest of the platform.",
-        solution: "A Dioxus application with WASM, server-side rendering, static generation, Markdown publishing, and a reproducible Nix build.",
+        solution: "What you are looking at now. A Dioxus application with WASM, server-side rendering, static generation, and a reproducible Nix build.",
         highlights: &[
             "Full-stack rendering with SSR fallback and static generation",
             "Markdown publishing pipeline with custom Nix syntax highlighting",

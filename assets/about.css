@@ -58,22 +58,6 @@
   margin-top: 0.5rem;
 }
 
-.about-item-achievements {
-  min-width: 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.about-item-achievements > li {
-  margin-bottom: 0.3rem;
-  color: var(--pico-muted-color);
-}
-
-.about-item-achievements > li:last-child {
-  margin-bottom: 0;
-}
-
 .about-item-date {
   color: var(--pico-muted-color);
   margin-left: 1.25rem;

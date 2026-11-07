@@ -22,10 +22,22 @@ pub fn Home() -> Element {
         hr { }
 
         p {
-            "I’m a full-stack software engineer with over seven years of professional experience across multiple startups. Those environments have shaped how I work: take ownership, adapt quickly, and deliver with urgency. I thrive when I’m tackling unfamiliar problems, being challenged to grow, and learning something new along the way."
+            "I’m a full-stack software engineer with over seven years of professional experience across multiple startups. My main stack consists of "
+            span { class: "technology-tag", "TypeScript" }
+            ", "
+            span { class: "technology-tag", "React" }
+            ", and "
+            span { class: "technology-tag", "Node.js" }
+            "."
         }
         p {
-            "My open-source work focuses on reproducible infrastructure, monitoring, and secure operations. I build Linux automation and developer tools with Nix, Rust, and Python, and maintain packages in AUR and nixpkgs."
+            "My open-source work focuses on reproducible infrastructure, monitoring, and secure operations. I build Linux automation and developer tools with "
+            span { class: "technology-tag", "Nix" }
+            ", "
+            span { class: "technology-tag", "Rust" }
+            ", and "
+            span { class: "technology-tag", "Python" }
+            "."
         }
         p {
             "Based in Houston, Texas. Let’s talk about software engineering, DevOps, and SRE opportunities."
