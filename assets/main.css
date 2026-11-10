@@ -88,6 +88,13 @@ code {
   border-radius: 0 !important;
 }
 
+.technology-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .technology-tag {
   border: 1px solid var(--pico-muted-border-color);
   color: var(--pico-contrast);

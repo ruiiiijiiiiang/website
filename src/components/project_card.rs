@@ -42,7 +42,6 @@ pub fn ProjectCard(project: Project) -> Element {
                     span { class: "cli-value", "{project.problem}" }
                     span { class: "cli-label", "[BUILT]" }
                     span { class: "cli-value", "{project.solution}" }
-                    span { class: "cli-label", "[HIGHLIGHTS]" }
                     div { class: "cli-value project-signals",
                         ul {
                             for highlight in project.highlights {
@@ -50,8 +49,7 @@ pub fn ProjectCard(project: Project) -> Element {
                             }
                         }
                     }
-                    span { class: "cli-label", "[KEYWORDS]" }
-                    div { class: "cli-value project-stack-items",
+                    div { class: "cli-value project-stack-items technology-tag-list",
                         for technology in project.stack {
                             span { class: "technology-tag", "{technology}" }
                         }

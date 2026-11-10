@@ -50,14 +50,6 @@
   margin-top: 0.15rem;
 }
 
-.about-item-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 0.5rem;
-}
-
 .about-item-date {
   color: var(--pico-muted-color);
   margin-left: 1.25rem;

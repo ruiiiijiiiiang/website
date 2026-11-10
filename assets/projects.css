@@ -109,15 +109,15 @@ span.repo-language-color {
   min-width: 0;
 }
 
+.project-signals,
+.project-stack-items {
+  grid-column: 1 / -1;
+}
+
 .project-signals {
   min-width: 0;
   font-size: 0.9rem;
   line-height: 1.6;
-}
-
-.project-signals ul {
-  margin: 0;
-  padding-left: 1.25rem;
 }
 
 .project-signals li {
@@ -127,13 +127,6 @@ span.repo-language-color {
 
 .project-signals li:last-child {
   margin-bottom: 0;
-}
-
-.project-stack-items {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.4rem;
 }
 
 .project-preview {

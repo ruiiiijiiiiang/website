@@ -54,7 +54,7 @@ button.tui-explorer-entry {
   padding: 0.6rem 0.75rem;
   border: 0;
   background: transparent;
-  color: var(--pico-color);
+  color: inherit;
   box-shadow: none;
   transition: none;
   font-size: 0.8rem;
